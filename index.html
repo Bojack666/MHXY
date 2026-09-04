@@ -17635,4 +17635,167 @@ window.MHXY_APPEARANCE=(function(){
 })();
 
 </script>
+
+
+<style>
+/* v8.20.56 Supabase cloud sync */
+#mhCloudSyncCard .mh-cloud-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+#mhCloudSyncCard .mh-cloud-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+#mhCloudSyncCard .mh-cloud-state{margin-top:12px;padding:10px 12px;border-radius:10px;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.18);line-height:1.65}
+#mhCloudSyncCard .mh-cloud-state.ok{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.22)}
+#mhCloudSyncCard .mh-cloud-state.warn{background:rgba(245,158,11,.09);border-color:rgba(245,158,11,.24)}
+#mhCloudSyncCard .mh-cloud-state.err{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.22)}
+#mhCloudSyncCard .mh-cloud-login-note{font-size:12px;opacity:.78;margin-top:8px}
+@media(max-width:760px){#mhCloudSyncCard .mh-cloud-grid{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+'use strict';
+const MH_CLOUD_URL='https://ahczylnbpjpyinsswaqc.supabase.co';
+const MH_CLOUD_KEY='sb_publishable_RGe_6oeVX78tK5sc8BfimA_FXYbbYLw';
+const CK={
+  access:'mhxy_cloud_access_token', refresh:'mhxy_cloud_refresh_token', user:'mhxy_cloud_user_id',
+  email:'mhxy_cloud_email', expiry:'mhxy_cloud_expiry', last:'mhxy_cloud_last_sync_at',
+  dirty:'mhxy_cloud_dirty_at', auto:'mhxy_cloud_auto_sync'
+};
+let mhCloudSuspend=false, mhCloudTimer=null, mhCloudBusy=false;
+
+function cloudInternalKey(k){ return String(k||'').indexOf('mhxy_cloud_')===0; }
+function nowIso(){return new Date().toISOString()}
+function escCloud(s){return String(s??'').replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[m]||m))}
+function getSession(){return {access:localStorage.getItem(CK.access)||'',refresh:localStorage.getItem(CK.refresh)||'',user:localStorage.getItem(CK.user)||'',email:localStorage.getItem(CK.email)||'',expiry:Number(localStorage.getItem(CK.expiry)||0)}}
+function setSession(x){
+  mhCloudSuspend=true;
+  try{
+    if(x.access_token)localStorage.setItem(CK.access,x.access_token);
+    if(x.refresh_token)localStorage.setItem(CK.refresh,x.refresh_token);
+    if(x.user&&x.user.id)localStorage.setItem(CK.user,x.user.id);
+    if(x.user&&x.user.email)localStorage.setItem(CK.email,x.user.email);
+    if(x.expires_at)localStorage.setItem(CK.expiry,String(x.expires_at*1000));
+    else if(x.expires_in)localStorage.setItem(CK.expiry,String(Date.now()+Number(x.expires_in)*1000));
+  } finally {mhCloudSuspend=false}
+}
+function clearSession(){
+  mhCloudSuspend=true; try{[CK.access,CK.refresh,CK.user,CK.email,CK.expiry].forEach(k=>localStorage.removeItem(k));}finally{mhCloudSuspend=false}
+}
+function isAuto(){return localStorage.getItem(CK.auto)!=='0'}
+function setStatus(msg,type){const e=document.getElementById('mhCloudStatus');if(!e)return;e.className='mh-cloud-state'+(type?' '+type:'');e.innerHTML=msg;}
+function formatTime(v){if(!v)return'从未';try{return new Date(v).toLocaleString()}catch(e){return v}}
+function updateUi(){
+  const s=getSession(); const email=document.getElementById('mhCloudEmail'); const pass=document.getElementById('mhCloudPassword'); const auto=document.getElementById('mhCloudAuto');
+  if(email&&!email.value&&s.email)email.value=s.email;
+  if(auto)auto.checked=isAuto();
+  const login=document.getElementById('mhCloudLogin'), logout=document.getElementById('mhCloudLogout');
+  if(login)login.style.display=s.user?'none':''; if(logout)logout.style.display=s.user?'':'none'; if(pass&&s.user)pass.value='';
+  if(s.user)setStatus('已登录：<b>'+escCloud(s.email||s.user)+'</b><br>最后同步：<b>'+escCloud(formatTime(localStorage.getItem(CK.last)))+'</b>','ok');
+  else setStatus('尚未登录云同步。电脑和手机请使用同一个 Supabase 邮箱账号登录。','');
+}
+async function api(path,opt={}){
+  const headers=Object.assign({'apikey':MH_CLOUD_KEY,'Content-Type':'application/json'},opt.headers||{});
+  const res=await fetch(MH_CLOUD_URL+path,Object.assign({},opt,{headers}));
+  const txt=await res.text(); let data=null; try{data=txt?JSON.parse(txt):null}catch(e){data=txt}
+  if(!res.ok){let m=(data&&((data.msg)||(data.message)||(data.error_description)||(data.error)))||('HTTP '+res.status);throw new Error(m)}
+  return data;
+}
+async function ensureToken(){
+  let s=getSession(); if(!s.user||(!s.access&&!s.refresh))throw new Error('请先登录');
+  if(s.access&&(!s.expiry||Date.now()<s.expiry-60000))return s.access;
+  if(!s.refresh)throw new Error('登录已过期，请重新登录');
+  const x=await api('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:JSON.stringify({refresh_token:s.refresh})}); setSession(x); return getSession().access;
+}
+async function login(){
+  const email=(document.getElementById('mhCloudEmail')||{}).value||''; const password=(document.getElementById('mhCloudPassword')||{}).value||'';
+  if(!email.trim()||!password){setStatus('请输入邮箱和密码。','warn');return}
+  setStatus('正在登录…','');
+  try{
+    const x=await api('/auth/v1/token?grant_type=password',{method:'POST',body:JSON.stringify({email:email.trim(),password})});
+    setSession(x); updateUi(); await autoSync('login');
+  }catch(e){setStatus('登录失败：'+escCloud(e.message),'err')}
+}
+async function logout(){
+  try{const s=getSession();if(s.access)await api('/auth/v1/logout',{method:'POST',headers:{Authorization:'Bearer '+s.access}});}catch(e){}
+  clearSession(); updateUi();
+}
+function collectCloudPack(){
+  const pack=mhCollectAllData();
+  const clean={}; Object.entries(pack.localStorage||{}).forEach(([k,v])=>{if(!cloudInternalKey(k))clean[k]=v});
+  pack.localStorage=clean; pack.cloudFormat='mhxy-supabase-v1'; return pack;
+}
+async function getRemote(){
+  const token=await ensureToken(); const s=getSession();
+  const q='/rest/v1/mhxy_sync?user_id=eq.'+encodeURIComponent(s.user)+'&select=user_id,data_json,updated_at,version&limit=1';
+  const rows=await api(q,{headers:{Authorization:'Bearer '+token}}); return Array.isArray(rows)&&rows.length?rows[0]:null;
+}
+async function pushLocal(manual){
+  if(mhCloudBusy)return; mhCloudBusy=true; setStatus('正在上传本机数据到云端…','');
+  try{
+    const token=await ensureToken(),s=getSession(),stamp=nowIso(),pack=collectCloudPack();
+    const body={user_id:s.user,data_json:pack,updated_at:stamp,version:Date.now()};
+    await api('/rest/v1/mhxy_sync?on_conflict=user_id',{method:'POST',headers:{Authorization:'Bearer '+token,Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify(body)});
+    mhCloudSuspend=true;try{localStorage.setItem(CK.last,stamp);localStorage.removeItem(CK.dirty);}finally{mhCloudSuspend=false}
+    setStatus('同步完成：本机 → 云端<br>时间：<b>'+escCloud(formatTime(stamp))+'</b>','ok');
+  }catch(e){setStatus('上传失败：'+escCloud(e.message),'err')}finally{mhCloudBusy=false}
+}
+async function pullRemote(force){
+  if(mhCloudBusy)return; mhCloudBusy=true; setStatus('正在从云端读取数据…','');
+  try{
+    const r=await getRemote(); if(!r){setStatus('云端还没有备份，先把这台设备的数据上传一次。','warn');return}
+    if(!mhValidateBackup(r.data_json))throw new Error('云端备份格式不正确');
+    if(!force && !confirm('将用云端数据覆盖本机同名数据。\n\n云端时间：'+formatTime(r.updated_at)+'\n\n继续吗？'))return;
+    mhCloudSuspend=true; try{mhRestoreBackup(r.data_json);localStorage.setItem(CK.last,r.updated_at||nowIso());localStorage.removeItem(CK.dirty);}finally{mhCloudSuspend=false}
+    setStatus('已从云端恢复，正在刷新页面…','ok'); setTimeout(()=>location.reload(),500);
+  }catch(e){setStatus('下载失败：'+escCloud(e.message),'err')}finally{mhCloudBusy=false}
+}
+async function autoSync(reason){
+  if(!isAuto()||mhCloudBusy)return; const s=getSession(); if(!s.user)return;
+  try{
+    const r=await getRemote(); const last=localStorage.getItem(CK.last)||''; const dirty=localStorage.getItem(CK.dirty)||'';
+    if(!r){await pushLocal(false);return}
+    if(!last){
+      mhCloudSuspend=true;try{mhRestoreBackup(r.data_json);localStorage.setItem(CK.last,r.updated_at||nowIso());localStorage.removeItem(CK.dirty);}finally{mhCloudSuspend=false}
+      setStatus('首次连接：已自动从云端下载数据，正在刷新…','ok'); setTimeout(()=>location.reload(),450); return;
+    }
+    const rt=Date.parse(r.updated_at||0)||0, lt=Date.parse(last)||0, dt=Date.parse(dirty||0)||0;
+    if(dt>lt && rt>lt){setStatus('检测到同步冲突：本机和云端在上次同步后都发生过修改。<br>请手动选择“上传本机”或“下载云端”。','warn');return}
+    if(rt>lt){mhCloudSuspend=true;try{mhRestoreBackup(r.data_json);localStorage.setItem(CK.last,r.updated_at);localStorage.removeItem(CK.dirty);}finally{mhCloudSuspend=false};setStatus('发现云端新数据，已自动更新本机，正在刷新…','ok');setTimeout(()=>location.reload(),450);return}
+    if(dt>lt){await pushLocal(false);return}
+    setStatus('云端与本机已是最新。<br>最后同步：<b>'+escCloud(formatTime(last))+'</b>','ok');
+  }catch(e){setStatus('自动同步暂时失败：'+escCloud(e.message),'err')}
+}
+function markDirty(){
+  if(mhCloudSuspend)return;
+  mhCloudSuspend=true;try{localStorage.setItem(CK.dirty,nowIso())}finally{mhCloudSuspend=false}
+  if(isAuto()&&getSession().user){clearTimeout(mhCloudTimer);mhCloudTimer=setTimeout(()=>autoSync('change'),2500)}
+}
+function patchStorage(){
+  const p=Storage.prototype, oldSet=p.setItem, oldRemove=p.removeItem, oldClear=p.clear;
+  if(p.__mhxyCloudPatched)return; Object.defineProperty(p,'__mhxyCloudPatched',{value:true});
+  p.setItem=function(k,v){const r=oldSet.apply(this,arguments);if(this===localStorage&&!cloudInternalKey(k))markDirty();return r};
+  p.removeItem=function(k){const r=oldRemove.apply(this,arguments);if(this===localStorage&&!cloudInternalKey(k))markDirty();return r};
+  p.clear=function(){const r=oldClear.apply(this,arguments);if(this===localStorage)markDirty();return r};
+}
+function injectUi(){
+  const grid=document.querySelector('#datamgr .grid'); if(!grid||document.getElementById('mhCloudSyncCard'))return;
+  const card=document.createElement('div'); card.className='card w12';card.id='mhCloudSyncCard';
+  card.innerHTML='<h3>☁ 云同步（电脑 ↔ 手机）</h3>'+
+    '<div class="note">使用你刚刚在 Supabase 创建的同一个邮箱账号登录。数据仍保存在本机，同时联网后自动同步到你的云端。</div>'+
+    '<div class="mh-cloud-grid">'+
+      '<label><span>邮箱</span><input id="mhCloudEmail" type="email" autocomplete="username" placeholder="Supabase 用户邮箱"></label>'+
+      '<label><span>密码</span><input id="mhCloudPassword" type="password" autocomplete="current-password" placeholder="Supabase 用户密码"></label>'+
+    '</div>'+
+    '<div class="mh-cloud-actions"><button type="button" class="primary" id="mhCloudLogin">登录并同步</button><button type="button" id="mhCloudLogout" style="display:none">退出登录</button><button type="button" id="mhCloudSyncNow">立即自动同步</button><button type="button" id="mhCloudPush">上传本机 → 云端</button><button type="button" id="mhCloudPull">下载云端 → 本机</button><label style="display:flex;align-items:center;gap:6px"><input id="mhCloudAuto" type="checkbox" checked> 自动同步</label></div>'+
+    '<div class="mh-cloud-login-note">密码只用于直接登录 Supabase，不会写进工具箱备份。遇到冲突时不会自动覆盖，会让你手动选择方向。</div>'+
+    '<div id="mhCloudStatus" class="mh-cloud-state">初始化中…</div>';
+  grid.insertBefore(card,grid.firstChild);
+  document.getElementById('mhCloudLogin').onclick=login; document.getElementById('mhCloudLogout').onclick=logout;
+  document.getElementById('mhCloudSyncNow').onclick=()=>autoSync('manual'); document.getElementById('mhCloudPush').onclick=()=>pushLocal(true); document.getElementById('mhCloudPull').onclick=()=>pullRemote(false);
+  document.getElementById('mhCloudAuto').onchange=function(){mhCloudSuspend=true;try{localStorage.setItem(CK.auto,this.checked?'1':'0')}finally{mhCloudSuspend=false};if(this.checked)autoSync('enable')};
+  document.getElementById('mhCloudPassword').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+  updateUi();
+}
+function boot(){patchStorage();injectUi();if(getSession().user)setTimeout(()=>autoSync('boot'),800)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+
 </body></html>
