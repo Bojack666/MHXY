@@ -857,6 +857,12 @@ input[data-fruit-price]:focus{
 }
 
 
+/* 九转金丹：按“每品多少梦幻币”换算实际单颗价格 */
+.pl-pill-inline{grid-column:1/-1;display:grid;grid-template-columns:minmax(120px,.75fr) minmax(190px,1.25fr) minmax(130px,1fr);gap:7px;align-items:center;margin-top:5px;padding-top:7px;border-top:1px dashed rgba(148,163,184,.18)}
+.pl-pill-inline label{display:flex;align-items:center;gap:5px;color:#9fb0ca;font-size:11px;white-space:nowrap}
+.pl-pill-inline input{min-width:0;width:100%!important;padding:5px 6px!important}
+.pl-pill-inline strong{color:#4ade80;font-size:11px;white-space:nowrap}
+@media(max-width:680px){.pl-pill-inline{grid-template-columns:1fr}.pl-pill-inline label{display:grid;grid-template-columns:50px 1fr auto}}
 /* v8.8.9 compact global price library */
 .pl-list-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .pl-card-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}
@@ -6217,7 +6223,7 @@ body.theme-light .custom-aux-name-wrap .custom-aux-name{
 </head>
 <body class="organized-app">
 <div class="app">
-<aside class="side"><div class="brand">梦幻西游五开工具箱<small>离线版 v8.20.58 全工具箱折叠优化版 · 数据保存在本机浏览器</small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
+<aside class="side"><div class="brand">梦幻西游五开工具箱<small>主版本 v8.20.59 · Supabase云备份 · GitHub工具更新 · 数据保存在本机浏览器</small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
 <button type="button" class="nav-item" data-tab="magicpetspeed">⚡ 法宠配速计算器</button>
 <button data-tab="petspeed">🐾 攻宠攻速查询</button><button data-tab="skillcost">技能消耗</button><button data-tab="attrcalc">属性换算</button><button data-tab="accounts">角色花费档案</button></div></div><div class="nav-group" data-group="system"><button type="button" class="nav-group-head" data-group-toggle="system"><span>设置</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="system"><button data-tab="datamgr">数据管理</button><button data-tab="settings">设置</button></div></div><div class="menu-order-tip">↕ 大类和小类都可拖动排序 · 点击标题折叠</div>
 </div></aside>
@@ -6557,6 +6563,7 @@ body.theme-light .custom-aux-name-wrap .custom-aux-name{
     <div class="field"><label>队长经验系数</label><input id="t2XpCaptainCoef" type="number" value="1.10" min="0" step="0.01"><div class="sub" id="t2XpCoefHint">抓鬼默认 1.10×</div></div>
   </div>
   <div class="sub" style="margin-top:5px">建议记录一个非队长号。手动修改系数后，会按当前“任务大类 + 具体任务”保存，下次自动带入。</div>
+  <div id="t2XpAutoHint" class="task-exp-auto-hint" hidden></div>
   <div class="task-exp-summary">
     <div class="task-exp-metric"><span>普通队员本次</span><b id="t2XpMember" class="task-exp-empty">—</b></div>
     <div class="task-exp-metric"><span>队长推算</span><b id="t2XpCaptain" class="task-exp-empty">—</b></div>
@@ -6770,26 +6777,34 @@ body.theme-light .custom-aux-name-wrap .custom-aux-name{
     </div>
   </div>
 
-  <div class="card w5">
-    <h3>添加物品</h3>
-    <div class="field"><label>类目</label><input id="plNewCategory" list="plCategoryList" placeholder="例如：环装 / 乐器 / 五宝 / 自定义"><datalist id="plCategoryList"></datalist></div>
-    <div class="field"><label>物品名称</label><input id="plNewName" placeholder="例如：80武器 / 定魂珠 / 小众物品"></div>
-    <div class="field"><label>单价（万）</label><input id="plNewPrice" type="number" min="0" step="0.1" value="0"></div>
-    <div class="field"><label>是否显示在每日收益快捷区</label><select id="plNewQuick"><option value="1">显示</option><option value="0">不显示</option></select></div>
-    <button type="button" id="plAdd">+ 添加到物价库</button>
+  <div class="card w12 pl-add-card pl-static-card">
+    <div class="pl-compact-head">
+      <div>
+        <h3>添加物品</h3>
+        <p>按类目集中管理；勾选“快捷”后，可直接在每日收益里选择。</p>
+      </div>
+      <span class="pl-compact-badge">自定义物价</span>
+    </div>
+    <div class="pl-add-form">
+      <div class="field"><label>类目</label><input id="plNewCategory" list="plCategoryList" placeholder="例如：环装 / 乐器 / 五宝 / 自定义"><datalist id="plCategoryList"></datalist></div>
+      <div class="field"><label>物品名称</label><input id="plNewName" placeholder="例如：80武器 / 定魂珠 / 小众物品"></div>
+      <div class="field"><label>单价（万）</label><input id="plNewPrice" type="number" min="0" step="0.1" value="0"></div>
+      <div class="field"><label>每日收益快捷区</label><select id="plNewQuick"><option value="1">显示</option><option value="0">不显示</option></select></div>
+      <div class="pl-add-actions">
+        <button type="button" class="primary pl-add-submit" id="plAdd">+ 添加物品</button>
+      </div>
+    </div>
   </div>
 
-  <div class="card w7">
-    <h3>物价库说明</h3>
-    <div class="result">
-      <b>价格只维护一次</b><br>
-      每日收益 → 点击物品 → 自动读取当前物价 → 保存当时价格快照。<br><br>
-      <b>以后修改物价不会改乱旧账</b><br>
-      已经保存的每日收益保留当时成交/估值价格；之后新记录使用最新物价。
+  <div class="card w12 pl-info-card pl-static-card">
+    <div class="pl-info-copy">
+      <strong class="pl-info-title">物价库规则</strong>
+      <div class="pl-info-points">
+        <div class="pl-info-item"><b>统一价格</b><span>每日收益会自动读取这里的单价</span></div>
+        <div class="pl-info-item"><b>历史锁价</b><span>已保存收益保留当时的成交 / 估值</span></div>
+      </div>
     </div>
-    <div class="toolbar" style="margin-top:10px">
-      <button type="button" id="plResetDefaults">补回默认物品</button>
-    </div>
+    <button type="button" class="miniBtn pl-reset-btn" id="plResetDefaults">↻ 补回默认物品</button>
   </div>
 
   <div class="card w12">
@@ -6889,10 +6904,10 @@ body.theme-light .custom-aux-name-wrap .custom-aux-name{
     <div class="field"><label>队员数量</label><input value="4" readonly></div>
   </div>
   <div class="result" id="ghostMoneyResult">
-    <b>待补抓鬼精确货币系数</b><br>当前只保留等级、数量、模式和五门设置，暂不参与每日收益计算。
+    <b>抓鬼等级收益参考</b><br>用于等级横向比较；正式收益统一在“任务收益”记录。
   </div>
-  <div class="toolbar" style="margin-top:8px"><button type="button" id="applyGhostMoney" disabled title="精确货币系数核准后再启用">暂不可代入</button></div>
-  <div class="note">这里不是故障：精确系数尚未核准，所以故意不写入猜测金额。后续补齐可靠数据后再启用自动代入。</div>
+  <div class="toolbar" style="margin-top:8px"><button type="button" id="applyGhostMoney">去任务收益记录</button></div>
+  <div class="note">这里保留为旧版等级横向参考；正式记录统一使用“任务收益”中的抓鬼自动估算/前后资产法，避免重复入口。</div>
   </div>
 </div>
 
@@ -8699,7 +8714,7 @@ body.theme-light .custom-aux-name-wrap .custom-aux-name{
 <section id="datamgr"><div class="grid">
   <div class="card w7">
     <h3>数据备份与恢复</h3>
-    <div class="note">这里会备份本工具保存到浏览器本地的全部数据，包括角色档案、每日收益、价格设置、菜单排序、任务参数等。</div>
+    <div class="note">这里会备份角色档案、每日收益、价格设置、菜单排序、任务参数等业务数据；Supabase 登录 Token / 登录态不会写入手工备份。</div>
     <div class="row" style="margin-top:14px">
       <button type="button" onclick="mhExportAllData()">导出全部数据备份</button>
       <button type="button" onclick="document.getElementById('mhImportFile').click()">导入备份恢复</button>
@@ -8733,19 +8748,19 @@ body.theme-light .custom-aux-name-wrap .custom-aux-name{
 
   <div class="card w12">
     <h3>备份内容说明</h3>
-    <div class="note">备份文件只包含这个工具在浏览器 localStorage 中保存的数据，不包含浏览器密码、Cookie 或其他网站数据。</div>
+    <div class="note">备份文件只包含工具业务数据，不包含浏览器密码、Cookie，也会主动排除 Supabase 登录 Token / 登录态。</div>
     <div class="result" id="mhBackupSummary"></div>
   </div>
 </div></section>
 
-<section id="settings"><div class="card"><h3>菜单分组与排序</h3><div class="note">左侧功能可跨分组拖动；点击彩色分组标题可展开/收起。</div><button type="button" onclick="localStorage.removeItem('mhxy_menu_layout_v23');localStorage.removeItem('mhxy_group_collapse_v23');location.reload()">恢复默认菜单分组</button><div class="note" style="margin-top:8px">建议升级前先到“数据管理”导出完整备份。</div></div>
+<section id="settings"><div class="card"><h3>菜单分组与排序</h3><div class="note">左侧功能可跨分组拖动；点击彩色分组标题可展开/收起。</div><button type="button" onclick="['mhxy_menu_layout_v866','mhxy_group_collapse_v866','mhxy_group_order_v876','mhxy_feature_order_v18','mhxy_menu_layout_v23','mhxy_group_collapse_v23'].forEach(function(k){localStorage.removeItem(k)});location.reload()">恢复默认菜单分组</button><div class="note" style="margin-top:8px">建议升级前先到“数据管理”导出完整备份。</div></div>
 <div class="card">
   <h3>功能菜单顺序</h3>
   <div class="note">左侧菜单支持拖动排序，顺序会自动保存在本机。</div>
   <button type="button" onclick="localStorage.removeItem('mhxy_feature_order_v18');location.reload()">恢复默认排序</button>
 </div>
 <div class="grid"><div class="card w6"><h3>金价设置</h3><div class="row"><div class="field"><label>人民币（元）</label><input id="setRmb" type="number" value="220"></div><div class="field"><label>对应游戏币（万）</label><input id="setGold" type="number" value="3000"></div></div></div><div class="card w6"><h3>武器换算参数</h3><div class="row"><div class="field"><label>多少伤害 = 1法伤</label><input id="setDamageRatio" type="number" value="4" step="0.1"></div><div class="field"><label>1魔力 = 法伤</label><input id="setMagicCoef" type="number" value="0.7" step="0.01"></div></div><div class="row"><div class="field"><label>1力量 = 法伤</label><input id="setStrCoef" type="number" value="0.4" step="0.01"></div><div class="field"><label>1体质 = 法伤</label><input id="setConCoef" type="number" value="0.3" step="0.01"></div></div><div class="row"><div class="field"><label>1耐力 = 法伤</label><input id="setEndCoef" type="number" value="0.2" step="0.01"></div><div class="field"><label>1敏捷 = 法伤</label><input id="setAgiCoef" type="number" value="0" step="0.01"></div></div></div><div class="card w12"><button class="primary" id="saveSettings">保存设置</button> <span class="note" id="saveMsg"></span></div></div></section>
-</div><div class="footer">梦幻西游五开工具箱 v8.0 · 非官方工具 · 收益参考值可被你的实测记录覆盖</div></main></div>
+</div><div class="footer">梦幻西游五开工具箱 v8.20.59 · 非官方工具 · Supabase负责数据云备份，GitHub负责工具版本更新</div></main></div>
 <script>
 const expByLevel=[0,150,210,290,390,510,650,810,990,1190,1410,1650,1910,2190,2490,2810,3150,3510,3890,4290,4710,5150,5610,6090,6590,7110];
 const defaults={rmb:220,gold:3000,damageRatio:4,magicCoef:.7,strCoef:.4,conCoef:.3,endCoef:.2,agiCoef:0};
@@ -8987,22 +9002,30 @@ const DEFAULT_PRICE_LIBRARY=[
  {id:'wb5',category:'五宝',name:'避水珠',price:3,quick:true},
  {id:'o1',category:'兽决',name:'普通兽决',price:35,quick:true},
  {id:'o2',category:'宝石',name:'宝石',price:6,quick:true},
- {id:'g_sun',category:'宝石·太阳石',name:'太阳石',price:0,quick:false},
- {id:'g_moon',category:'宝石·月亮石',name:'月亮石',price:0,quick:false},
- {id:'g_relic',category:'宝石·舍利子',name:'舍利子',price:0,quick:false},
- {id:'g_black',category:'宝石·黑宝石',name:'黑宝石',price:0,quick:false},
- {id:'g_light',category:'宝石·光芒石',name:'光芒石',price:0,quick:false},
- {id:'g_agate',category:'宝石·红玛瑙',name:'红玛瑙',price:0,quick:false},
- {id:'g_jade',category:'宝石·翡翠石',name:'翡翠石',price:0,quick:false},
- {id:'g_mystery',category:'宝石·神秘石',name:'神秘石',price:0,quick:false},
+ {id:'g_sun',category:'宝石',name:'太阳石',price:0,quick:false},
+ {id:'g_moon',category:'宝石',name:'月亮石',price:0,quick:false},
+ {id:'g_relic',category:'宝石',name:'舍利子',price:0,quick:false},
+ {id:'g_black',category:'宝石',name:'黑宝石',price:0,quick:false},
+ {id:'g_light',category:'宝石',name:'光芒石',price:0,quick:false},
+ {id:'g_agate',category:'宝石',name:'红玛瑙',price:0,quick:false},
+ {id:'g_jade',category:'宝石',name:'翡翠石',price:0,quick:false},
+ {id:'g_mystery',category:'宝石',name:'神秘石',price:0,quick:false},
  {id:'g_star',category:'星辉石',name:'星辉石',price:0,quick:false},
- {id:'o3',category:'强化石',name:'强化石',price:1.5,quick:false},
- {id:'o4',category:'修炼',name:'修炼果',price:90,quick:true},
+ {id:'o3',category:'材料',name:'强化石',price:1.5,quick:false},
+ {id:'o4',category:'养成',name:'修炼果',price:90,quick:true},
  {id:'o5',category:'炼妖',name:'金柳露',price:2,quick:false},
  {id:'o6',category:'炼妖',name:'超级金柳露',price:20,quick:false},
  {id:'o7',category:'符石',name:'一级符石',price:8,quick:false},
  {id:'o8',category:'内丹',name:'召唤兽内丹',price:15,quick:false},
- {id:'o9',category:'其他',name:'藏宝图',price:2.5,quick:false}
+ {id:'o9',category:'其他',name:'藏宝图',price:2.5,quick:false},
+ {id:'o10',category:'兽决',name:'高级魔兽要诀',price:0,quick:false},
+ {id:'o11',category:'养成',name:'九转金丹',price:0,quick:false},
+ {id:'o12',category:'炼妖',name:'月华露',price:0,quick:false},
+ {id:'o13',category:'炼妖',name:'清灵仙露',price:0,quick:false},
+ {id:'o14',category:'材料',name:'符石卷轴',price:0,quick:false},
+ {id:'o15',category:'其他',name:'摇钱树苗',price:0,quick:false},
+ {id:'o16',category:'其他',name:'彩果',price:0,quick:false},
+ {id:'o17',category:'其他',name:'金银锦盒',price:0,quick:false}
 ];
 let priceLibrary=[];
 
@@ -9028,12 +9051,12 @@ function loadPriceLibrary(){
   savePriceLibrary();
 }
 
-function isGemPriceItem(x){
-  return !!x&&((String(x.category||'').indexOf('宝石·')===0)||x.category==='星辉石');
+ function isGemPriceItem(x){
+   return !!x&&(x.category==='宝石'||String(x.category||'').indexOf('宝石·')===0||x.category==='星辉石'||['太阳石','月亮石','舍利子','黑宝石','光芒石','红玛瑙','翡翠石','神秘石','星辉石'].includes(String(x.name||'')));
 }
 function gemLinkedWan(x){
   if(!isGemPriceItem(x)||!window.GC||typeof window.GC.unitWan!=='function')return 0;
-  return window.GC.unitWan(x.category==='星辉石'?'star':'gem',Math.max(1,+x.gemLevel||1));
+   return window.GC.unitWan(x.category==='星辉石'||x.name==='星辉石'?'star':'gem',Math.max(1,+x.gemLevel||1));
 }
 function pullGemPrice(i){
   const x=priceLibrary[i];if(!x)return;
@@ -9082,7 +9105,7 @@ function renderPriceLibrary(){
           ${groups[cat].map(o=>`<div class="pl-item-card">
             <div class="pl-item-name"><input value="${String(o.x.name).replace(/"/g,'&quot;')}" data-plname="${o.i}"></div>
             <div class="pl-item-price">
-              ${((o.x.category||'').indexOf('宝石·')===0||o.x.category==='星辉石')?`
+              ${isGemPriceItem(o.x)?`
                 <span>等级</span>
                 <select data-plgemlv="${o.i}">
                   ${Array.from({length:o.x.category==='星辉石'?11:15},(_,k)=>k+1).map(lv=>`<option value="${lv}" ${(+o.x.gemLevel||1)===lv?'selected':''}>${lv}级</option>`).join('')}
@@ -9090,8 +9113,15 @@ function renderPriceLibrary(){
                 <button type="button" class="miniBtn pl-gem-sync" data-plgemsync="${o.i}">取合成价</button>
               `:''}
               <span>单价</span><input type="number" min="0" step="0.1" value="${o.x.price}" data-plprice="${o.i}"><b>万</b>
+              ${o.x.name==='九转金丹'?`
+                <div class="pl-pill-inline">
+                  <label>品质 <input type="number" min="1" step="1" value="${Math.max(1,+o.x.pillQuality||100)}" data-plpillq="${o.i}"></label>
+                  <label>每品 <input type="number" min="0" step="1" value="${Math.max(0,+o.x.pillPerPoint||0)}" data-plpillpp="${o.i}"> 梦幻币</label>
+                  <strong data-plpillactual="${o.i}">= ${((Math.max(1,+o.x.pillQuality||100)*Math.max(0,+o.x.pillPerPoint||0))/10000).toFixed(2)} 万/颗</strong>
+                </div>
+              `:''}
             </div>
-            <label class="pl-item-quick"><input type="checkbox" ${o.x.quick?'checked':''} data-plquick="${o.i}"> 收益快捷</label>
+            <label class="pl-item-quick" title="显示在收益快捷选择中"><input type="checkbox" ${o.x.quick?'checked':''} data-plquick="${o.i}"> 快捷</label>
             <button type="button" class="dangerBtn" data-pldel="${o.i}">删</button>
           </div>`).join('')}
         </div>
@@ -9114,6 +9144,16 @@ function renderPriceLibrary(){
     e.oninput=()=>{priceLibrary[+e.dataset.plprice].price=Math.max(0,+e.value||0);savePriceLibrary()};
     e.onchange=()=>{priceLibrary[+e.dataset.plprice].price=Math.max(0,+e.value||0);savePriceLibrary();renderIncomePresets();renderPriceLibrary()};
   });
+  function syncPillActual(i){
+    const x=priceLibrary[i];if(!x)return;
+    const q=Math.max(1,+x.pillQuality||100),pp=Math.max(0,+x.pillPerPoint||0);
+    x.pillQuality=q;x.pillPerPoint=pp;x.price=Math.round((q*pp/10000)*10000)/10000;
+    savePriceLibrary();renderIncomePresets();
+    const pe=document.querySelector('#plCards [data-plprice="'+i+'"]');if(pe)pe.value=x.price;
+    const ae=document.querySelector('#plCards [data-plpillactual="'+i+'"]');if(ae)ae.textContent='= '+x.price.toFixed(2)+' 万/颗';
+  }
+  document.querySelectorAll('#plCards [data-plpillq]').forEach(e=>e.oninput=()=>{const i=+e.dataset.plpillq;priceLibrary[i].pillQuality=Math.max(1,+e.value||1);syncPillActual(i)});
+  document.querySelectorAll('#plCards [data-plpillpp]').forEach(e=>e.oninput=()=>{const i=+e.dataset.plpillpp;priceLibrary[i].pillPerPoint=Math.max(0,+e.value||0);syncPillActual(i)});
   document.querySelectorAll('#plCards [data-plgemlv]').forEach(e=>e.onchange=()=>{
     const i=+e.dataset.plgemlv,x=priceLibrary[i];if(!x)return;
     x.gemLevel=Math.max(1,+e.value||1);
@@ -9304,6 +9344,9 @@ function mhCollectAllData(){
   const data={};
   for(let i=0;i<localStorage.length;i++){
     const k=localStorage.key(i);
+    // Supabase 登录态/同步内部状态不属于业务数据，避免手工备份泄露 token，
+    // 也避免把旧设备登录态恢复到新设备。邮箱登录后会重新建立这些字段。
+    if(String(k||'').indexOf('mhxy_cloud_')===0) continue;
     data[k]=localStorage.getItem(k);
   }
   return {
@@ -9989,19 +10032,29 @@ document.addEventListener('click',e=>{
  function bootGhost(){
    const ids=['ghostMoneyLevel','ghostCount','ghostMode','ghostFiveDoor'];
    function render(){
-     const lv=document.getElementById('ghostMoneyLevel')?.value||'109';
-     const count=+document.getElementById('ghostCount')?.value||0;
-     const mode=document.getElementById('ghostMode')?.value==='reserve'?'储备金模式':'现金模式';
-     const five=document.getElementById('ghostFiveDoor')?.value==='1'?'五门':'非五门';
+     const lv=Number(document.getElementById('ghostMoneyLevel')?.value||109);
+     const count=Math.max(0,+document.getElementById('ghostCount')?.value||0);
+     const reserveMode=document.getElementById('ghostMode')?.value==='reserve';
+     const five=document.getElementById('ghostFiveDoor')?.value==='1';
      const r=document.getElementById('ghostMoneyResult');if(!r)return;
-     r.innerHTML=`<b>${lv}级 · ${count}只 · ${five} · ${mode}</b><br><span class="warn">待完善：</span>精确货币系数尚未核准，当前不参与收益计算。`;
+     const per10=(typeof ghostBase!=='undefined'&&ghostBase[lv])?Number(ghostBase[lv]):0;
+     const single=per10*(count/10),team=single*5;
+     // 旧卡只做等级横向参考；正式记录统一去“任务收益”，避免两套入口重复记账。
+     const cash=reserveMode?team*.4:team,reserve=reserveMode?team*.7:0;
+     r.innerHTML=`<b>${lv}级 · ${count}只 · ${five?'五门':'非五门'} · ${reserveMode?'储备金模式':'现金模式'}</b><br>`+
+       `参考基线：单号约 <b>${single.toFixed(1)}万</b>；五号${reserveMode?`现金约 <b>${cash.toFixed(1)}万</b> + 储备约 <b>${reserve.toFixed(1)}万</b>`:`现金约 <b>${cash.toFixed(1)}万</b>`}。`+
+       `<br><span class="sub">这里用于等级横向参考；正式记账请使用“任务收益”里的109抓鬼/鬼王组合自动估算或前后资产法。</span>`;
    }
    ids.forEach(id=>{const e=document.getElementById(id);if(e)e.onchange=render;if(e&&e.tagName==='INPUT')e.oninput=render});
    const b=document.getElementById('applyGhostMoney');
    if(b){
-     b.disabled=true;
-     b.textContent='暂不可代入';
-     b.title='精确货币系数核准后再启用';
+     b.disabled=false;
+     b.textContent='去任务收益记录';
+     b.title='打开统一任务收益入口';
+     b.onclick=function(){
+       try{if(typeof window.MHXY_OPEN_PAGE==='function')window.MHXY_OPEN_PAGE('taskincome2');else document.querySelector('[data-tab="taskincome2"]')?.click();}catch(e){}
+       setTimeout(function(){var t=document.getElementById('t2Type');if(t){t.value='抓鬼';t.dispatchEvent(new Event('change',{bubbles:true}));}},0);
+     };
    }
    render();
  }
@@ -11972,18 +12025,15 @@ function fixedCalc(){
  var fs=Math.max(0,Number(document.getElementById("t2FiveSchool").value)||0);
  var extra=Math.max(0,Number(document.getElementById("t2ExtraFixed").value)||0);
  var members=Math.max(0,p-1);
- // 封妖模板记录的是“每只 / 单号”基础奖励，因此必须乘完成次数。
- // 其他副本、神器、看戏等模板仍按“一次任务”的基础收益计算，避免误乘。
- var runMul=(type()==="封妖")?Math.max(1,Number(document.getElementById("t2Runs").value)||1):1;
+ var runMul=1;
+ if(type()==="封妖")runMul=Math.max(1,Math.floor(Number((document.getElementById("t2Runs")||{}).value)||1));
  var cash=(mc*members+mc*cc)*(1+fs)*runMul;
  var reserve=(mr*members+mr*cc)*(1+fs)*runMul;
- return {players:p,runs:runMul,cash:cash,reserve:reserve,extra:extra,total:cash+reserve+extra};
+ return {players:p,cash:cash,reserve:reserve,extra:extra,total:cash+reserve+extra};
 }
 function renderFixed(){
  var x=fixedCalc(),b=document.getElementById("t2FixedPreview");if(!b)return;
- var baseLabel=(incomeMethod()==="delta")?"五开整队资产差额收益：":"五开整队固定收益：";
- var runNote=(incomeMethod()==="base"&&type()==="封妖")?("<span class='sub'>（按 "+Math.max(1,Number(document.getElementById("t2Runs").value)||1)+" 只计算）</span> "):"";
- b.innerHTML=baseLabel+runNote+"<b class='money'>"+x.total.toFixed(2)+"万</b>"+
+ b.innerHTML=(incomeMethod()==="delta"?"五开整队资产差额收益：":"五开整队固定收益：")+"<b class='money'>"+x.total.toFixed(2)+"万</b>"+
  "<br><span class='sub'>现金 "+x.cash.toFixed(2)+"万 + 储备 "+x.reserve.toFixed(2)+"万 + 额外 "+x.extra.toFixed(2)+"万。物品收益另算。</span>";
 }
 window.MHXY_RENDER_FIXED=renderFixed;
@@ -12298,13 +12348,26 @@ function experienceCalc(){
  var be=document.getElementById("t2XpBefore"),ae=document.getElementById("t2XpAfter"),ce=document.getElementById("t2XpCaptainCoef");
  var bs=be?String(be.value||"").trim():"",as=ae?String(ae.value||"").trim():"";
  var ok=bs!==""&&as!=="";
+ var players=Math.max(1,Math.min(5,Number((document.getElementById("t2Players")||{}).value)||5));
+ var mins=Math.max(1,Number((document.getElementById("t2Minutes")||{}).value)||1);
+
+ // 封妖：如果用户没有填写“前后经验”，直接使用已经录入的实测基础经验。
+ // 一旦手动填写完整的前后经验，则始终以手动实测差值为准。
+ if(!ok && bs==="" && as==="" && type()==="封妖"){
+   var scene=(document.getElementById("t2Task")||{}).value||"";
+   var seal=SEAL_REWARD_DATA[scene];
+   if(seal&&Number(seal.exp)>0){
+     var runs=Math.max(1,Math.floor(Number((document.getElementById("t2Runs")||{}).value)||1));
+     var each=(Number(seal.exp)||0)*runs;
+     return {before:null,after:null,tracked:1,member:each,coef:1,captain:each,players:players,total:each*players,average:each,hour:each*players*60/mins,autoSource:"封妖实测基础奖励"};
+   }
+ }
+
  var before=ok?(Number(bs)||0):null,after=ok?(Number(as)||0):null;
  var member=ok?(after-before):0;
  var coef=Math.max(0,Number(ce&&ce.value)||1);
- var players=Math.max(1,Math.min(5,Number((document.getElementById("t2Players")||{}).value)||5));
  var captain=member*coef,total=member*Math.max(0,players-1)+captain;
- var mins=Math.max(1,Number((document.getElementById("t2Minutes")||{}).value)||1);
- return {before:before,after:after,tracked:ok?1:0,member:member,coef:coef,captain:captain,players:players,total:total,average:ok?total/players:0,hour:ok?total*60/mins:0};
+ return {before:before,after:after,tracked:ok?1:0,member:member,coef:coef,captain:captain,players:players,total:total,average:ok?total/players:0,hour:ok?total*60/mins:0,autoSource:""};
 }
 function renderExperience(){
  var x=experienceCalc();
@@ -12314,6 +12377,8 @@ function renderExperience(){
  [["t2XpMember",x.member],["t2XpCaptain",x.captain],["t2XpTotal",x.total],["t2XpAvg",x.average],["t2XpHour",x.hour]].forEach(function(z){
    var el=document.getElementById(z[0]);if(!el)return;el.textContent=x.tracked?fmtExp(z[1]):"—";el.classList.toggle("task-exp-empty",!x.tracked);el.classList.toggle("negative",x.tracked&&z[1]<0);
  });
+ var auto=document.getElementById("t2XpAutoHint");
+ if(auto){auto.hidden=!x.autoSource;auto.textContent=x.autoSource?("✓ 已自动带入："+x.autoSource+"；填写完整的开始/结束经验后会自动改用手动实测。") : "";}
 }
 function clearExperience(){
  var b=document.getElementById("t2XpBefore"),a=document.getElementById("t2XpAfter");if(b)b.value="";if(a)a.value="";renderExperience();
@@ -12412,7 +12477,7 @@ function buildTaskRecord(existing){
    runs:runs,minutes:mins,fixed:f.total,cashFixed:f.cash||0,reserveFixed:f.reserve||0,extraFixed:f.extra||0,
    items:items,cost:cost,manualCostRaw:manual,net:net,hour:hour,
    expTracked:xp.tracked>0,expRoleCount:xp.tracked,expBefore:xp.before,expAfter:xp.after,expMember:xp.member,
-   expCaptainCoef:xp.coef,expCaptain:xp.captain,expPlayers:xp.players,expTotal:xp.total,expAverage:xp.average,expHour:xp.hour,
+   expCaptainCoef:xp.coef,expCaptain:xp.captain,expPlayers:xp.players,expTotal:xp.total,expAverage:xp.average,expHour:xp.hour,expSource:xp.autoSource||((xp.tracked>0)?"手动实测":""),
    note:document.getElementById("t2Note").value||"",
    formFields:currentFormFields(),dropCountsSnapshot:clone(dropCounts||{}),expCountsSnapshot:clone(expCounts||{}),
    legacyItemValue:Number(legacyItemValue)||0,legacyCostValue:Number(legacyCostValue)||0,itemDetails:itemDetails,expenseDetails:expenseDetails,
@@ -12564,7 +12629,7 @@ function saveOne(){
 }
 function boot(){
  load();renderTypeOptions();var draftRestored=restoreTaskDraft();if(!draftRestored){renderTask();renderFixed();renderDrops();renderExpenses();loadExperienceCoef();renderExperience();setDraftStatus("未产生草稿","");}renderEditUi();renderRows();
- document.getElementById("t2Type").onchange=function(){dropCounts={};expCounts={};renderTask();renderDrops();renderExpenses();loadExperienceCoef();renderQuickAddTypes(type());var m=document.getElementById("t2ExpManager");if(m&&!m.hidden)renderExpManager();};
+ document.getElementById("t2Type").onchange=function(){dropCounts={};expCounts={};renderTask();renderDrops();renderExpenses();loadExperienceCoef();renderExperience();renderQuickAddTypes(type());var m=document.getElementById("t2ExpManager");if(m&&!m.hidden)renderExpManager();};
  var dm=document.getElementById("t2DropManage");
  if(dm)dm.onclick=function(){var m=document.getElementById("t2DropManager");m.hidden=!m.hidden;if(!m.hidden)renderDropManager();};
  var cm=document.getElementById("taskCatalogManageBtn");
@@ -12577,7 +12642,8 @@ function boot(){
  var qaSave=document.getElementById("t2QuickAddSave");if(qaSave)qaSave.onclick=saveQuickAddedTask;
  var qaName=document.getElementById("t2QuickAddName");if(qaName)qaName.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();saveQuickAddedTask();}});
  var qaManage=document.getElementById("t2QuickManage");if(qaManage)qaManage.onclick=function(){var m=document.getElementById("taskCatalogManager");if(!m)return;m.hidden=false;renderCatalogManager();m.scrollIntoView({behavior:"smooth",block:"start"});};
- ["t2Players","t2MemberCash","t2MemberReserve","t2CaptainCoef","t2FiveSchool","t2ExtraFixed"].forEach(function(id){document.getElementById(id).addEventListener("input",renderFixed);});
+ ["t2Players","t2MemberCash","t2MemberReserve","t2CaptainCoef","t2FiveSchool","t2ExtraFixed"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){renderFixed();if(id==="t2Players")renderExperience();});});
+ var runsInput=document.getElementById("t2Runs");if(runsInput)runsInput.addEventListener("input",function(){renderSealReward();renderExperience();renderFixed();});
  document.getElementById("t2DropItems").onclick=function(e){if(e.target.closest(".ct-qty-input"))return;var c=e.target.closest("[data-d]");if(!c)return;var n=c.getAttribute("data-d");dropCounts[n]=(dropCounts[n]||0)+1;dropLast=n;renderDrops();};
  document.getElementById("t2DropItems").onchange=function(e){var inp=e.target.closest("[data-drop-qty]");if(!inp)return;var n=inp.getAttribute("data-drop-qty");dropCounts[n]=Math.max(0,Math.floor(Number(inp.value)||0));dropLast=n;renderDrops();};
  document.getElementById("t2DropUndo").onclick=function(){if(dropLast&&dropCounts[dropLast]>0)dropCounts[dropLast]--;dropLast="";renderDrops();};
@@ -12618,7 +12684,7 @@ function boot(){
  var taskExp=document.getElementById("t2Task");if(taskExp)taskExp.addEventListener("change",function(){loadExperienceCoef();renderSealReward();});
  var diffExp=document.getElementById("t2Diff");if(diffExp)diffExp.addEventListener("change",loadExperienceCoef);
  var minsExp=document.getElementById("t2Minutes");if(minsExp)minsExp.addEventListener("input",renderExperience);
- var runsSeal=document.getElementById("t2Runs");if(runsSeal){runsSeal.addEventListener("input",function(){renderSealReward();renderFixed();});runsSeal.addEventListener("change",function(){renderSealReward();renderFixed();});}
+ var runsSeal=document.getElementById("t2Runs");if(runsSeal)runsSeal.addEventListener("input",function(){renderSealReward();renderFixed();});
  var playersExp=document.getElementById("t2Players");if(playersExp)playersExp.addEventListener("input",renderExperience);
  var rankSort=document.getElementById("t2RankSort");if(rankSort)rankSort.onchange=renderRank;
  document.getElementById("t2Rows").onclick=function(e){
@@ -12653,7 +12719,7 @@ setTimeout(function(){
  var task=document.getElementById("t2Task");
  var diff=document.getElementById("t2Diff");
  var save=document.getElementById("t2SaveBase");
- if(task)task.addEventListener("change",function(){if(type()!=="抓鬼")loadTaskBase();});
+ if(task)task.addEventListener("change",function(){if(type()!=="抓鬼")loadTaskBase();renderSealReward();renderExperience();});
  if(diff)diff.addEventListener("change",function(){if(type()!=="抓鬼")loadTaskBase();});
  if(type()!=="抓鬼")loadTaskBase();
 },0);
@@ -14029,6 +14095,12 @@ function renderRole(i){
        +'<label>潜能果长期目标<input data-potential-target data-i="'+i+'" type="number" min="0" max="200" placeholder="未设" value="'+(x.potentialTarget>0?x.potentialTarget:'')+'"></label>'
      +'</div>'
    +'</div>'
+   +(dc?('<div class="fprd-daily-delta"><div class="fprd-daily-delta-head"><b>今日资源变动</b><small>以今天第一次修改“当前资源”前的数值为基准</small></div><div class="fprd-daily-delta-grid">'
+       +'<span>经验 <b class="'+(dc.expWan>0?'positive':dc.expWan<0?'negative':'')+'">'+signed(dc.expWan,'万')+'</b></span>'
+       +'<span>储备 <b class="'+(dc.reserveWan>0?'positive':dc.reserveWan<0?'negative':'')+'">'+signed(dc.reserveWan,'万')+'</b></span>'
+       +'<span>当前帮贡 <b class="'+(dc.currentBg>0?'positive':dc.currentBg<0?'negative':'')+'">'+signed(dc.currentBg,'')+'</b></span>'
+       +'<span>历史帮贡 <b class="'+(dc.historyBg>0?'positive':dc.historyBg<0?'negative':'')+'">'+signed(dc.historyBg,'')+'</b></span>'
+     +'</div></div>'):'<div class="fprd-daily-delta empty"><b>今日资源变动</b><span>今天第一次修改上方当前资源后开始记录。</span></div>')
    +'<div class="fprd-gap-section-title"><div><b>总缺口</b><small>按长期目标自动计算，点击总卡查看来源</small></div><span>缺口区</span></div>'
    +'<div class="fprd-res-grid">'
    +'<div class="fprd-gap-pack '+(x.expShortWan>0?'need':'done')+'" data-gap-pack="exp" data-gap-role="'+i+'">'
@@ -17044,7 +17116,7 @@ window.MHXY_APPEARANCE=(function(){
   {group:'计算工具',label:'灵饰与玉魄',icon:'◈',pages:[['fullgearcompare','整套对比'],['physicalspiritcompare','物理配装'],['jadecompare','玉魄单件'],['spiritdamage','灵饰等效法伤']]},
   {group:'计算工具',label:'暴击与属性',icon:'±',pages:[['critvsdirect','暴击 / 直伤'],['spellcritalloc','法伤 / 法爆分配'],['critdamagealloc','伤害 / 物暴分配'],['critconvert','暴击等级换算'],['attrcalc','属性点换算']]},
   {group:'计算工具',label:'配速与达标',icon:'⚡',pages:[['speedstandard','任务属性达标'],['magicpetspeed','法宠配速'],['petspeed','攻宠动作速度']]},
-  {group:'资料与设置',label:'任务攻略',icon:'▤',pages:[['pocketguide','口袋版'],['artifactguide','神器'],['mentor','师徒'],['escort','押镖'],['pastureguide','牧场']]},
+  {group:'资料与设置',label:'任务攻略',icon:'▤',pages:[['customguides','攻略中心'],['pocketguide','口袋版'],['artifactguide','神器'],['mentor','师徒'],['escort','押镖'],['pastureguide','牧场']]},
   {group:'资料与设置',label:'设置与备份',icon:'⚙',pages:[['settings','设置'],['datamgr','备份与恢复']]}
  ];
  const aliases={physicalweapon:'weapon',masterguide:'mentor',ghost:'taskhistory',taskrank:'taskhistory'};
@@ -17542,6 +17614,7 @@ window.MHXY_APPEARANCE=(function(){
  }
  function worthwhile(card,head){
    if(card.matches(ignore)||card.parentElement.closest(insideExisting))return false;
+   if(card.matches('#pricelib .pl-static-card'))return false;
    if(card.closest('#artifactguide')||card.closest('section[id^="fiveprofile_role_"]'))return false;
    // Dates, page selectors, compact totals and quick answers stay immediately visible.
    if(card.querySelector('#dcDate,#tdsMetrics,.ss-tabs')||card.matches('#t2EditorAnchor'))return false;
@@ -17635,8 +17708,215 @@ window.MHXY_APPEARANCE=(function(){
 })();
 
 </script>
+<style id="mhxy-custom-guide-style">
+#customguides .cg-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+#customguides .cg-actions{display:flex;gap:8px;flex-wrap:wrap}
+#customguides .cg-form{display:grid;grid-template-columns:160px minmax(220px,1fr) auto;gap:10px;align-items:end}
+#customguides .cg-list{display:grid;grid-column:span 12;gap:12px;min-width:0}
+#customguides .cg-category-group{display:grid;gap:10px;min-width:0}
+#customguides .cg-category-head{display:flex;justify-content:space-between;align-items:center;padding:8px 4px 2px;color:#7dd3fc;font-weight:900}
+#customguides .cg-category-head small{color:#94a3b8;font-weight:600}
+#customguides .cg-card{border:1px solid rgba(125,211,252,.22);border-radius:12px;background:rgba(14,165,233,.035);overflow:hidden}
+#customguides .cg-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;background:rgba(14,165,233,.09)}
+#customguides .cg-open{display:flex;align-items:center;gap:9px;flex:1;min-width:0;padding:0;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer}
+#customguides .cg-open .cg-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#customguides .cg-open-arrow{margin-left:auto;color:#7dd3fc;font-weight:900;font-size:15px}
+#customguides .cg-card.collapsed .cg-body{display:none}
+#customguides .cg-title{font-size:18px;font-weight:900;color:#e0f2fe}.cg-category{font-size:12px;color:#7dd3fc;margin-left:8px}
+#customguides .cg-body{padding:14px;white-space:pre-wrap;line-height:1.75;color:#dbeafe}
+#customguides textarea.cg-editor{display:block;width:calc(100% - 28px);min-height:260px;margin:14px;padding:12px;resize:vertical;line-height:1.65;background:#0f1a2c;color:#fff;border:1px solid #3b82f6;border-radius:9px}
+#customguides .cg-empty{padding:24px;text-align:center;color:#94a3b8}
+#artifactguide .ca-panel{border-color:rgba(167,139,250,.32)!important;background:linear-gradient(135deg,rgba(124,58,237,.09),rgba(14,165,233,.035))}
+#artifactguide .ca-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+#artifactguide .ca-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+#artifactguide .ca-list{display:grid;gap:10px;margin-top:14px}
+#artifactguide .ca-empty{padding:20px 12px;text-align:center;color:#94a3b8;border:1px dashed rgba(167,139,250,.28);border-radius:10px}
+#artifactguide .ca-card{border:1px solid rgba(167,139,250,.28);border-radius:11px;overflow:hidden;background:rgba(76,29,149,.055)}
+#artifactguide .ca-head{display:flex;align-items:center;gap:9px;padding:11px 12px;background:rgba(124,58,237,.11)}
+#artifactguide .ca-open{display:flex;align-items:center;gap:9px;flex:1;min-width:0;padding:0;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer}
+#artifactguide .ca-title-wrap{display:grid;gap:3px;min-width:0;flex:1}
+#artifactguide .ca-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;font-weight:900;color:#f3e8ff}
+#artifactguide .ca-summary{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b8a6d9;font-size:11px}
+#artifactguide .ca-badge{padding:2px 7px;border-radius:999px;background:rgba(167,139,250,.16);color:#c4b5fd;font-size:10px;font-weight:800;white-space:nowrap}
+#artifactguide .ca-arrow{margin-left:auto;color:#c4b5fd;font-size:16px;font-weight:900}
+#artifactguide .ca-card.collapsed .ca-body{display:none}
+#artifactguide .ca-body{padding:13px 14px;white-space:pre-wrap;line-height:1.75;color:#e6e1f5}
+#artifactguide .ca-edit{padding:13px 14px 14px}
+#artifactguide .ca-edit-fields{display:grid;grid-template-columns:minmax(180px,1fr) minmax(220px,2fr);gap:10px}
+#artifactguide textarea.ca-editor{display:block;box-sizing:border-box;width:100%;min-height:240px;margin-top:10px;padding:12px;resize:vertical;line-height:1.65;background:#171128;color:#fff;border:1px solid #7c3aed;border-radius:9px}
+#artifactguide .ca-edit-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:10px;flex-wrap:wrap}
+.workspace-tabs [data-cg-top-category]{display:inline-flex;align-items:center;gap:6px}
+.workspace-tabs [data-cg-top-category] small{opacity:.7;font-size:11px}
+.workspace-tabs.cg-nav-active{flex-wrap:nowrap!important;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.workspace-tabs.cg-nav-active button{flex:0 0 auto}
+.pl-group.open .pl-group-body{grid-template-columns:1fr!important}
+.pl-item-card{grid-template-columns:minmax(120px,1fr) minmax(95px,.72fr) auto!important;grid-template-areas:"name category delete" "price price quick";min-width:0}
+.pl-item-name{grid-area:name}.pl-item-category{grid-area:category}.pl-item-price{grid-area:price}.pl-item-quick{grid-area:quick;align-self:center}.pl-item-card>.dangerBtn{grid-area:delete;align-self:center}
+.pl-item-name,.pl-item-category,.pl-item-price{min-width:0}
+.pl-item-price:has([data-plgemlv]){grid-template-columns:30px 78px minmax(88px,1fr)!important}
+.pl-item-price:has([data-plgemlv]) .pl-gem-sync{width:100%;white-space:nowrap}
+.pl-item-category{display:grid;grid-template-columns:30px minmax(0,1fr);gap:5px;align-items:center;font-size:10px;color:#8396b5}
+.pl-item-category input{width:100%;padding:6px 7px;background:#0f1a2c;color:#fff;border:1px solid #344966;border-radius:7px}
+.pl-clean-status{font-size:12px;color:#86efac;align-self:center}
+@media(max-width:980px){.pl-card-groups{grid-template-columns:1fr!important}}
+@media(max-width:680px){#customguides .cg-form,#artifactguide .ca-edit-fields{grid-template-columns:1fr}#artifactguide .ca-head{align-items:flex-start;flex-wrap:wrap}#artifactguide .ca-actions{width:100%;justify-content:flex-end}.pl-item-card{grid-template-columns:1fr!important;grid-template-areas:"name" "category" "price" "quick" "delete"}.pl-item-category,.pl-item-price{grid-template-columns:54px minmax(0,1fr) 34px}.pl-item-card .dangerBtn{justify-self:start}.pl-item-quick{font-size:13px}}
+</style>
+<script>
+(function(){
+  'use strict';
+  const GUIDE_KEY='mhxy_custom_guides_v82100';
+  const GUIDE_FOLD_KEY='mhxy_custom_guide_folds_v1';
+  const ARTIFACT_CUSTOM_KEY='mhxy_custom_artifact_guides_v1';
+  const ARTIFACT_CUSTOM_FOLD_KEY='mhxy_custom_artifact_guide_folds_v1';
+  const RESERVED_GUIDE_CATEGORIES=new Set(['攻略中心','全部攻略','口袋版','神器','师徒','押镖','牧场']);
+  let pendingGuideCategory,guideFoldState={},artifactCustomFoldState={};
+  const GUIDE_SEED={id:'adventure_jiuselu',category:'奇遇',title:'九色鹿上 · 路线与六种结局',content:`每周奇遇任务次数有限，九色鹿上建议按需要选择路线。\n\n推荐路线\n1. 最佳路线：让九色鹿快点离开河边 → 选择“一起救人” → 试图继续说服九色鹿 → 调达不会揭榜。（每周可做2次）\n2. 维摩诘路线：点少女 → 点雾中仙，选择“再问问” → 找管家 → 做盘子 → 选区区魔将 → 杀3个魔将 → 杀拦路守将 → BOSS优先点杀主怪。（每周可做1次）\n\n提示：一周只能做3次奇遇任务，因此九色鹿下通常很少有人刷。\n\n九色鹿上 · 6种结局流程\n• 斩妖除魔：快点离开河边 → 永绝后患 → 暗中调查\n• 怒发冲冠：快点离开河边 → 阻止九色鹿 → 杀王妃\n• 神鹿有难：告知鹿有危险 → 阻止九色鹿 → 和平解决\n• 人心不古：告知鹿有危险 → 一起救人 → 继续说服 → 揭榜\n• 魔源现身：快点离开河边 → 一起救人 → 离开森林 → 跟踪 → 不会揭榜\n• 妖女？佳人：离开河边 → 一起救人 → 离开森林 → 杀调达 → 擒住女子 → 带领国王`};
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s==null?'':s).replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[m]));
+  function readGuides(){let a=[],raw=localStorage.getItem(GUIDE_KEY),fresh=raw===null;try{a=fresh?[]:JSON.parse(raw||'[]')}catch(e){a=[];fresh=true}if(!Array.isArray(a)){a=[];fresh=true}if(fresh){a=[{...GUIDE_SEED}];localStorage.setItem(GUIDE_KEY,JSON.stringify(a))}a=a.filter(x=>x&&String(x.title||'').trim()).map(x=>({...x,category:String(x.category||'其他').trim()||'其他',title:String(x.title).trim(),content:String(x.content||'')}));return a}
+  function saveGuides(a){try{localStorage.setItem(GUIDE_KEY,JSON.stringify(a));return true}catch(e){alert('攻略保存失败：浏览器本地存储空间可能不足。请先导出攻略备份，再精简较长内容。');return false}}
+  function loadGuideFolds(){try{guideFoldState=JSON.parse(localStorage.getItem(GUIDE_FOLD_KEY)||'{}')||{}}catch(e){guideFoldState={}}}
+  function saveGuideFolds(){try{localStorage.setItem(GUIDE_FOLD_KEY,JSON.stringify(guideFoldState))}catch(e){}}
+  function installGuidePage(){
+    const guideBox=document.querySelector('.nav-group[data-group="guide"] .nav-group-items');
+    if(guideBox&&!guideBox.querySelector('[data-tab="customguides"]')){
+      const b=document.createElement('button');b.type='button';b.dataset.tab='customguides';b.textContent='攻略中心';guideBox.insertBefore(b,guideBox.firstChild);
+      b.onclick=()=>{const c=pendingGuideCategory===undefined?'':pendingGuideCategory;pendingGuideCategory=undefined;openGuidePage(b,c)};
+    }
+    const tabs=document.querySelector('.tabs');if(!tabs||$('customguides'))return;
+    const sec=document.createElement('section');sec.id='customguides';sec.innerHTML=`<div class="grid">
+      <div class="card w12"><div class="cg-top"><div><h3 style="margin:0">攻略中心</h3><div class="sub" style="margin-top:5px">新增“地宫”“归墟”等分类后，会自动出现在页面上方；攻略默认折叠，内容保存在本机。</div></div><div class="cg-actions"><button type="button" class="miniBtn" id="cgExpandAll">全部展开</button><button type="button" class="miniBtn" id="cgCollapseAll">全部收起</button><button type="button" class="miniBtn" id="cgExport">导出攻略</button><button type="button" class="miniBtn" id="cgImport">导入攻略</button><input id="cgImportFile" type="file" accept="application/json" hidden></div></div></div>
+      <div class="card w12"><h3>添加攻略</h3><div class="cg-form"><div class="field"><label>分类</label><input id="cgNewCategory" list="cgCategoryList" value="奇遇" placeholder="奇遇 / 地宫 / 归墟"><datalist id="cgCategoryList"></datalist></div><div class="field"><label>攻略名称</label><input id="cgNewTitle" placeholder="例如：归墟之证路线"></div><button type="button" class="primary" id="cgAdd">＋ 新建攻略</button></div></div>
+      <div class="card w12"><div class="toolbar"><div class="field" style="margin:0;min-width:180px"><label>分类筛选</label><select id="cgFilter"><option value="">全部攻略</option></select></div><div class="field" style="margin:0;min-width:220px"><label>搜索</label><input id="cgSearch" placeholder="搜索标题或内容"></div></div></div>
+      <div class="w12 cg-list" id="cgList"></div></div>`;tabs.appendChild(sec);
+    $('cgAdd').onclick=addGuide;$('cgFilter').onchange=()=>renderGuides();$('cgSearch').oninput=()=>renderGuides();
+    $('cgExport').onclick=exportGuides;$('cgImport').onclick=()=>$('cgImportFile').click();$('cgImportFile').onchange=importGuides;$('cgExpandAll').onclick=()=>setAllGuideFolds(true);$('cgCollapseAll').onclick=()=>setAllGuideFolds(false);renderGuides();
+    const workspace=document.querySelector('.workspace-tabs');if(workspace)new MutationObserver(()=>syncGuideTopTabs()).observe(workspace,{childList:true});
+  }
+  function navigateGuide(category){pendingGuideCategory=category;if(typeof window.MHXY_OPEN_PAGE==='function')window.MHXY_OPEN_PAGE('customguides');else{const b=document.querySelector('.nav [data-tab="customguides"]');openGuidePage(b,category);pendingGuideCategory=undefined}}
+  function openGuidePage(btn,category){document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.tabs>section').forEach(x=>x.classList.remove('active'));$('customguides').classList.add('active');if($('pageTitle'))$('pageTitle').textContent='任务攻略';renderGuides(category)}
+  function guideCategories(all){const seen=new Set(),out=[];(all||readGuides()).forEach(x=>{const c=String(x&&x.category||'其他').trim()||'其他';if(!seen.has(c)){seen.add(c);out.push(c)}});return out}
+  function syncGuideTopTabs(){
+    const nav=document.querySelector('.workspace-tabs');if(!nav)return;const inGuide=!!nav.querySelector('[data-open-page="pocketguide"]');nav.classList.toggle('cg-nav-active',inGuide);if(!inGuide)return;
+    const all=readGuides(),cats=guideCategories(all),counts={};all.forEach(x=>{const c=String(x.category||'其他').trim()||'其他';counts[c]=(counts[c]||0)+1});
+    const existing=[...nav.querySelectorAll('[data-cg-top-category]')],same=existing.length===cats.length&&existing.every((b,i)=>b.dataset.cgTopCategory===cats[i]);
+    if(!same){existing.forEach(b=>b.remove());let cursor=nav.querySelector('[data-open-page="customguides"]');cats.forEach(cat=>{const b=document.createElement('button');b.type='button';b.dataset.cgTopCategory=cat;b.textContent=cat;b.title='查看“'+cat+'”分类的自定义攻略';b.onclick=()=>navigateGuide(cat);if(cursor){cursor.insertAdjacentElement('afterend',b);cursor=b}else nav.appendChild(b)})}
+    const selected=$('cgFilter')?.value||'',active=$('customguides')?.classList.contains('active');nav.querySelectorAll('[data-cg-top-category]').forEach(b=>{const on=active&&selected===b.dataset.cgTopCategory;b.classList.toggle('active',on);b.setAttribute('aria-current',on?'page':'false')});const center=nav.querySelector('[data-open-page="customguides"]');if(center&&active){center.classList.toggle('active',!selected);center.setAttribute('aria-current',selected?'false':'page')}
+  }
+  function guideCard(x){const open=guideFoldState[x.id]===true;return `<article class="cg-card ${open?'':'collapsed'}" data-guide-id="${esc(x.id)}"><div class="cg-head"><button type="button" class="cg-open" data-cg-toggle="${esc(x.id)}" aria-expanded="${open}"><span class="cg-title">${esc(x.title)}</span><span class="cg-category">${esc(x.category||'其他')}</span><span class="cg-open-arrow">${open?'▾':'▸'}</span></button><div class="cg-actions"><button type="button" class="miniBtn" data-cg-move="-1" data-cg-move-id="${esc(x.id)}" title="在当前分类中上移">↑</button><button type="button" class="miniBtn" data-cg-move="1" data-cg-move-id="${esc(x.id)}" title="在当前分类中下移">↓</button><button type="button" class="miniBtn" data-cg-edit="${esc(x.id)}">编辑</button><button type="button" class="dangerBtn" data-cg-delete="${esc(x.id)}">删除</button></div></div><div class="cg-body">${esc(x.content||'暂无内容，点击编辑补充。')}</div></article>`}
+  function renderGuides(preferredCategory){
+    const all=readGuides(),cats=guideCategories(all),old=preferredCategory===undefined?($('cgFilter')?.value||''):preferredCategory,q=($('cgSearch')?.value||'').trim().toLowerCase();
+    if($('cgFilter')){$('cgFilter').innerHTML='<option value="">全部攻略</option>'+cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');$('cgFilter').value=cats.includes(old)?old:''}
+    if($('cgCategoryList'))$('cgCategoryList').innerHTML=cats.map(c=>`<option value="${esc(c)}">`).join('');
+    const f=$('cgFilter')?.value||'';
+    const arr=all.filter(x=>(!f||x.category===f)&&(!q||((x.title+' '+x.category+' '+x.content).toLowerCase().includes(q))));
+    if(f)$('cgList').innerHTML=arr.map(guideCard).join('')||'<div class="card cg-empty">这个分类还没有匹配的攻略。</div>';
+    else $('cgList').innerHTML=cats.map(cat=>{const rows=arr.filter(x=>x.category===cat);return rows.length?`<section class="cg-category-group"><div class="cg-category-head"><span>${esc(cat)}</span><small>${rows.length} 篇</small></div>${rows.map(guideCard).join('')}</section>`:''}).join('')||'<div class="card cg-empty">没有匹配的攻略。</div>';
+    document.querySelectorAll('[data-cg-toggle]').forEach(b=>b.onclick=()=>toggleGuideFold(b.dataset.cgToggle));document.querySelectorAll('[data-cg-edit]').forEach(b=>b.onclick=()=>editGuide(b.dataset.cgEdit));document.querySelectorAll('[data-cg-delete]').forEach(b=>b.onclick=()=>deleteGuide(b.dataset.cgDelete));document.querySelectorAll('[data-cg-move]').forEach(b=>b.onclick=()=>moveGuide(b.dataset.cgMoveId,+b.dataset.cgMove));syncGuideTopTabs();
+  }
+  function toggleGuideFold(id){guideFoldState[id]=guideFoldState[id]!==true;saveGuideFolds();renderGuides()}
+  function setAllGuideFolds(open){readGuides().forEach(x=>guideFoldState[x.id]=open);saveGuideFolds();renderGuides()}
+  function validGuideCategory(category){if(!RESERVED_GUIDE_CATEGORIES.has(category))return true;alert('“'+category+'”已经是现有攻略栏目。自定义分类可改为“'+category+'补充”或其他名称，避免顶部出现重名。');return false}
+  function addGuide(){const title=$('cgNewTitle').value.trim();if(!title)return alert('请输入攻略名称');const category=$('cgNewCategory').value.trim()||'其他';if(!validGuideCategory(category))return;const a=readGuides(),id='guide_'+Date.now()+'_'+Math.random().toString(36).slice(2,7);a.push({id,category,title,content:''});if(!saveGuides(a))return;$('cgNewTitle').value='';renderGuides(category);editGuide(id);setTimeout(()=>document.querySelector(`[data-guide-id="${CSS.escape(id)}"] [data-cg-content]`)?.focus(),0)}
+  function editGuide(id){const openCancel=document.querySelector('#cgList [data-cg-cancel]');if(openCancel)openCancel.click();const a=readGuides(),x=a.find(v=>v.id===id),card=document.querySelector(`[data-guide-id="${CSS.escape(id)}"]`);if(!x||!card)return;guideFoldState[id]=true;saveGuideFolds();card.classList.remove('collapsed');card.innerHTML=`<div class="cg-head"><div class="cg-form" style="flex:1"><div class="field"><label>分类</label><input data-cg-cat list="cgCategoryList" value="${esc(x.category)}"></div><div class="field"><label>标题</label><input data-cg-title value="${esc(x.title)}"></div></div><div class="cg-actions"><button class="primary" data-cg-save>保存</button><button class="miniBtn" data-cg-cancel>取消</button></div></div><textarea class="cg-editor" data-cg-content placeholder="填写路线、准备事项、战斗顺序和注意事项……">${esc(x.content)}</textarea>`;card.querySelector('[data-cg-save]').onclick=()=>{const category=card.querySelector('[data-cg-cat]').value.trim()||'其他';if(!validGuideCategory(category))return;x.category=category;x.title=card.querySelector('[data-cg-title]').value.trim()||'未命名攻略';x.content=card.querySelector('[data-cg-content]').value;if(saveGuides(a)){guideFoldState[id]=true;saveGuideFolds();renderGuides(x.category)}};card.querySelector('[data-cg-cancel]').onclick=()=>renderGuides()}
+  function moveGuide(id,dir){const a=readGuides(),i=a.findIndex(x=>x.id===id);if(i<0)return;let j=i+dir;while(j>=0&&j<a.length&&a[j].category!==a[i].category)j+=dir;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];saveGuides(a);renderGuides()}
+  function deleteGuide(id){const a=readGuides(),x=a.find(v=>v.id===id);if(!x||!confirm('确定删除攻略“'+x.title+'”？'))return;saveGuides(a.filter(v=>v.id!==id));renderGuides()}
+  function exportGuides(){const blob=new Blob([JSON.stringify(readGuides(),null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='梦幻工具箱-自定义攻略.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}
+  function importGuides(e){const file=e.target.files&&e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const incoming=JSON.parse(r.result);if(!Array.isArray(incoming))throw 0;const a=readGuides(),ids=new Set(a.map(x=>String(x.id))),keys=new Set(a.map(x=>norm(x.category)+'|'+norm(x.title)));let added=0,firstCategory='';incoming.forEach(x=>{if(!x||!String(x.title||'').trim())return;let category=String(x.category||'其他').trim()||'其他';if(RESERVED_GUIDE_CATEGORIES.has(category))category+='补充';const title=String(x.title).trim(),key=norm(category)+'|'+norm(title);if(keys.has(key))return;let id=String(x.id||'');while(!id||ids.has(id))id='guide_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);ids.add(id);keys.add(key);a.push({id,category,title,content:String(x.content||'')});if(!firstCategory)firstCategory=category;added++});if(!added)return alert('没有可导入的新攻略；同分类同标题的项目已自动跳过。');if(saveGuides(a)){renderGuides(firstCategory);alert('已导入 '+added+' 篇攻略，新增分类已同步到顶部。')}}catch(err){alert('导入失败：请选择由本页导出的攻略 JSON 文件。')}e.target.value=''};r.readAsText(file,'utf-8')}
 
-
+  function norm(s){return String(s||'').trim().replace(/\s+/g,'').toLowerCase()}
+  function readArtifactGuides(){
+    let a=[];try{a=JSON.parse(localStorage.getItem(ARTIFACT_CUSTOM_KEY)||'[]')}catch(e){a=[]}
+    if(!Array.isArray(a))a=[];
+    const ids=new Set();
+    return a.filter(x=>x&&String(x.title||'').trim()).map((x,i)=>{
+      let id=String(x.id||'').trim();
+      if(!id||ids.has(id))id='artifact_'+Date.now()+'_'+i+'_'+Math.random().toString(36).slice(2,7);
+      ids.add(id);
+      return {id,title:String(x.title).trim(),summary:String(x.summary||'').trim(),content:String(x.content||'')};
+    });
+  }
+  function saveArtifactGuides(a){try{localStorage.setItem(ARTIFACT_CUSTOM_KEY,JSON.stringify(a));return true}catch(e){alert('神器攻略保存失败：浏览器本地存储空间可能不足。');return false}}
+  function loadArtifactCustomFolds(){try{artifactCustomFoldState=JSON.parse(localStorage.getItem(ARTIFACT_CUSTOM_FOLD_KEY)||'{}')||{}}catch(e){artifactCustomFoldState={}}}
+  function saveArtifactCustomFolds(){try{localStorage.setItem(ARTIFACT_CUSTOM_FOLD_KEY,JSON.stringify(artifactCustomFoldState))}catch(e){}}
+  function customArtifactCard(x){
+    const open=artifactCustomFoldState[x.id]===true,summary=x.summary||'自定义神器攻略 · 点开查看完整内容';
+    return `<article class="ca-card ${open?'':'collapsed'}" data-ca-id="${esc(x.id)}"><div class="ca-head"><button type="button" class="ca-open" data-ca-toggle="${esc(x.id)}" aria-expanded="${open}"><span class="ca-title-wrap"><span class="ca-title">${esc(x.title)}</span><span class="ca-summary">${esc(summary)}</span></span><span class="ca-badge">自定义</span><span class="ca-arrow">${open?'▾':'▸'}</span></button><div class="ca-actions"><button type="button" class="miniBtn" data-ca-edit="${esc(x.id)}">编辑</button><button type="button" class="dangerBtn" data-ca-delete="${esc(x.id)}">删除</button></div></div><div class="ca-body">${esc(x.content||'暂无内容，点击“编辑”补充路线和注意事项。')}</div></article>`;
+  }
+  function renderArtifactGuides(){
+    const list=$('caList');if(!list)return;
+    const a=readArtifactGuides();
+    list.innerHTML=a.length?a.map(customArtifactCard).join(''):'<div class="ca-empty">还没有自定义神器攻略。点击右上角“新增神器攻略”即可添加，保存后默认收起。</div>';
+    list.querySelectorAll('[data-ca-toggle]').forEach(b=>b.onclick=()=>toggleArtifactGuideFold(b.dataset.caToggle));
+    list.querySelectorAll('[data-ca-edit]').forEach(b=>b.onclick=()=>editArtifactGuide(b.dataset.caEdit));
+    list.querySelectorAll('[data-ca-delete]').forEach(b=>b.onclick=()=>deleteArtifactGuide(b.dataset.caDelete));
+  }
+  function toggleArtifactGuideFold(id){artifactCustomFoldState[id]=artifactCustomFoldState[id]!==true;saveArtifactCustomFolds();renderArtifactGuides()}
+  function setAllArtifactGuideFolds(open){readArtifactGuides().forEach(x=>artifactCustomFoldState[x.id]=open);saveArtifactCustomFolds();renderArtifactGuides()}
+  function hasArtifactEditor(){return !!$('caList')?.querySelector('[data-ca-save]')}
+  function addArtifactGuide(){
+    if(hasArtifactEditor())return alert('请先保存或取消当前正在编辑的神器攻略。');
+    const a=readArtifactGuides(),id='artifact_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);
+    a.unshift({id,title:'未命名神器攻略',summary:'',content:''});
+    if(!saveArtifactGuides(a))return;
+    artifactCustomFoldState[id]=true;saveArtifactCustomFolds();renderArtifactGuides();editArtifactGuide(id);
+    setTimeout(()=>document.querySelector(`[data-ca-id="${CSS.escape(id)}"] [data-ca-title]`)?.focus(),0);
+  }
+  function editArtifactGuide(id){
+    const list=$('caList'),openEditor=list&&list.querySelector('[data-ca-save]');
+    if(openEditor)return alert('请先保存或取消当前正在编辑的神器攻略。');
+    const a=readArtifactGuides(),x=a.find(v=>v.id===id),card=list&&list.querySelector(`[data-ca-id="${CSS.escape(id)}"]`);
+    if(!x||!card)return;
+    artifactCustomFoldState[id]=true;saveArtifactCustomFolds();card.classList.remove('collapsed');
+    card.innerHTML=`<div class="ca-edit"><div class="ca-edit-fields"><div class="field"><label>神器攻略名称</label><input data-ca-title value="${esc(x.title)}" placeholder="例如：泪痕碗之念"></div><div class="field"><label>摘要（选填）</label><input data-ca-summary value="${esc(x.summary)}" placeholder="例如：重点机制 / 推荐路线"></div></div><textarea class="ca-editor" data-ca-content placeholder="填写准备事项、流程、战斗顺序、答题和注意事项……">${esc(x.content)}</textarea><div class="ca-edit-actions"><button type="button" class="primary" data-ca-save>保存并收起</button><button type="button" class="miniBtn" data-ca-cancel>取消</button></div></div>`;
+    card.querySelector('[data-ca-save]').onclick=()=>{
+      x.title=card.querySelector('[data-ca-title]').value.trim()||'未命名神器攻略';
+      x.summary=card.querySelector('[data-ca-summary]').value.trim();
+      x.content=card.querySelector('[data-ca-content]').value;
+      if(saveArtifactGuides(a)){artifactCustomFoldState[id]=false;saveArtifactCustomFolds();renderArtifactGuides()}
+    };
+    card.querySelector('[data-ca-cancel]').onclick=()=>renderArtifactGuides();
+  }
+  function deleteArtifactGuide(id){
+    const a=readArtifactGuides(),x=a.find(v=>v.id===id);
+    if(!x||!confirm('确定删除自定义神器攻略“'+x.title+'”？'))return;
+    if(saveArtifactGuides(a.filter(v=>v.id!==id))){delete artifactCustomFoldState[id];saveArtifactCustomFolds();renderArtifactGuides()}
+  }
+  function installCustomArtifactGuides(){
+    const sec=$('artifactguide'),grid=sec&&sec.querySelector(':scope>.grid');
+    if(!grid||$('customArtifactGuides'))return;
+    const panel=document.createElement('div');panel.className='card w12 ca-panel';panel.id='customArtifactGuides';
+    panel.innerHTML=`<div class="ca-top"><div><h3 style="margin:0">自定义神器攻略</h3><div class="sub" style="margin-top:5px">在这里补充其他神器；每篇保存后默认收起，不会把页面撑成一大片。</div></div><div class="ca-actions"><button type="button" class="miniBtn" id="caExpandAll">全部展开</button><button type="button" class="miniBtn" id="caCollapseAll">全部收起</button><button type="button" class="primary" id="caAdd">＋ 新增神器攻略</button></div></div><div class="ca-list" id="caList"></div>`;
+    const toolbar=grid.querySelector('.artifact-edit-toolbar');if(toolbar)toolbar.insertAdjacentElement('afterend',panel);else grid.prepend(panel);
+    $('caAdd').onclick=addArtifactGuide;$('caExpandAll').onclick=()=>setAllArtifactGuideFolds(true);$('caCollapseAll').onclick=()=>setAllArtifactGuideFolds(false);renderArtifactGuides();
+  }
+  function dedupePrices(showMessage){
+    let lib=[];try{lib=JSON.parse(localStorage.getItem('mhxy_global_price_library_v48')||'[]')}catch(e){}if(!Array.isArray(lib))lib=[];
+    const out=[],seen=new Map();let removed=0;
+    lib.forEach(x=>{if(!x||!norm(x.name))return;x.category=String(x.category||'其他').trim()||'其他';if(x.category.indexOf('宝石·')===0)x.category='宝石';if(x.category==='强化石')x.category='材料';if(x.category==='修炼')x.category='养成';const key=norm(x.name);if(!seen.has(key)){x.name=String(x.name).trim();seen.set(key,out.length);out.push(x);return}const keep=out[seen.get(key)];removed++;if((!keep.price||+keep.price<=0)&&+x.price>0)keep.price=+x.price;if((keep.category==='其他'||!keep.category)&&x.category)keep.category=x.category;if(x.quick)keep.quick=true;if(!keep.gemLevel&&x.gemLevel)keep.gemLevel=x.gemLevel});
+    localStorage.setItem('mhxy_global_price_library_v48',JSON.stringify(out));try{if(typeof priceLibrary!=='undefined'){priceLibrary.splice(0,priceLibrary.length,...out)}}catch(e){}
+    try{savePriceLibrary();renderPriceLibrary();renderIncomePresets()}catch(e){}window.dispatchEvent(new CustomEvent('mhxy-price-library-updated'));
+    const s=$('plCleanStatus');if(s)s.textContent=removed?`已合并 ${removed} 个重复项`:'未发现重复项';if(showMessage&&removed)alert('已合并 '+removed+' 个重名物品，价格、快捷状态和分类已尽量保留。');return removed;
+  }
+  function enhancePriceUI(){
+    const add=$('plAdd');if(add&&!$('plCleanDup')){const b=document.createElement('button');b.type='button';b.id='plCleanDup';b.textContent='整理重复项';b.onclick=()=>dedupePrices(true);add.insertAdjacentElement('afterend',b);const s=document.createElement('span');s.id='plCleanStatus';s.className='pl-clean-status';b.insertAdjacentElement('afterend',s)}
+    const box=$('plCards');if(!box)return;box.querySelectorAll('.pl-item-card').forEach(card=>{if(card.querySelector('[data-plcategory]'))return;const any=card.querySelector('[data-plname]'),i=any&&+any.dataset.plname;if(!Number.isInteger(i))return;let x;try{x=priceLibrary[i]}catch(e){}if(!x)return;const row=document.createElement('label');row.className='pl-item-category';row.innerHTML=`<span>分类</span><input list="plCategoryList" value="${esc(x.category||'其他')}" data-plcategory="${i}">`;any.closest('.pl-item-name').insertAdjacentElement('afterend',row);row.querySelector('input').onchange=function(){const cat=this.value.trim()||'其他';try{priceLibrary[i].category=cat;savePriceLibrary();renderIncomePresets();renderPriceLibrary()}catch(e){}}});
+  }
+  function boot(){loadGuideFolds();loadArtifactCustomFolds();installGuidePage();installCustomArtifactGuides();dedupePrices(false);enhancePriceUI();const box=$('plCards');if(box)new MutationObserver(enhancePriceUI).observe(box,{childList:true,subtree:true});window.addEventListener('mhxy-price-library-updated',enhancePriceUI)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<style>
+/* v8.20.59 finishing fixes */
+.task-exp-auto-hint{margin-top:9px;padding:8px 10px;border-radius:9px;background:rgba(34,197,94,.08);border:1px solid rgba(74,222,128,.22);color:#86efac;font-size:12px;font-weight:800}
+.fprd-daily-delta{margin-top:10px;padding:10px 12px;border:1px solid rgba(96,165,250,.22);border-radius:10px;background:rgba(59,130,246,.06)}
+.fprd-daily-delta-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.fprd-daily-delta-head b{color:#dbeafe}.fprd-daily-delta-head small{color:#8295b4}
+.fprd-daily-delta-grid{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:8px}.fprd-daily-delta-grid span{padding:7px 9px;background:#0b1424;border:1px solid rgba(255,255,255,.06);border-radius:8px;color:#93a4bf;font-size:11px}.fprd-daily-delta-grid b{display:block;margin-top:3px;font-size:14px;color:#cbd5e1}
+.fprd-daily-delta.empty{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#8295b4}.fprd-daily-delta.empty b{color:#cbd5e1}.fprd-daily-delta.empty span{font-size:11px}
+#mhGithubUpdateCard .ghu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}#mhGithubUpdateCard .ghu-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}#mhGithubUpdateCard .ghu-status{margin-top:12px;padding:10px 12px;border:1px solid rgba(96,165,250,.18);border-radius:10px;background:rgba(96,165,250,.07);line-height:1.65}#mhGithubUpdateCard .ghu-status.ok{border-color:rgba(34,197,94,.26);background:rgba(34,197,94,.07)}#mhGithubUpdateCard .ghu-status.warn{border-color:rgba(245,158,11,.30);background:rgba(245,158,11,.08)}#mhGithubUpdateCard .ghu-status.err{border-color:rgba(239,68,68,.30);background:rgba(239,68,68,.08)}#mhGithubUpdateCard .ghu-notes{margin-top:8px;color:#aebdd5;font-size:12px;white-space:pre-wrap}#mhGithubUpdateCard .ghu-current{color:#93c5fd;font-weight:900}
+@media(max-width:900px){.fprd-daily-delta-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){#mhGithubUpdateCard .ghu-grid{grid-template-columns:1fr}.fprd-daily-delta-grid{grid-template-columns:1fr}}
+body.light .fprd-daily-delta-grid span{background:#f8fafc}body.light .fprd-daily-delta{background:#eff6ff}body.light #mhGithubUpdateCard .ghu-status{background:#f8fbff}
+</style>
 <style>
 /* v8.20.56 Supabase cloud sync */
 #mhCloudSyncCard .mh-cloud-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
@@ -17794,6 +18074,122 @@ function injectUi(){
   updateUi();
 }
 function boot(){patchStorage();injectUi();if(getSession().user)setTimeout(()=>autoSync('boot'),800)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<style id="mhxy-pricelib-compact-ui">
+/* 物价库：保持常用操作可见，避免两张小卡造成大面积空白。 */
+#pricelib .pl-static-card{position:relative;overflow:hidden}
+#pricelib .pl-add-card{padding:16px 18px!important;border-color:rgba(var(--section-rgb),.38)!important;background:linear-gradient(108deg,rgba(var(--section-rgb),.12),rgba(15,28,48,.94) 42%)!important;box-shadow:inset 3px 0 0 rgba(var(--section-rgb),.9),0 7px 18px rgba(3,10,22,.16)!important}
+#pricelib .pl-compact-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+#pricelib .pl-compact-head h3{margin:0!important}
+#pricelib .pl-compact-head p{margin:4px 0 0;color:#93a8c6;font-size:12px;line-height:1.55}
+#pricelib .pl-compact-badge{flex:0 0 auto;margin-top:1px;padding:5px 9px;border:1px solid rgba(var(--section-rgb),.35);border-radius:999px;background:rgba(var(--section-rgb),.1);color:#b9d8ff;font-size:11px;font-weight:800;white-space:nowrap}
+#pricelib .pl-add-form{display:grid;grid-template-columns:1.08fr 1.34fr .72fr .88fr auto;gap:10px;align-items:end;margin-top:13px}
+#pricelib .pl-add-form .field{min-width:0;margin:0!important}
+#pricelib .pl-add-form .field>label{margin-bottom:5px!important}
+#pricelib .pl-add-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;min-width:164px;align-items:start}
+#pricelib .pl-add-submit{min-height:38px!important;padding:8px 15px!important;white-space:nowrap;border-color:var(--section-accent)!important;background:var(--section-accent)!important;color:#fff!important}
+#pricelib #plCleanDup{min-height:38px!important;padding:8px 10px!important;white-space:nowrap;border-color:rgba(148,174,211,.42)!important;background:rgba(255,255,255,.055)!important;color:#c4d9f3!important}
+#pricelib .pl-clean-status{grid-column:1/-1;min-width:0;color:#9fc8b5;font-size:10px;line-height:1.3;text-align:center}
+#pricelib .pl-clean-status:empty{display:none}
+#pricelib .pl-info-card{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 18px!important;border-color:rgba(110,154,207,.3)!important;background:linear-gradient(90deg,rgba(75,111,160,.11),rgba(14,27,46,.86))!important}
+#pricelib .pl-info-copy{display:flex;align-items:center;gap:18px;min-width:0}
+#pricelib .pl-info-title{flex:0 0 auto;color:#b9d8ff;font-size:13px;letter-spacing:.2px;white-space:nowrap}
+#pricelib .pl-info-points{display:flex;flex-wrap:wrap;gap:8px}
+#pricelib .pl-info-item{display:flex;align-items:baseline;gap:7px;min-width:0;padding:6px 9px;border:1px solid rgba(148,174,211,.16);border-radius:8px;background:rgba(255,255,255,.035)}
+#pricelib .pl-info-item b{flex:0 0 auto;color:#d9eaff;font-size:11px}
+#pricelib .pl-info-item span{color:#9fb0c8;font-size:11px;line-height:1.45}
+#pricelib .pl-reset-btn{flex:0 0 auto;min-height:34px!important;padding:7px 12px!important;white-space:nowrap}
+
+body.theme-light #pricelib .pl-add-card{background:linear-gradient(108deg,#fff,#f7fbff)!important;border-color:#c5d5e6!important;box-shadow:inset 3px 0 0 var(--section-accent),0 5px 13px rgba(49,78,110,.07)!important}
+body.theme-light #pricelib .pl-info-card{background:#f7faff!important;border-color:#d1deeb!important}
+body.theme-light #pricelib .pl-compact-head p{color:#64758b!important}
+body.theme-light #pricelib .pl-compact-badge{background:rgba(var(--section-rgb),.09)!important;border-color:rgba(var(--section-rgb),.34)!important;color:var(--section-accent)!important}
+body.theme-light #pricelib .pl-info-title{color:#365f85!important}
+body.theme-light #pricelib .pl-info-item{background:#fff!important;border-color:#dce6f0!important}
+body.theme-light #pricelib .pl-info-item b{color:#344d6c!important}
+body.theme-light #pricelib .pl-info-item span{color:#667890!important}
+body.theme-light #pricelib .pl-add-submit{background:var(--section-accent)!important;border-color:var(--section-accent)!important;color:#fff!important}
+body.theme-light #pricelib #plCleanDup{background:#fff!important;border-color:#cbd9e7!important;color:#4d6380!important}
+body.theme-light #pricelib .pl-reset-btn{background:#fff!important;border-color:#cbd9e7!important;color:#425b78!important}
+
+@media(max-width:1120px){
+  #pricelib .pl-add-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #pricelib .pl-add-actions{grid-column:span 2;justify-content:end}
+  #pricelib .pl-info-copy{align-items:flex-start;flex-direction:column;gap:9px}
+}
+@media(max-width:640px){
+  #pricelib .pl-compact-head,#pricelib .pl-info-card{align-items:flex-start;flex-direction:column}
+  #pricelib .pl-add-form{grid-template-columns:1fr}
+  #pricelib .pl-add-actions{grid-column:auto;grid-template-columns:1fr 1fr;justify-content:stretch;width:100%}
+  #pricelib .pl-info-points{display:grid;grid-template-columns:1fr;width:100%}
+  #pricelib .pl-info-item{align-items:flex-start;flex-direction:column;gap:2px}
+}
+</style>
+
+<style>
+/* v8.20.59 GitHub tool updater: program files only, never user data */
+</style>
+<script>
+(function(){
+'use strict';
+window.MHXY_APP_VERSION='8.20.59';
+const KEY='mhxy_github_updater_v1';
+const DEFAULT={owner:'',repo:'',branch:'main',manifest:'update.json',auto:true,lastCheck:'',latest:null};
+let cfg=load(),busy=false;
+function load(){try{return Object.assign({},DEFAULT,JSON.parse(localStorage.getItem(KEY)||'{}')||{})}catch(e){return Object.assign({},DEFAULT)}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(cfg))}catch(e){}}
+function esc(s){return String(s??'').replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[m]||m))}
+function encPath(p){return String(p||'').split('/').filter(Boolean).map(encodeURIComponent).join('/')}
+function rawUrl(path){return 'https://raw.githubusercontent.com/'+encodeURIComponent(cfg.owner)+'/'+encodeURIComponent(cfg.repo)+'/'+encodeURIComponent(cfg.branch||'main')+'/'+encPath(path)}
+function repoUrl(){return 'https://github.com/'+encodeURIComponent(cfg.owner)+'/'+encodeURIComponent(cfg.repo)}
+function parts(v){return String(v||'').replace(/^v/i,'').split(/[^0-9]+/).filter(Boolean).map(Number)}
+function compare(a,b){let x=parts(a),y=parts(b),n=Math.max(x.length,y.length);for(let i=0;i<n;i++){let d=(x[i]||0)-(y[i]||0);if(d)return d>0?1:-1}return 0}
+function status(msg,type){let e=document.getElementById('ghuStatus');if(!e)return;e.className='ghu-status'+(type?' '+type:'');e.innerHTML=msg}
+function readUi(){let v=id=>(document.getElementById(id)?.value||'').trim();cfg.owner=v('ghuOwner');cfg.repo=v('ghuRepo');cfg.branch=v('ghuBranch')||'main';cfg.manifest=v('ghuManifest')||'update.json';cfg.auto=!!document.getElementById('ghuAuto')?.checked;save()}
+function fillUi(){let set=(id,v)=>{let e=document.getElementById(id);if(e)e.value=v||''};set('ghuOwner',cfg.owner);set('ghuRepo',cfg.repo);set('ghuBranch',cfg.branch);set('ghuManifest',cfg.manifest);let a=document.getElementById('ghuAuto');if(a)a.checked=cfg.auto!==false}
+function normalizeManifest(x){if(!x||typeof x!=='object')throw new Error('update.json 格式不正确');let version=String(x.version||'').trim();if(!version)throw new Error('update.json 缺少 version');let file=String(x.file||'').trim(),downloadUrl=String(x.downloadUrl||x.download||'').trim();if(!downloadUrl&&file)downloadUrl=rawUrl(file);let notes=x.notes||x.changelog||'';if(Array.isArray(notes))notes=notes.map(v=>'• '+v).join('\n');return {version,file,downloadUrl,notes:String(notes||''),publishedAt:String(x.publishedAt||x.date||''),sha256:String(x.sha256||'')}}
+async function checkUpdate(manual){
+ if(busy)return;readUi();if(!cfg.owner||!cfg.repo){status('先填写 GitHub 用户/组织和仓库名。这个模块只检查工具版本，不同步任何用户数据。','warn');return}
+ busy=true;status('正在从 GitHub 检查工具版本…','');
+ try{
+   let url=rawUrl(cfg.manifest)+(rawUrl(cfg.manifest).includes('?')?'&':'?')+'t='+Date.now();
+   let res=await fetch(url,{cache:'no-store'});if(!res.ok)throw new Error('读取 '+cfg.manifest+' 失败（HTTP '+res.status+'）');
+   let latest=normalizeManifest(await res.json());cfg.latest=latest;cfg.lastCheck=new Date().toISOString();save();
+   let cmp=compare(latest.version,window.MHXY_APP_VERSION),notes=latest.notes?'<div class="ghu-notes">'+esc(latest.notes)+'</div>':'';
+   if(cmp>0)status('发现新版本：<b>'+esc(latest.version)+'</b>　当前：<span class="ghu-current">'+esc(window.MHXY_APP_VERSION)+'</span>'+(latest.publishedAt?'<br>发布时间：'+esc(latest.publishedAt):'')+notes+'<br><b>更新工具不会覆盖 Supabase 云端数据。</b>','warn');
+   else if(cmp===0)status('当前已是最新版：<b>'+esc(window.MHXY_APP_VERSION)+'</b>'+(latest.publishedAt?'<br>发布时间：'+esc(latest.publishedAt):'')+notes,'ok');
+   else status('当前工具版本 <b>'+esc(window.MHXY_APP_VERSION)+'</b> 高于 GitHub 清单版本 <b>'+esc(latest.version)+'</b>。请检查 update.json。','warn');
+ }catch(e){status('检查更新失败：'+esc(e.message)+'<br><span class="sub">请确认仓库为公开仓库，且 '+esc(cfg.manifest)+' 可直接读取。</span>','err')}
+ finally{busy=false}
+}
+async function downloadLatest(){
+ readUi();let latest=cfg.latest;if(!latest||!latest.downloadUrl){await checkUpdate(true);latest=cfg.latest}if(!latest||!latest.downloadUrl){status('update.json 里需要提供 file 或 downloadUrl 才能下载新版。','warn');return}
+ status('正在准备下载工具 v'+esc(latest.version)+'…','');
+ try{
+   let res=await fetch(latest.downloadUrl,{cache:'no-store'});if(!res.ok)throw new Error('下载失败（HTTP '+res.status+'）');let blob=await res.blob();let url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=latest.file?latest.file.split('/').pop():('梦幻工具箱-v'+latest.version+'.html');document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);status('已发起下载 v'+esc(latest.version)+'。<br><span class="sub">本地 file:// 使用时建议用新版文件替换旧版文件；业务数据仍以 Supabase 云备份为准。</span>','ok')
+ }catch(e){status('直接下载失败：'+esc(e.message)+'。已尝试在新窗口打开最新版地址。','warn');try{window.open(latest.downloadUrl,'_blank','noopener')}catch(_){} }
+}
+function openRepo(){readUi();if(!cfg.owner||!cfg.repo){status('先填写 GitHub 用户/组织和仓库名。','warn');return}window.open(repoUrl(),'_blank','noopener')}
+function inject(){
+ const grid=document.querySelector('#datamgr .grid');if(!grid||document.getElementById('mhGithubUpdateCard'))return;
+ const card=document.createElement('div');card.className='card w12';card.id='mhGithubUpdateCard';
+ card.innerHTML='<h3>⬆ GitHub 工具更新 <span class="badge">只更新程序，不同步数据</span></h3>'+ 
+ '<div class="note">Supabase 继续负责电脑 ↔ 手机的数据云备份；GitHub 这里只读取公开仓库里的 <b>update.json</b>，用于检查并下载新版工具。无需 GitHub Token，也不会上传角色档案、收益或物价数据。</div>'+ 
+ '<div class="ghu-grid">'+
+ '<div class="field"><label>GitHub 用户 / 组织</label><input id="ghuOwner" placeholder="例如 yourname"></div>'+ 
+ '<div class="field"><label>仓库名</label><input id="ghuRepo" placeholder="例如 mhxy-toolbox"></div>'+ 
+ '<div class="field"><label>分支</label><input id="ghuBranch" value="main"></div>'+ 
+ '<div class="field"><label>更新清单路径</label><input id="ghuManifest" value="update.json"></div>'+ 
+ '</div>'+ 
+ '<div class="ghu-actions"><button type="button" class="primary" id="ghuCheck">检查更新</button><button type="button" id="ghuDownload">下载最新版</button><button type="button" id="ghuRepoOpen">打开 GitHub 仓库</button><button type="button" id="ghuSave">保存配置</button><label style="display:flex;align-items:center;gap:6px"><input id="ghuAuto" type="checkbox" checked> 每天自动检查一次</label></div>'+ 
+ '<div id="ghuStatus" class="ghu-status">当前工具版本：<b>'+esc(window.MHXY_APP_VERSION)+'</b>。填写仓库后即可检查更新。</div>';
+ const cloud=document.getElementById('mhCloudSyncCard');if(cloud)cloud.after(card);else grid.insertBefore(card,grid.firstChild);
+ fillUi();document.getElementById('ghuCheck').onclick=()=>checkUpdate(true);document.getElementById('ghuDownload').onclick=downloadLatest;document.getElementById('ghuRepoOpen').onclick=openRepo;document.getElementById('ghuSave').onclick=function(){readUi();status('GitHub 工具更新配置已保存。Supabase 数据同步配置未改动。','ok')};document.getElementById('ghuAuto').onchange=function(){readUi();if(cfg.auto)checkUpdate(false)};
+ if(cfg.auto&&cfg.owner&&cfg.repo){let age=Date.now()-(Date.parse(cfg.lastCheck||0)||0);if(age>86400000)setTimeout(()=>checkUpdate(false),1200)}
+}
+function boot(){inject()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 </script>
