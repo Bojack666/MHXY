@@ -7,7 +7,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>梦幻西游五开工具箱</title>
-<meta name="mhxy-app-version" content="8.20.72" />
+<meta name="mhxy-app-version" content="8.20.73" />
 <link rel="manifest" href="manifest.webmanifest" />
 <meta name="theme-color" content="#0b1020" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -8607,13 +8607,29 @@ body.theme-light .custom-aux-name-wrap .custom-aux-name{
     </div>
 
     <div class="mps-result-grid">
-      <div class="mps-result"><span>技能后宝宝速度</span><strong id="mpsAfterSkill">539.25</strong><small id="mpsRabbitExplain">高敏结算后 + 坐骑等级×0.15</small></div>
-      <div class="mps-result"><span>宝宝乱敏上限结算</span><strong id="mpsPetMax">566.21</strong><small>技能后速度 × 宝宝乱敏上限</small></div>
+      <div class="mps-result"><span>高敏后速度（不带动如脱兔）</span><strong id="mpsNoRabbitSkill">516.00</strong><small>宝宝面板速度 × 高敏倍率</small></div>
+      <div class="mps-result"><span>技能后宝宝速度（带动如脱兔）</span><strong id="mpsAfterSkill">539.25</strong><small id="mpsRabbitExplain">高敏结算后 + 坐骑等级×0.15</small></div>
+      <div class="mps-result"><span>宝宝乱敏上限结算</span><strong id="mpsPetMax">566.21</strong><small>带动如脱兔后的速度 × 宝宝乱敏上限</small></div>
       <div class="mps-result"><span>阵法还原后</span><strong id="mpsAfterArray">629.13</strong><small>÷ 阵法速度倍率</small></div>
-      <div class="mps-result primary"><span>人物最低配速</span><strong id="mpsFinal">663</strong><small>÷ 人物乱敏下限，向上取整</small></div>
+      <div class="mps-result"><span>不带动如脱兔·人物最低配速</span><strong id="mpsNoRabbitFinal">634</strong><small>面板×高敏倍率 → 乱敏 → 阵法 → 人物乱敏</small></div>
+      <div class="mps-result primary"><span>带动如脱兔·人物最低配速</span><strong id="mpsFinal">663</strong><small>同样按乱敏 / 阵法结算，向上取整</small></div>
     </div>
 
     <div class="mps-formula" id="mpsFormula"></div>
+
+    <div class="mps-compare" style="margin-top:14px">
+      <div>
+        <h3 style="margin:0">目标法宝宝速度 → 反推面板速度</h3>
+        <div class="sub">先填你希望法宝宝“技能结算后”达到的速度，自动反推带动如脱兔 / 不带动如脱兔时，宝宝面板至少要多少速度。</div>
+      </div>
+      <div class="mps-compare-grid">
+        <label><span>目标法宝宝速度</span><input id="mpsTargetPetSpeed" type="number" min="0" step="1" value="500"></label>
+        <div class="mps-compare-result"><span>带动如脱兔·需面板</span><strong id="mpsReverseRabbit">398</strong></div>
+        <div class="mps-compare-result"><span>不带动如脱兔·需面板</span><strong id="mpsReverseNoRabbit">417</strong></div>
+        <div class="mps-compare-result"><span>少堆面板速度</span><strong id="mpsReverseSaved">19</strong></div>
+      </div>
+      <div class="note" id="mpsReverseNote" style="margin-top:8px"></div>
+    </div>
 
     <div class="mps-compare">
       <div>
@@ -12381,7 +12397,18 @@ function renderTask(){
  if(t!=="抓鬼"&&!restoringDraft)setTimeout(loadTaskBase,0);
 }
 function taskDropPrice(n,pm){
- var m=String(n||"").match(/^(\d+)级(.+)$/);
+ var text=String(n||"");
+ var pill=text.match(/^(\d+)品九转金丹$/);
+ if(pill){
+   var prow=priceList().find(function(x){return String(x.name||"")==="九转金丹";});
+   if(prow){
+     var q=Math.max(1,Number(pill[1])||1),pp=Math.max(0,Number(prow.pillPerPoint)||0);
+     if(pp>0)return q*pp/10000;
+     var baseQ=Math.max(1,Number(prow.pillQuality)||100),basePrice=Math.max(0,Number(prow.price)||0);
+     return baseQ>0?basePrice*q/baseQ:0;
+   }
+ }
+ var m=text.match(/^(\d+)级(.+)$/);
  if(m&&window.MHXY_LEVEL_PRICE){
    var row=priceList().find(function(x){return String(x.name||"")===m[2]&&window.MHXY_LEVEL_PRICE.isLevelItem(x);});
    if(row&&typeof window.MHXY_LEVEL_PRICE.priceForRow==="function")return Math.max(0,Number(window.MHXY_LEVEL_PRICE.priceForRow(row,Number(m[1])))||0);
@@ -12423,19 +12450,29 @@ function taskDropSelected(group){
  if(h&&h.isLevelItem(row)){
    var max=Math.max(1,Number(h.maxLevel(row))||15);level=Math.max(1,Math.min(max,Number(choice.level)||Number(row.gemLevel)||1));
  }
- return {row:row,level:level};
+ var quality=100;
+ if(String(row.name||"")==="九转金丹")quality=Math.max(1,Math.floor(Number(choice.quality)||Number(row.pillQuality)||100));
+ return {row:row,level:level,quality:quality};
 }
-function taskDropConcreteName(row,level){
+function taskDropConcreteName(row,level,quality){
  var h=window.MHXY_LEVEL_PRICE;
+ if(String(row&&row.name||"")==="九转金丹")return String(Math.max(1,Math.floor(Number(quality)||100)))+"品九转金丹";
  return h&&h.isLevelItem(row)?String(level)+"级"+String(row.name||""):String(row.name||"");
 }
-function taskDropRowPrice(row,level){
+function taskDropRowPrice(row,level,quality){
+ if(String(row&&row.name||"")==="九转金丹"){
+   var q=Math.max(1,Math.floor(Number(quality)||Number(row.pillQuality)||100)),pp=Math.max(0,Number(row.pillPerPoint)||0);
+   if(pp>0)return q*pp/10000;
+   var baseQ=Math.max(1,Number(row.pillQuality)||100),basePrice=Math.max(0,Number(row.price)||0);
+   return baseQ>0?basePrice*q/baseQ:0;
+ }
  var h=window.MHXY_LEVEL_PRICE;
  if(h&&h.isLevelItem(row)&&typeof h.priceForRow==="function")return Math.max(0,Number(h.priceForRow(row,level))||0);
  return Math.max(0,Number(row&&row.price)||0);
 }
 function taskDropKeyMatchesRow(key,row){
  var n=String(row&&row.name||""),k=String(key||"");if(k===n)return true;
+ if(n==="九转金丹")return /^(\d+)品九转金丹$/.test(k);
  var h=window.MHXY_LEVEL_PRICE;if(!(h&&h.isLevelItem(row)))return false;
  var m=k.match(/^(\d+)级(.+)$/);return !!(m&&m[2]===n);
 }
@@ -12458,21 +12495,23 @@ function renderDrops(){
  var groups=taskDropGroups();b.classList.add("task-drop-group-grid");
  b.innerHTML=groups.map(function(group,gi){
    var pick=taskDropSelected(group);if(!pick)return "";
-   var row=pick.row,level=pick.level,h=window.MHXY_LEVEL_PRICE,isLevel=!!(h&&h.isLevelItem(row)),name=taskDropConcreteName(row,level),price=taskDropRowPrice(row,level),qty=Math.max(0,Number(dropCounts[name])||0),recorded=taskDropGroupRecorded(group);
+   var row=pick.row,level=pick.level,quality=pick.quality,h=window.MHXY_LEVEL_PRICE,isLevel=!!(h&&h.isLevelItem(row)),isPill=String(row.name||"")==="九转金丹",name=taskDropConcreteName(row,level,quality),price=taskDropRowPrice(row,level,quality),qty=Math.max(0,Number(dropCounts[name])||0),recorded=taskDropGroupRecorded(group);
    var summary=recorded.length?recorded.map(function(x){return "<span class='task-drop-record'><span>"+esc(x.key)+" ×"+x.qty+"</span><button type='button' class='miniBtn' data-drop-record-minus='"+esc(x.key)+"'>−1</button><button type='button' class='miniBtn task-drop-record-delete' data-drop-record-delete='"+esc(x.key)+"'>删</button></span>";}).join(""):"<span class='task-drop-group-empty'>本类暂未记录</span>";
    var options=group.rows.map(function(x){var token=taskDropRowToken(x);return "<option value='"+esc(token)+"' "+(token===taskDropRowToken(row)?"selected":"")+">"+esc(x.name)+"</option>";}).join("");
    var levelHtml="";if(isLevel){var max=Math.max(1,Number(h.maxLevel(row))||15);levelHtml="<label class='task-drop-group-field'><span>等级</span><select data-drop-group-level='"+gi+"'>"+Array.from({length:max},function(_,i){var lv=i+1;return "<option value='"+lv+"' "+(lv===level?"selected":"")+">"+lv+"级</option>";}).join("")+"</select></label>";}
+   var qualityHtml="";if(isPill){qualityHtml="<label class='task-drop-group-field'><span>品质</span><input data-drop-group-quality='"+gi+"' type='number' min='1' step='1' value='"+quality+"' style='width:100%;min-height:36px;padding:6px 8px;border:1px solid #3a4b6b;border-radius:8px;background:#0b1424;color:#fff'></label>";}
    return "<div class='ct-item task-drop-group-card' data-d='"+esc(name)+"' data-drop-group-card='"+gi+"'>"+
      "<div class='task-drop-group-head'><div class='ct-name'>"+esc(group.label)+"</div><button type='button' class='miniBtn task-drop-group-clear' data-drop-group-clear='"+gi+"' "+(recorded.length?"":"disabled")+">清此类</button></div>"+
-     "<label class='task-drop-group-field'><span>具体物品</span><select data-drop-group-item='"+gi+"'>"+options+"</select></label>"+levelHtml+
+     "<label class='task-drop-group-field'><span>具体物品</span><select data-drop-group-item='"+gi+"'>"+options+"</select></label>"+levelHtml+qualityHtml+
      "<div class='task-drop-group-current'><b>"+esc(name)+"</b><span>"+(price>0?price.toFixed(2)+"万 / 个":"未定价")+"</span></div>"+
      "<div class='task-drop-group-summary'>"+summary+"</div>"+
      "<div class='ct-count task-drop-group-count'><button type='button' class='miniBtn' data-drop-group-minus='"+gi+"' "+(qty?"":"disabled")+">−1</button><span>×</span><input class='ct-qty-input' data-drop-qty='"+esc(name)+"' type='number' min='0' step='1' value='"+qty+"'><button type='button' class='miniBtn' data-drop-group-add='"+gi+"'>＋1</button></div></div>";
  }).join("");
- b.querySelectorAll("[data-drop-group-item]").forEach(function(sel){sel.onchange=function(){var gi=Number(this.getAttribute("data-drop-group-item")),group=groups[gi];if(!group)return;var row=group.rows.find(function(x){return taskDropRowToken(x)===sel.value;})||group.rows[0];dropGroupChoices[group.label]={item:taskDropRowToken(row),level:(window.MHXY_LEVEL_PRICE&&window.MHXY_LEVEL_PRICE.isLevelItem(row))?(Number(row.gemLevel)||1):1};saveJSON(DROP_GROUP_CHOICE_KEY,dropGroupChoices);renderDrops();};});
- b.querySelectorAll("[data-drop-group-level]").forEach(function(sel){sel.onchange=function(){var gi=Number(this.getAttribute("data-drop-group-level")),group=groups[gi],pick=group&&taskDropSelected(group);if(!pick)return;dropGroupChoices[group.label]={item:taskDropRowToken(pick.row),level:Math.max(1,Number(sel.value)||1)};saveJSON(DROP_GROUP_CHOICE_KEY,dropGroupChoices);renderDrops();};});
- b.querySelectorAll("[data-drop-group-add]").forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var gi=Number(this.getAttribute("data-drop-group-add")),group=groups[gi],pick=group&&taskDropSelected(group);if(!pick)return;var name=taskDropConcreteName(pick.row,pick.level);dropCounts[name]=(Number(dropCounts[name])||0)+1;dropLast=name;renderDrops();scheduleDraftSave();};});
- b.querySelectorAll("[data-drop-group-minus]").forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var gi=Number(this.getAttribute("data-drop-group-minus")),group=groups[gi],pick=group&&taskDropSelected(group);if(!pick)return;var name=taskDropConcreteName(pick.row,pick.level),q=Math.max(0,Number(dropCounts[name])||0);if(q<=1)delete dropCounts[name];else dropCounts[name]=q-1;if(dropLast===name&&!dropCounts[name])dropLast="";renderDrops();scheduleDraftSave();};});
+ b.querySelectorAll("[data-drop-group-item]").forEach(function(sel){sel.onchange=function(){var gi=Number(this.getAttribute("data-drop-group-item")),group=groups[gi];if(!group)return;var row=group.rows.find(function(x){return taskDropRowToken(x)===sel.value;})||group.rows[0];dropGroupChoices[group.label]={item:taskDropRowToken(row),level:(window.MHXY_LEVEL_PRICE&&window.MHXY_LEVEL_PRICE.isLevelItem(row))?(Number(row.gemLevel)||1):1,quality:String(row.name||"")==="九转金丹"?(Math.max(1,Math.floor(Number(row.pillQuality)||100))):100};saveJSON(DROP_GROUP_CHOICE_KEY,dropGroupChoices);renderDrops();};});
+ b.querySelectorAll("[data-drop-group-level]").forEach(function(sel){sel.onchange=function(){var gi=Number(this.getAttribute("data-drop-group-level")),group=groups[gi],pick=group&&taskDropSelected(group);if(!pick)return;dropGroupChoices[group.label]={item:taskDropRowToken(pick.row),level:Math.max(1,Number(sel.value)||1),quality:pick.quality};saveJSON(DROP_GROUP_CHOICE_KEY,dropGroupChoices);renderDrops();};});
+ b.querySelectorAll("[data-drop-group-quality]").forEach(function(inp){inp.onchange=inp.oninput=function(){var gi=Number(this.getAttribute("data-drop-group-quality")),group=groups[gi],pick=group&&taskDropSelected(group);if(!pick)return;dropGroupChoices[group.label]={item:taskDropRowToken(pick.row),level:pick.level,quality:Math.max(1,Math.floor(Number(inp.value)||1))};saveJSON(DROP_GROUP_CHOICE_KEY,dropGroupChoices);renderDrops();};});
+ b.querySelectorAll("[data-drop-group-add]").forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var gi=Number(this.getAttribute("data-drop-group-add")),group=groups[gi],pick=group&&taskDropSelected(group);if(!pick)return;var name=taskDropConcreteName(pick.row,pick.level,pick.quality);dropCounts[name]=(Number(dropCounts[name])||0)+1;dropLast=name;renderDrops();scheduleDraftSave();};});
+ b.querySelectorAll("[data-drop-group-minus]").forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var gi=Number(this.getAttribute("data-drop-group-minus")),group=groups[gi],pick=group&&taskDropSelected(group);if(!pick)return;var name=taskDropConcreteName(pick.row,pick.level,pick.quality),q=Math.max(0,Number(dropCounts[name])||0);if(q<=1)delete dropCounts[name];else dropCounts[name]=q-1;if(dropLast===name&&!dropCounts[name])dropLast="";renderDrops();scheduleDraftSave();};});
  b.querySelectorAll("[data-drop-record-minus]").forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var name=this.getAttribute("data-drop-record-minus")||"",q=Math.max(0,Number(dropCounts[name])||0);if(!name||!q)return;if(q<=1)delete dropCounts[name];else dropCounts[name]=q-1;if(dropLast===name&&!dropCounts[name])dropLast="";renderDrops();scheduleDraftSave();};});
  b.querySelectorAll("[data-drop-record-delete]").forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var name=this.getAttribute("data-drop-record-delete")||"";if(!name)return;delete dropCounts[name];if(dropLast===name)dropLast="";renderDrops();scheduleDraftSave();};});
  b.querySelectorAll("[data-drop-group-clear]").forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var gi=Number(this.getAttribute("data-drop-group-clear")),group=groups[gi];if(!group)return;Object.keys(dropCounts).forEach(function(k){if(group.rows.some(function(row){return taskDropKeyMatchesRow(k,row);}))delete dropCounts[k];});if(dropLast&&!dropCounts[dropLast])dropLast="";renderDrops();scheduleDraftSave();};});
@@ -12480,7 +12519,7 @@ function renderDrops(){
  if(legacy)legacy.classList.toggle("show",editingIndex>=0);
  if(legacyInput&&document.activeElement!==legacyInput)legacyInput.value=(Number(legacyItemValue)||0).toFixed(1);
  var legacyText=(editingIndex>=0&&Math.abs(Number(legacyItemValue)||0)>0.0001)?" <span class='sub'>（含历史补差 "+(Number(legacyItemValue)||0).toFixed(1)+"万）</span>":"";
- o.innerHTML="本次物品收益：<b class='money'>"+dropTotal().toFixed(1)+"万 MHB</b>"+legacyText+"<br><span class='sub'>所有大类都从全局物价库生成；新增具体兽诀、内丹、环装、乐器等会自动进入对应下拉。宝石 / 星辉石 / 五色灵尘按所选等级实时取合成价。</span>";
+ o.innerHTML="本次物品收益：<b class='money'>"+dropTotal().toFixed(1)+"万 MHB</b>"+legacyText+"<br><span class='sub'>所有大类都从全局物价库生成；新增具体兽诀、内丹、环装、乐器等会自动进入对应下拉。宝石 / 星辉石 / 五色灵尘按所选等级实时取合成价；九转金丹按所选品质 × 物价库“每品价格”自动估值。</span>";
 }
 window.MHXY_TASK_ADD_LEVEL_DROP=function(name,qty){
  name=String(name||"").trim();qty=Math.max(1,Math.floor(Number(qty)||1));if(!name)return false;
@@ -16891,12 +16930,39 @@ window.MHXY_SECRET_TRAINING=(function(){
     const b=calcOne(speed2,mountLevel2);
 
     const set=(id,t)=>{const e=document.getElementById(id);if(e)e.textContent=t};
+    const noRabbitSkill=a.afterHigh;
+    const noRabbitMax=noRabbitSkill*a.petMax;
+    const noRabbitAfterArray=noRabbitMax/a.arr;
+    const noRabbitFinal=Math.ceil(noRabbitAfterArray/a.charMin);
+    set('mpsNoRabbitSkill',fmt(noRabbitSkill,4));
     set('mpsAfterSkill',fmt(a.afterSkill,4));
     set('mpsPetMax',fmt(a.maxSpeed,4));
     set('mpsAfterArray',fmt(a.afterArray,4));
+    set('mpsNoRabbitFinal',String(noRabbitFinal));
     set('mpsFinal',String(a.final));
     set('mpsFinal2',String(b.final));
     set('mpsDiff',String(b.final-a.final));
+
+    const targetPet=Math.max(0,val('mpsTargetPetSpeed',500));
+    const rabbitQualified=a.petAgility > a.petLevel + 50;
+    let reverseRabbitRaw=0;
+    if(rabbitQualified){
+      reverseRabbitRaw=Math.max(0,(targetPet-(a.mountLevel*0.15))/Math.max(.0001,a.high));
+    }else{
+      reverseRabbitRaw=Math.max(0,targetPet/(Math.max(.0001,a.high)*0.90));
+    }
+    const reverseNoRabbitRaw=Math.max(0,targetPet/Math.max(.0001,a.high));
+    const reverseRabbit=Math.ceil(reverseRabbitRaw);
+    const reverseNoRabbit=Math.ceil(reverseNoRabbitRaw);
+    set('mpsReverseRabbit',String(reverseRabbit));
+    set('mpsReverseNoRabbit',String(reverseNoRabbit));
+    set('mpsReverseSaved',String(reverseNoRabbit-reverseRabbit));
+    const reverseNote=document.getElementById('mpsReverseNote');
+    if(reverseNote){
+      reverseNote.innerHTML=rabbitQualified
+        ? '当前敏捷达标：动如脱兔按 <b>高敏后 + 坐骑等级×0.15</b> 反推。目标 '+fmt(targetPet,0)+' 速 → 带技能面板至少 <b>'+reverseRabbit+'</b>，不带技能至少 <b>'+reverseNoRabbit+'</b>。'
+        : '当前敏捷未达标：动如脱兔会 <b>降低10%速度</b>。目标 '+fmt(targetPet,0)+' 速 → 带技能反而需面板 <b>'+reverseRabbit+'</b>，不带技能只需 <b>'+reverseNoRabbit+'</b>。';
+    }
 
     const explain=document.getElementById('mpsRabbitExplain');
     if(explain){
@@ -16930,7 +16996,8 @@ window.MHXY_SECRET_TRAINING=(function(){
       array:a.arr,
       charMin:a.charMin,
       speed2,
-      mountLevel2
+      mountLevel2,
+      targetPetSpeed:targetPet
     });
   }
 
@@ -16946,7 +17013,8 @@ window.MHXY_SECRET_TRAINING=(function(){
       mpsArray:d.array??0.90,
       mpsCharRandMin:d.charMin??0.95,
       mpsPetSpeed2:d.speed2??440,
-      mpsMountLevel2:d.mountLevel2??187
+      mpsMountLevel2:d.mountLevel2??187,
+      mpsTargetPetSpeed:d.targetPetSpeed??500
     };
     Object.keys(defaults).forEach(id=>{
       const e=document.getElementById(id);
