@@ -7,7 +7,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>梦幻西游五开工具箱</title>
-<meta name="mhxy-app-version" content="8.20.79" />
+<meta name="mhxy-app-version" content="8.20.82" />
 <link rel="manifest" href="manifest.webmanifest" />
 <meta name="theme-color" content="#0b1020" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -6296,10 +6296,55 @@ body.theme-light #officialquiz .oq-info,body.theme-light #officialquiz .oq-coord
 @media(max-width:760px){#officialquiz .oq-info-grid,#officialquiz .oq-coords{grid-template-columns:1fr}#officialquiz .oq-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#officialquiz .oq-search{grid-template-columns:1fr}}
 @media(max-width:480px){#officialquiz .oq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
+
+<style id="mhxy-pet-wild-check-style">
+#petwildcheck .pwc-hero{border:1px solid rgba(168,85,247,.30);background:linear-gradient(135deg,rgba(88,28,135,.20),rgba(15,23,42,.45))}
+#petwildcheck .pwc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+#petwildcheck .pwc-head h2{margin:0;font-size:22px}
+#petwildcheck .pwc-head .sub{margin-top:5px;line-height:1.75}
+#petwildcheck .pwc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
+#petwildcheck .pwc-field{min-width:0}
+#petwildcheck .pwc-field label{display:block;color:var(--muted);font-size:11px;font-weight:800;margin-bottom:5px}
+#petwildcheck .pwc-field input,#petwildcheck .pwc-field select{width:100%;min-width:0}
+#petwildcheck .pwc-five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:11px}
+#petwildcheck .pwc-extra{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:11px}
+#petwildcheck .pwc-tip{margin-top:10px;padding:10px 12px;border:1px dashed rgba(148,163,184,.22);border-radius:10px;color:var(--muted);font-size:12px;line-height:1.75;background:rgba(15,23,42,.22)}
+#petwildcheck .pwc-tip b{color:var(--text)}
+#petwildcheck .pwc-result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
+#petwildcheck .pwc-stat{padding:12px;border:1px solid var(--border);border-radius:11px;background:var(--panel)}
+#petwildcheck .pwc-stat span{display:block;color:var(--muted);font-size:11px}
+#petwildcheck .pwc-stat b{display:block;margin-top:5px;font-size:19px;color:#a8d3ff}
+#petwildcheck .pwc-verdict{margin-top:12px;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--panel)}
+#petwildcheck .pwc-verdict strong{display:block;font-size:24px;line-height:1.35}
+#petwildcheck .pwc-verdict .pwc-vsub{margin-top:6px;color:var(--muted);line-height:1.7;font-size:13px}
+#petwildcheck .pwc-verdict.good{border-color:rgba(74,222,128,.42);background:rgba(22,101,52,.12)}
+#petwildcheck .pwc-verdict.fake{border-color:rgba(251,191,36,.42);background:rgba(120,53,15,.13)}
+#petwildcheck .pwc-verdict.wild{border-color:rgba(251,113,133,.45);background:rgba(127,29,29,.13)}
+#petwildcheck .pwc-verdict.warn{border-color:rgba(96,165,250,.40);background:rgba(30,64,175,.12)}
+#petwildcheck .pwc-formula{margin-top:11px;padding:11px 13px;border-radius:10px;background:rgba(15,23,42,.32);color:var(--muted);font-size:12px;line-height:1.8;word-break:break-word}
+#petwildcheck .pwc-formula b{color:var(--text)}
+#petwildcheck .pwc-alert{margin-top:10px;color:#fbbf24;font-size:12px;line-height:1.7}
+#petwildcheck .pwc-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+#petwildcheck .pwc-qj-box{margin-top:11px;padding:12px;border:1px solid rgba(251,191,36,.25);border-radius:11px;background:rgba(120,53,15,.08)}
+#petwildcheck .pwc-qj-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#petwildcheck .pwc-qj-chip{padding:9px 10px;border:1px solid var(--border);border-radius:9px;background:var(--panel);font-size:11px;color:var(--muted)}
+#petwildcheck .pwc-qj-chip b{display:block;margin-top:3px;font-size:17px;color:#fbbf24}
+#petwildcheck .pwc-qj-details{margin-top:9px}
+#petwildcheck .pwc-qj-details summary{cursor:pointer;color:#fbbf24;font-size:12px;font-weight:800}
+#petwildcheck .pwc-qj-table{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:9px}
+#petwildcheck .pwc-qj-cell{padding:7px 8px;border:1px solid var(--border);border-radius:8px;text-align:center;font-size:11px;color:var(--muted);background:rgba(15,23,42,.22)}
+#petwildcheck .pwc-qj-cell b{display:block;color:var(--text);font-size:12px;margin-bottom:2px}
+#petwildcheck .pwc-note-list{margin:8px 0 0;padding-left:20px;color:var(--muted);line-height:1.8;font-size:12px}
+body.theme-light #petwildcheck .pwc-stat,body.theme-light #petwildcheck .pwc-verdict{background:#fff;color:#17324a}
+body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-formula{background:#f7fafc;color:#58708c}
+@media(max-width:980px){#petwildcheck .pwc-grid,#petwildcheck .pwc-result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#petwildcheck .pwc-extra{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){#petwildcheck .pwc-five{grid-template-columns:repeat(2,minmax(0,1fr))}#petwildcheck .pwc-grid,#petwildcheck .pwc-result-grid,#petwildcheck .pwc-extra{grid-template-columns:1fr}#petwildcheck .pwc-qj-summary{grid-template-columns:repeat(2,minmax(0,1fr))}#petwildcheck .pwc-qj-table{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
 </head>
 <body class="organized-app">
 <div class="app">
-<aside class="side"><div class="brand">梦幻西游五开工具箱<small>主版本 v8.20.79 · Supabase云备份 · GitHub工具更新 · 数据保存在本机浏览器</small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
+<aside class="side"><div class="brand">梦幻西游五开工具箱<small>主版本 v8.20.82 · Supabase云备份 · GitHub工具更新 · 数据保存在本机浏览器</small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
+<button type="button" class="nav-item" data-tab="petwildcheck">🐾 宝宝野生判断</button>
 <button type="button" class="nav-item" data-tab="magicpetspeed">⚡ 法宠配速计算器</button>
 <button data-tab="petspeed">🐾 攻宠攻速查询</button><button data-tab="skillcost">技能消耗</button><button data-tab="attrcalc">属性换算</button><button data-tab="accounts">角色花费档案</button></div></div><div class="nav-group" data-group="system"><button type="button" class="nav-group-head" data-group-toggle="system"><span>设置</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="system"><button data-tab="datamgr">数据管理</button><button data-tab="settings">设置</button></div></div><div class="menu-order-tip">↕ 大类和小类都可拖动排序 · 点击标题折叠</div>
 </div></aside>
@@ -8607,6 +8652,107 @@ body.theme-light #officialquiz .oq-info,body.theme-light #officialquiz .oq-coord
 
 
 
+
+<section id="petwildcheck" class="page-section">
+  <div class="grid">
+    <div class="card w12 pwc-hero">
+      <div class="pwc-head">
+        <div>
+          <h2>🐾 宝宝野生 / 假宝宝判断</h2>
+          <div class="sub">按五维总属性反推“出生底子”，自动扣除进阶灵性、宝宝装备绿字、千金露、110额外属性和其他额外五维，区分真宝宝、0级野生（假宝宝）与纯野生。</div>
+        </div>
+        <span class="badge">五维还原法</span>
+      </div>
+      <div class="pwc-tip"><b>最关键：</b>输入的是召唤兽面板里的 <b>体质 / 魔力 / 力量 / 耐力 / 敏捷</b> 五项。若还有未分配潜能点，一定要填；宝宝装备只统计“体、魔、力、耐、敏”绿字，并按正负属性算<b>净值</b>；不要把装备的伤害、防御、速度、气血等基础属性算进去。</div>
+    </div>
+
+    <div class="card w12">
+      <h3>① 当前召唤兽</h3>
+      <div class="pwc-grid">
+        <div class="pwc-field"><label>召唤兽等级</label><input id="pwcLevel" type="number" min="0" max="200" step="1" value="109"></div>
+        <div class="pwc-field"><label>剩余潜能点（未分配）</label><input id="pwcPotential" type="number" min="0" step="1" value="0"></div>
+        <div class="pwc-field"><label>系统“鉴定宝宝”结果</label><select id="pwcAppraise"><option value="unknown">未知 / 没看</option><option value="yes">是</option><option value="no">否</option></select></div>
+        <div class="pwc-field"><label>当前灵性（未进阶填0）</label><input id="pwcSpirit" type="number" min="0" max="110" step="1" value="0"></div>
+      </div>
+      <div class="pwc-five">
+        <div class="pwc-field"><label>体质</label><input id="pwcCon" type="number" min="0" step="1" value="0"></div>
+        <div class="pwc-field"><label>魔力</label><input id="pwcMag" type="number" min="0" step="1" value="0"></div>
+        <div class="pwc-field"><label>力量</label><input id="pwcStr" type="number" min="0" step="1" value="0"></div>
+        <div class="pwc-field"><label>耐力</label><input id="pwcEnd" type="number" min="0" step="1" value="0"></div>
+        <div class="pwc-field"><label>敏捷</label><input id="pwcAgi" type="number" min="0" step="1" value="0"></div>
+      </div>
+    </div>
+
+    <div class="card w12">
+      <h3>② 需要扣除的额外五维</h3>
+      <div class="pwc-extra">
+        <div class="pwc-field"><label>宝宝装备1 · 五维绿字净值</label><input id="pwcEq1" type="number" step="1" value="0"><div class="sub">有减属性时按正负相抵，例如 +18力量 / -1体质 填17</div></div>
+        <div class="pwc-field"><label>宝宝装备2 · 五维绿字净值</label><input id="pwcEq2" type="number" step="1" value="0"></div>
+        <div class="pwc-field"><label>宝宝装备3 · 五维绿字净值</label><input id="pwcEq3" type="number" step="1" value="0"></div>
+        <div class="pwc-field"><label>千金露实际已吃数量</label><input id="pwcQianjin" type="number" min="0" step="1" value="0"><div class="sub" id="pwcQianjinHint"></div></div>
+        <div class="pwc-field"><label>110进阶额外五维合计</label><input id="pwcSpirit110" type="number" min="0" step="1" value="0"><div class="sub">吃过110后额外提升属性时填实际总点数</div></div>
+        <div class="pwc-field"><label>心得 / 其他永久额外五维</label><input id="pwcOther" type="number" min="0" step="1" value="0"><div class="sub">只有确实加到体魔力耐敏的才填</div></div>
+      </div>
+      <div class="pwc-qj-box">
+        <div class="pwc-qj-summary">
+          <div class="pwc-qj-chip">当前等级<b id="pwcQianjinLevel">109</b></div>
+          <div class="pwc-qj-chip">千金露累计上限<b id="pwcQianjinMax">6</b></div>
+          <div class="pwc-qj-chip">实际已吃<b id="pwcQianjinUsed">0</b></div>
+          <div class="pwc-qj-chip">按当前等级还可吃<b id="pwcQianjinRemain">6</b></div>
+        </div>
+        <details class="pwc-qj-details">
+          <summary>查看千金露等级上限表</summary>
+          <div class="pwc-qj-table">
+            <div class="pwc-qj-cell"><b>0–19级</b>1个</div>
+            <div class="pwc-qj-cell"><b>20–39级</b>2个</div>
+            <div class="pwc-qj-cell"><b>40–59级</b>3个</div>
+            <div class="pwc-qj-cell"><b>60–79级</b>4个</div>
+            <div class="pwc-qj-cell"><b>80–99级</b>5个</div>
+            <div class="pwc-qj-cell"><b>100–119级</b>6个</div>
+            <div class="pwc-qj-cell"><b>120–139级</b>7个</div>
+            <div class="pwc-qj-cell"><b>140–159级</b>8个</div>
+            <div class="pwc-qj-cell"><b>160–179级</b>9个</div>
+            <div class="pwc-qj-cell"><b>180级及以上</b>10个（封顶）</div>
+          </div>
+          <div class="sub" style="margin-top:8px">规则：每只召唤兽累计可用数量 = ⌊等级÷20⌋ + 1，最多10个；每吃1个随机增加1点五维属性，因此野生判断时按“实际已吃数量”逐点扣除。</div>
+        </details>
+      </div>
+      <div class="pwc-tip"><b>进阶：</b>按“1点灵性 = 2点额外属性”扣除。<b>110额外属性</b>单独填写，不和灵性×2重复。若110后吃过额外提升属性的道具但不知道具体加了多少，结果只能作为参考，不能硬判。</div>
+    </div>
+
+    <div class="card w12">
+      <h3>③ 判断结果</h3>
+      <div class="pwc-result-grid">
+        <div class="pwc-stat"><span>当前五维合计</span><b id="pwcPanelSum">0</b></div>
+        <div class="pwc-stat"><span>额外因素合计</span><b id="pwcExtraSum">0</b></div>
+        <div class="pwc-stat"><span>还原后基础总属性</span><b id="pwcBaseSum">0</b></div>
+        <div class="pwc-stat"><span>相对真宝宝少 / 多</span><b id="pwcBabyDiff">-</b></div>
+      </div>
+      <div id="pwcVerdict" class="pwc-verdict warn"><strong>请填写五维属性</strong><div class="pwc-vsub">填写后自动判断。</div></div>
+      <div id="pwcFormula" class="pwc-formula"></div>
+      <div id="pwcAlert" class="pwc-alert"></div>
+      <div class="pwc-actions"><button type="button" class="miniBtn" id="pwcClear">清空</button><button type="button" class="miniBtn" id="pwcExampleFake">载入假宝宝示例</button><button type="button" class="miniBtn" id="pwcCopy">复制判断结果</button><span class="sub" id="pwcMsg"></span></div>
+    </div>
+
+    <div class="card w12">
+      <details>
+        <summary>判断规则 / 容易算错的地方</summary>
+        <ul class="pwc-note-list">
+          <li><b>真宝宝 / 变异宝宝基线：</b>0级初始100点；每升1级总共增加10点，所以基础总属性应为 <b>100 + 等级×10</b>。</li>
+          <li><b>0级野生（俗称假宝宝）：</b>0级初始50点；升级规则和宝宝一致，所以基础总属性应为 <b>50 + 等级×10</b>，固定比真宝宝少50点。</li>
+          <li><b>纯野生：</b>通常还原后会低于“50 + 等级×10”，而且可能少得更多；如果结果落在50和100两条基线之间，不要强判，优先检查有没有漏填额外五维。</li>
+          <li><b>剩余潜能点必须加回：</b>如意丹只是把已分配属性变成潜能，不改变总点数；只加五维而漏掉潜能，会把真宝宝误判成野生。</li>
+          <li><b>装备按五维绿字净值扣：</b>体、魔、力、耐、敏有“减少”属性时要带负号相抵；装备基础伤害、防御、速度、气血等不参与这个公式。</li>
+          <li><b>千金露按等级分档：</b>累计上限为 <b>⌊等级÷20⌋+1</b>，最多10个；每个随机增加1点五维，所以判断时扣除的是“实际已吃数量”，不是当前还能吃几个。</li>
+          <li><b>只差1点时：</b>不再直接显示“无法判定”。工具会标为“高度符合”对应基线，并告诉你反推还差几点评估；这不是游戏存在1点随机误差，而是为了提示通常还有1点额外五维或录入项需要核对。</li>
+          <li><b>元宵、炼兽真经：</b>主要改变资质 / 成长，不直接改变五维总点，不参与野生判断。</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+
 <section id="secrettraining" class="page-section">
   <div class="card w12 secret-training-card">
     <div class="section-head">
@@ -8924,7 +9070,7 @@ body.theme-light #officialquiz .oq-info,body.theme-light #officialquiz .oq-coord
   <button type="button" onclick="localStorage.removeItem('mhxy_feature_order_v18');location.reload()">恢复默认排序</button>
 </div>
 <div class="grid"><div class="card w6"><h3>金价设置</h3><div class="row"><div class="field"><label>人民币（元）</label><input id="setRmb" type="number" value="220"></div><div class="field"><label>对应游戏币（万）</label><input id="setGold" type="number" value="3000"></div></div></div><div class="card w6"><h3>武器换算参数</h3><div class="row"><div class="field"><label>多少伤害 = 1法伤</label><input id="setDamageRatio" type="number" value="4" step="0.1"></div><div class="field"><label>1魔力 = 法伤</label><input id="setMagicCoef" type="number" value="0.7" step="0.01"></div></div><div class="row"><div class="field"><label>1力量 = 法伤</label><input id="setStrCoef" type="number" value="0.4" step="0.01"></div><div class="field"><label>1体质 = 法伤</label><input id="setConCoef" type="number" value="0.3" step="0.01"></div></div><div class="row"><div class="field"><label>1耐力 = 法伤</label><input id="setEndCoef" type="number" value="0.2" step="0.01"></div><div class="field"><label>1敏捷 = 法伤</label><input id="setAgiCoef" type="number" value="0" step="0.01"></div></div></div><div class="card w12"><button class="primary" id="saveSettings">保存设置</button> <span class="note" id="saveMsg"></span></div></div></section>
-</div><div class="footer">梦幻西游五开工具箱 v8.20.79 · 非官方工具 · Supabase负责数据云备份，GitHub只维护 index.html</div></main></div>
+</div><div class="footer">梦幻西游五开工具箱 v8.20.82 · 非官方工具 · Supabase负责数据云备份，GitHub只维护 index.html</div></main></div>
 <script>
 const expByLevel=[0,150,210,290,390,510,650,810,990,1190,1410,1650,1910,2190,2490,2810,3150,3510,3890,4290,4710,5150,5610,6090,6590,7110];
 const defaults={rmb:220,gold:3000,damageRatio:4,magicCoef:.7,strCoef:.4,conCoef:.3,endCoef:.2,agiCoef:0};
@@ -17678,6 +17824,132 @@ window.MHXY_APPEARANCE=(function(){
 })();
 
 </script>
+
+<script id="mhxy-pet-wild-check-script">
+/* v8.20.82 宝宝野生 / 假宝宝判断：还原五维总属性，兼容进阶、装备、千金露、110额外与未分配潜能。 */
+(function(){
+  'use strict';
+  const KEY='mhxy_pet_wild_check_v1';
+  const ids=['Level','Potential','Appraise','Spirit','Con','Mag','Str','End','Agi','Eq1','Eq2','Eq3','Qianjin','Spirit110','Other'];
+  const $=x=>document.getElementById('pwc'+x);
+  const num=x=>Math.max(0,Number($(x)?.value)||0);
+  const intval=x=>Math.max(0,Math.floor(num(x)));
+  const signedInt=x=>{const e=$(x);const v=Number(e?.value);return Number.isFinite(v)?Math.trunc(v):0};
+  function save(){
+    try{const o={};ids.forEach(k=>{const e=$(k);if(e)o[k]=e.value});localStorage.setItem(KEY,JSON.stringify(o));}catch(e){}
+  }
+  function load(){
+    try{const o=JSON.parse(localStorage.getItem(KEY)||'null');if(o)ids.forEach(k=>{const e=$(k);if(e&&o[k]!==undefined)e.value=o[k]});}catch(e){}
+  }
+  function fmt(n){return Number(n||0).toLocaleString('zh-CN',{maximumFractionDigits:2})}
+  function calculate(){
+    const level=intval('Level');
+    const stats=['Con','Mag','Str','End','Agi'].map(intval);
+    const panel=stats.reduce((a,b)=>a+b,0);
+    const potential=intval('Potential');
+    const spirit=intval('Spirit');
+    const eq=signedInt('Eq1')+signedInt('Eq2')+signedInt('Eq3');
+    const qianjin=intval('Qianjin');
+    const extra110=intval('Spirit110');
+    const other=intval('Other');
+    const spiritPts=spirit*2;
+    const extra=eq+qianjin+spiritPts+extra110+other;
+    const base=panel+potential-extra;
+    const baby=100+level*10;
+    const fake=50+level*10;
+    const diffBaby=base-baby;
+    const diffFake=base-fake;
+    const maxQ=Math.min(10,Math.floor(level/20)+1);
+    const appraise=$('Appraise')?.value||'unknown';
+
+    $('PanelSum').textContent=fmt(panel);
+    $('ExtraSum').textContent=fmt(extra);
+    $('BaseSum').textContent=fmt(base);
+    $('BabyDiff').textContent=(diffBaby===0?'0':(diffBaby>0?'+':'')+fmt(diffBaby));
+    $('QianjinHint').textContent='当前 '+level+' 级：累计上限 '+maxQ+' 个；已吃 '+qianjin+' 个';
+    if($('QianjinLevel'))$('QianjinLevel').textContent=level;
+    if($('QianjinMax'))$('QianjinMax').textContent=maxQ;
+    if($('QianjinUsed'))$('QianjinUsed').textContent=qianjin;
+    if($('QianjinRemain'))$('QianjinRemain').textContent=Math.max(0,maxQ-qianjin);
+
+    const v=$('Verdict'); let title='',sub='',cls='warn';
+    const hasInput=panel>0;
+    if(!hasInput){title='请填写五维属性';sub='至少填入体质、魔力、力量、耐力、敏捷后再判断。';cls='warn';}
+    else if(base===baby){
+      title='符合真宝宝 / 变异宝宝属性点基线';
+      sub='还原后基础总属性 = '+fmt(baby)+'，正好等于 100 + '+level+'×10。';
+      cls='good';
+    }else if(Math.abs(diffBaby)===1){
+      title='高度符合真宝宝：只差 1 点';
+      if(diffBaby>0){
+        sub='还原值只比真宝宝基线多1点，说明还有1点额外五维没扣干净；与假宝宝仍相差49点。优先检查宝宝装备绿字净值、实际千金露、110额外或其他永久五维。';
+      }else{
+        sub='还原值只比真宝宝基线少1点，通常是某项额外因素多扣1点，或面板/剩余潜能少填1点；与假宝宝仍相差49点。';
+      }
+      cls='good';
+    }else if(base===fake){
+      title='符合 0级野生（假宝宝）';
+      sub='还原后基础总属性 = '+fmt(fake)+'，正好等于 50 + '+level+'×10；相对真宝宝固定少50点。';
+      cls='fake';
+    }else if(Math.abs(diffFake)===1){
+      title='高度符合 0级野生（假宝宝）：只差 1 点';
+      sub='还原值与假宝宝基线只差1点，优先核对装备绿字净值、千金露和其他额外五维；它与真宝宝基线仍相差约50点。';
+      cls='fake';
+    }else if(base<fake){
+      title='高度符合纯野生';
+      sub='还原后比假宝宝基线还少 '+fmt(fake-base)+' 点，相对同等级真宝宝少 '+fmt(baby-base)+' 点。';
+      cls='wild';
+    }else if(base>baby){
+      title='暂时无法判定：还有额外五维未扣';
+      sub='高出真宝宝理论值 '+fmt(base-baby)+' 点；反推至少还漏了 '+fmt(base-baby)+' 点额外五维。优先检查装备绿字净值、千金露、110额外和其他永久五维。';
+      cls='warn';
+    }else{
+      title='非标准区间，先不要强判';
+      sub='还原值介于假宝宝 '+fmt(fake)+' 和真宝宝 '+fmt(baby)+' 之间；优先检查剩余潜能、装备绿字净值、千金露、110额外属性和其他五维是否漏填。';
+      cls='warn';
+    }
+    v.className='pwc-verdict '+cls;v.innerHTML='<strong>'+title+'</strong><div class="pwc-vsub">'+sub+'</div>';
+    $('Formula').innerHTML='<b>还原：</b>（当前五维 '+fmt(panel)+' + 剩余潜能 '+fmt(potential)+'）－ 装备五维 '+fmt(eq)+' － 灵性 '+spirit+'×2（'+fmt(spiritPts)+'）－ 千金露 '+fmt(qianjin)+' － 110额外 '+fmt(extra110)+' － 其他额外 '+fmt(other)+' = <b>'+fmt(base)+'</b><br><b>两条基线：</b>真宝宝 '+fmt(baby)+' ｜ 假宝宝 '+fmt(fake)+'。';
+
+    const alerts=[];
+    if(qianjin>maxQ)alerts.push('千金露已吃 '+qianjin+' 个，超过当前 '+level+' 级通常累计上限 '+maxQ+' 个；若没有发生过高等级使用后再降级，请检查输入。');
+    if(spirit>110)alerts.push('灵性通常不应超过110，请确认。');
+    if(spirit===110&&extra110===0)alerts.push('当前是110灵性：如果曾额外提升过五维属性，必须把那部分填到“110进阶额外五维合计”，否则会误判。');
+    if(appraise==='yes'&&hasInput&&Math.abs(diffBaby)>1)alerts.push('系统鉴定填写为“是”，但属性反推与真宝宝基线相差 '+fmt(Math.abs(diffBaby))+' 点；建议检查额外五维和输入项。');
+    if(appraise==='no'&&hasInput&&Math.abs(diffBaby)<=1)alerts.push('系统鉴定填写为“否”，但属性点非常接近真宝宝基线；不要只按总点下结论，优先检查是否漏了额外五维。');
+    if(base<0)alerts.push('还原值出现负数，额外因素明显填多了。');
+    $('Alert').textContent=alerts.join('　');
+    save();
+    return {level,panel,potential,eq,spirit,spiritPts,qianjin,extra110,other,base,baby,fake,title,sub};
+  }
+  function clearAll(){
+    const defaults={Level:109,Potential:0,Appraise:'unknown',Spirit:0,Con:0,Mag:0,Str:0,End:0,Agi:0,Eq1:0,Eq2:0,Eq3:0,Qianjin:0,Spirit110:0,Other:0};
+    Object.entries(defaults).forEach(([k,v])=>{if($(k))$(k).value=v});
+    calculate();$('Msg').textContent='已清空';setTimeout(()=>$('Msg').textContent='',1200);
+  }
+  function fakeExample(){
+    // 109级假宝宝：基础=1140；示例叠加100灵性(200点)、2点千金露、三件装备共30点，全部已分配。
+    const d={Level:109,Potential:0,Appraise:'no',Spirit:100,Con:119,Mag:119,Str:1004,End:119,Agi:11,Eq1:10,Eq2:10,Eq3:10,Qianjin:2,Spirit110:0,Other:0};
+    // 上述五维合计1372，扣232=1140。
+    Object.entries(d).forEach(([k,v])=>{if($(k))$(k).value=v});calculate();$('Msg').textContent='已载入109级假宝宝演示数据';
+  }
+  function copyResult(){
+    const r=calculate();
+    const text='宝宝野生判断：'+r.title+'\n等级：'+r.level+'\n当前五维：'+r.panel+'，剩余潜能：'+r.potential+'\n装备五维：'+r.eq+'，灵性：'+r.spirit+'（+'+r.spiritPts+'），千金露：'+r.qianjin+'，110额外：'+r.extra110+'，其他：'+r.other+'\n还原基础总属性：'+r.base+'\n真宝宝基线：'+r.baby+'，假宝宝基线：'+r.fake+'\n'+r.sub;
+    if(navigator.clipboard?.writeText)navigator.clipboard.writeText(text).then(()=>{$('Msg').textContent='已复制';setTimeout(()=>$('Msg').textContent='',1200)}).catch(()=>{});
+    else $('Msg').textContent='浏览器不支持自动复制';
+  }
+  function boot(){
+    if(!$('Level'))return;
+    load();
+    ids.forEach(k=>{const e=$(k);if(e){e.addEventListener('input',calculate);e.addEventListener('change',calculate)}});
+    $('Clear').onclick=clearAll;$('ExampleFake').onclick=fakeExample;$('Copy').onclick=copyResult;
+    calculate();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+
 <script>
 /* Presentation consolidation. Existing data keys and calculation APIs stay intact. */
 (function(){
@@ -17697,6 +17969,7 @@ window.MHXY_APPEARANCE=(function(){
   {group:'计算工具',label:'灵饰与玉魄',icon:'◈',pages:[['fullgearcompare','整套对比'],['physicalspiritcompare','物理配装'],['jadecompare','玉魄单件'],['spiritdamage','灵饰等效法伤']]},
   {group:'计算工具',label:'暴击与属性',icon:'±',pages:[['critvsdirect','暴击 / 直伤'],['spellcritalloc','法伤 / 法爆分配'],['critdamagealloc','伤害 / 物暴分配'],['critconvert','暴击等级换算'],['attrcalc','属性点换算']]},
   {group:'计算工具',label:'配速与达标',icon:'⚡',pages:[['speedstandard','任务属性达标'],['magicpetspeed','法宠配速'],['petspeed','攻宠动作速度']]},
+  {group:'计算工具',label:'宝宝判断',icon:'🐾',pages:[['petwildcheck','野生 / 假宝宝判断']]},
   {group:'资料与设置',label:'任务攻略',icon:'▤',pages:[['customguides','攻略库'],['mentor','师徒旗点 / 收益'],['escort','押镖收益'],['pocketguide','口袋版工具']]},
   {group:'资料与设置',label:'官方题库',icon:'🎓',pages:[['officialquiz','2026教师节 / 官方题库']]},
   {group:'资料与设置',label:'设置与备份',icon:'⚙',pages:[['settings','设置'],['datamgr','备份与恢复']]}
@@ -19281,7 +19554,7 @@ body.theme-light #pricelib .pl-reset-btn{background:#fff!important;border-color:
 <script>
 (function(){
 'use strict';
-window.MHXY_APP_VERSION='8.20.79';
+window.MHXY_APP_VERSION='8.20.82';
 const RAW_INDEX='https://raw.githubusercontent.com/Bojack666/MHXY/main/index.html';
 const REPO_URL='https://github.com/Bojack666/MHXY';
 const KEY='mhxy_github_updater_v2';
