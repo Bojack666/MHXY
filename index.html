@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<style>@layer toolbox-folding;</style>
+<style>@layer toolbox-folding;
+/* v8.20.86 全局物价唯一来源：可交易消耗不再在计算页维护第二套价格 */
+input[readonly][id="fruitPrice"],input[readonly][id="pillPrice"],input[readonly][id="gemBasePrice"],input[readonly][id="gemFinishedPrice"],input[readonly][id="bellBasePrice"],input[readonly][id="gcMhb1"],input[readonly][id="gcGoldRate"],input[readonly][id="gcPriceMode"],input[readonly][id="ctGoldPrice"]{background:#101827!important;color:#93c5fd!important;border-color:#355173!important;font-weight:800}
+</style>
 <style>@layer toolbox-colors;</style>
 <style>@layer profile-clarity;</style>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>梦幻西游五开工具箱</title>
-<meta name="mhxy-app-version" content="8.20.84" />
+<meta name="mhxy-app-version" content="8.20.85" />
 <link rel="manifest" href="manifest.webmanifest" />
 <meta name="theme-color" content="#0b1020" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -999,7 +1002,7 @@ input[data-fruit-price]:focus{
 .repair-target-list{display:grid;gap:8px}
 .repair-target-row{
   display:grid;
-  grid-template-columns:70px 1fr 26px 1fr 58px;
+  grid-template-columns:70px 1fr 1.15fr 26px 1fr 58px;
   gap:8px;
   align-items:end;
   padding:9px 10px;
@@ -1016,14 +1019,15 @@ input[data-fruit-price]:focus{
   background:#0b1424;color:#fff;border:1px solid #3b4e6d
 }
 .repair-target-row input[data-repair-current]{color:#bfdbfe;border-color:rgba(96,165,250,.42);font-weight:900}
+.repair-target-row input[data-repair-progress]{color:#c4b5fd;border-color:rgba(167,139,250,.42);font-weight:900}
 .repair-target-row input[data-repair-target]{color:#fde68a;border-color:rgba(251,191,36,.36);font-weight:900}
 .repair-arrow{align-self:center;text-align:center;color:#64748b;font-weight:900}
 .repair-target-state{align-self:center;text-align:right;font-size:9px;font-weight:900}
 .repair-target-row.need .repair-target-state{color:#fb7185}
 .repair-target-row.done .repair-target-state{color:#86efac}
 @media(max-width:700px){
-  .repair-target-row{grid-template-columns:58px 1fr 20px 1fr}
-  .repair-target-state{grid-column:2/5;text-align:left}
+  .repair-target-row{grid-template-columns:58px 1fr 1fr 20px 1fr}
+  .repair-target-state{grid-column:2/6;text-align:left}
 }
 
 
@@ -1251,7 +1255,7 @@ input[data-fruit-price]:focus{
 @media(max-width:620px){
   .repair-cost-grid{grid-template-columns:1fr}
   .potential-gap-row{grid-template-columns:1fr}
-  .repair-target-row{grid-template-columns:78px 1fr 20px 1fr!important}
+  .repair-target-row{grid-template-columns:78px 1fr 1fr 20px 1fr!important}
 }
 
 
@@ -6340,10 +6344,22 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
 @media(max-width:980px){#petwildcheck .pwc-grid,#petwildcheck .pwc-result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#petwildcheck .pwc-extra{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){#petwildcheck .pwc-five{grid-template-columns:repeat(2,minmax(0,1fr))}#petwildcheck .pwc-grid,#petwildcheck .pwc-result-grid,#petwildcheck .pwc-extra{grid-template-columns:1fr}#petwildcheck .pwc-qj-summary{grid-template-columns:repeat(2,minmax(0,1fr))}#petwildcheck .pwc-qj-table{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
+
+<style>
+/* v8.20.86 潜能果 / 修炼本级进度 */
+.potential-planner-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.potential-planner-grid>div{padding:10px;border:1px solid rgba(250,204,21,.18);border-radius:9px;background:rgba(250,204,21,.035)}
+.potential-planner-grid span{display:block;font-size:10px;color:#91a6c4}
+.potential-planner-grid b{display:block;margin-top:4px;font-size:14px;color:#fde68a}
+.potential-profile-hint{margin-top:10px;padding:10px 12px;border:1px solid rgba(250,204,21,.16);border-radius:9px;background:rgba(250,204,21,.035);line-height:1.7}
+.potential-profile-hint strong{color:#fde68a}
+.repair-next-hint{color:#c4b5fd;font-weight:800}
+@media(max-width:700px){.potential-planner-grid{grid-template-columns:1fr 1fr}}
+</style>
 </head>
 <body class="organized-app">
 <div class="app">
-<aside class="side"><div class="brand">梦幻西游五开工具箱<small>主版本 v8.20.84 · Supabase云备份 · GitHub工具更新 · 数据保存在本机浏览器</small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
+<aside class="side"><div class="brand">梦幻西游五开工具箱<small>主版本 v8.20.86 · Supabase云备份 · GitHub工具更新 · 数据保存在本机浏览器</small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
 <button type="button" class="nav-item" data-tab="petwildcheck">🐾 宝宝野生判断</button>
 <button type="button" class="nav-item" data-tab="magicpetspeed">⚡ 法宠配速计算器</button>
 <button data-tab="petspeed">🐾 攻宠攻速查询</button><button data-tab="skillcost">技能消耗</button><button data-tab="attrcalc">属性换算</button><button data-tab="accounts">角色花费档案</button></div></div><div class="nav-group" data-group="system"><button type="button" class="nav-group-head" data-group-toggle="system"><span>设置</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="system"><button data-tab="datamgr">数据管理</button><button data-tab="settings">设置</button></div></div><div class="menu-order-tip">↕ 大类和小类都可拖动排序 · 点击标题折叠</div>
@@ -6477,12 +6493,18 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
   <div class="field"><label>修炼类型</label><select id="humanType"><option value="attack">攻击 / 法术</option><option value="defense">防御 / 抗法</option></select></div>
   <div class="field"><label>点修模式</label><select id="humanMode"><option value="normal">普通资材点修</option><option value="nomat">免资材点修</option></select></div>
 </div>
-<div class="field"><label>当前历史帮贡（可选）</label><input id="humanCurrentBg" type="number" value="0" min="0" step="1" placeholder="用于计算还差多少历史帮贡"></div>
+<div class="row"><div class="field"><label>当前本级修炼经验</label><input id="humanCurrentExp" type="number" value="0" min="0" step="1" placeholder="例如10级已有655"></div><div class="field"><label>当前历史帮贡（可选）</label><input id="humanCurrentBg" type="number" value="0" min="0" step="1" placeholder="用于计算还差多少历史帮贡"></div></div>
 <div class="result" id="humanResult"></div>
 <div class="note" style="margin-top:8px">普通资材点修：不扣帮贡，但要求历史帮贡达到目标修炼等级×150；每次10点修炼经验消耗5点帮派资材。免资材点修：不消耗资材，但会实际扣帮贡和三界功绩。</div>
 </div>
-<div class="card w6"><h3>召唤兽修炼 / 修炼果</h3><div class="row"><div class="field"><label>当前等级</label><select id="petStart"></select></div><div class="field"><label>目标等级</label><select id="petEnd"></select></div></div><div class="field"><label>修炼果单价（万）</label><input id="fruitPrice" type="number" value="96" step="0.1"></div><div class="result" id="petResult"></div></div>
-<div class="card w12"><h3>九转金丹对比</h3><div class="row3"><div class="field"><label>九转金丹品质</label><input id="pillQuality" type="number" value="100"></div><div class="field"><label>单颗价格（万）</label><input id="pillPrice" type="number" value="180"></div><div class="field"><label>目标所需修炼经验</label><input id="pillExpNeed" type="number" value="1000"></div></div><div class="result" id="pillResult"></div></div></div></section>
+<div class="card w6"><h3>召唤兽修炼 / 修炼果</h3><div class="row"><div class="field"><label>当前等级</label><select id="petStart"></select></div><div class="field"><label>目标等级</label><select id="petEnd"></select></div></div><div class="row"><div class="field"><label>当前本级修炼经验</label><input id="petCurrentExp" type="number" value="0" min="0" step="1" placeholder="例如10级已有655"></div><div class="field"><label>修炼果单价（万 · 全局物价库）</label><input id="fruitPrice" type="number" value="0" step="0.1" readonly title="价格统一来自全局物价库"></div></div><div class="result" id="petResult"></div></div>
+<div class="card w12"><h3>潜能果经验规划 <span class="badge">等级上限 + 当前经验可换多少</span></h3>
+<div class="row3"><div class="field"><label>人物等级</label><input id="potentialLevel" type="number" value="109" min="1" max="200"></div><div class="field"><label>当前潜能果</label><input id="potentialCurrent" type="number" value="0" min="0" max="200"></div><div class="field"><label>当前人物经验（万）</label><input id="potentialCurrentExp" type="number" value="0" min="0" step="1" placeholder="直接填档案里当前经验"></div></div>
+<div class="row"><div class="field"><label>计划目标（可自己改）</label><input id="potentialTarget" type="number" value="100" min="0" max="200"></div><div class="field"><label>当前等级可兑换上限</label><input id="potentialCap" type="number" value="100" readonly></div></div>
+<div class="result" id="potentialResult"></div>
+<div class="note">按当前经验全部用于兑换潜能果测算。等级上限：60～89级50个，90～154级100个，155～169级150个，170级及以上200个；计划目标可以低于满潜能自行填写。</div>
+</div>
+<div class="card w12"><h3>九转金丹对比</h3><div class="row3"><div class="field"><label>九转金丹品质</label><input id="pillQuality" type="number" value="100"></div><div class="field"><label>单颗价格（万 · 全局物价库）</label><input id="pillPrice" type="number" value="0" readonly title="按全局物价库的九转金丹每品价格 × 当前品质自动换算"></div><div class="field"><label>目标所需修炼经验</label><input id="pillExpNeed" type="number" value="1000"></div></div><div class="result" id="pillResult"></div><div class="note">市场价格只读取「全局物价库」。九转金丹按物价库中的“每品价格”×本页品质计算单颗价格。</div></div></div></section>
 <section id="weapon"><div class="grid">
 <div class="card w8"><h3>武器属性输入</h3>
 <div class="row3"><div class="field"><label>种族</label><select id="weaponRace"><option value="human">人族</option><option value="demon">魔族</option><option value="immortal">仙族</option></select></div><div class="field"><label>武器伤害</label><input id="weaponDamage" type="number" value="400"></div><div class="field"><label>武器命中</label><input id="weaponHit" type="number" value="0"></div></div>
@@ -6543,12 +6565,12 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
   </div>
 </div></section>
 
-<section id="gem"><div class="grid"><div class="card w6"><h3>宝石合成成本</h3><div class="row"><div class="field"><label>起始宝石等级</label><select id="gemStart"></select></div><div class="field"><label>目标等级</label><select id="gemTarget"></select></div></div><div class="field"><label>起始等级单颗价格（万）</label><input id="gemBasePrice" type="number" value="10" step="0.1"></div><div class="field"><label>需要几颗目标宝石</label><input id="gemQty" type="number" value="1" min="1"></div><div class="result" id="gemResult"></div></div><div class="card w6"><h3>成品 vs 自合</h3><div class="field"><label>目标等级成品单价（万）</label><input id="gemFinishedPrice" type="number" value="0" step="0.1"></div><div class="result" id="gemCompare"></div><div class="note">默认按“2颗同级合1颗高一级”计算理论材料量；暂不计合成失败、体力等额外成本。</div></div></div></section>
+<section id="gem"><div class="grid"><div class="card w6"><h3>宝石合成成本</h3><div class="field"><label>宝石类型</label><select id="gemType"><option>太阳石</option><option>月亮石</option><option>舍利子</option><option>黑宝石</option><option>光芒石</option><option>红玛瑙</option><option>翡翠石</option><option>神秘石</option></select></div><div class="row"><div class="field"><label>起始宝石等级</label><select id="gemStart"></select></div><div class="field"><label>目标等级</label><select id="gemTarget"></select></div></div><div class="field"><label>起始等级单颗价格（万 · 全局物价库）</label><input id="gemBasePrice" type="number" value="0" step="0.1" readonly></div><div class="field"><label>需要几颗目标宝石</label><input id="gemQty" type="number" value="1" min="1"></div><div class="result" id="gemResult"></div></div><div class="card w6"><h3>成品 vs 自合</h3><div class="field"><label>目标等级成品单价（万 · 全局物价库）</label><input id="gemFinishedPrice" type="number" value="0" step="0.1" readonly></div><div class="result" id="gemCompare"></div><div class="note">宝石价格只读取「全局物价库」，等级价按物价库的等级基准自动联动；不再在本页维护第二套市场价。</div></div></div></section>
 <section id="bell"><div class="grid">
 <div class="card w8"><h3>钟灵石合成成本 <span class="badge">新版固定规则</span></h3>
 <div class="row3"><div class="field"><label>起始等级</label><select id="bellStart"></select></div>
 <div class="field"><label>目标等级</label><select id="bellTarget"></select></div>
-<div class="field"><label>起始材料单价（万）</label><input id="bellBasePrice" type="number" value="20" step="0.1"></div></div>
+<div class="field"><label>起始材料单价（万 · 全局物价库）</label><input id="bellBasePrice" type="number" value="0" step="0.1" readonly title="价格统一来自全局物价库：钟灵石"></div></div>
 <div class="row3"><div class="field"><label>目标数量</label><input id="bellQty" type="number" value="1" min="1"></div>
 <div class="field"><label>成功率</label><input id="bellSuccess" value="100" readonly></div>
 <div class="field"><label>模式</label><input id="bellRatio" value="2" readonly style="display:none"><input value="固定材料数" readonly></div></div>
@@ -7488,7 +7510,7 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
 <section id="costtracker"><div class="grid">
 <div class="card w12"><h3>跑环 / 上古玉魄成本记录</h3><div class="toolbar"><select id="ctMode"><option value="ring">跑环记录</option><option value="jade">玉魄成本</option><option value="custom">自定义项目</option></select><button id="ctReset">重置本次</button><button id="ctSave">保存本次记录</button></div><div class="note">点一下物品就累计1次和对应成本。价格优先读取全局物价库，也可在本页临时修改。</div></div>
 <div class="card w8"><h3>物品快速记账</h3><div id="ctItems" class="ct-item-grid"></div><div class="toolbar"><button id="ctAddItem">+ 添加本次物品</button><button data-tab-jump="pricelib">管理全局物价库</button></div></div>
-<div class="card w4"><h3>本次统计</h3><div class="field"><label>当前金价（元 / 3000万）</label><input id="ctGoldPrice" type="number" value="220"></div><div class="field"><label>额外游戏币成本（万）</label><input id="ctExtraGame" type="number" value="0"></div><div class="field"><label>额外RMB成本（元）</label><input id="ctExtraRmb" type="number" value="0"></div><div class="result" id="ctSummary"></div></div>
+<div class="card w4"><h3>本次统计</h3><div class="field"><label>当前金价（元 / 3000万 · 全局金价）</label><input id="ctGoldPrice" type="number" value="0" readonly title="金价统一来自金价与物价设置"></div><div class="field"><label>额外游戏币成本（万）</label><input id="ctExtraGame" type="number" value="0"></div><div class="field"><label>额外RMB成本（元）</label><input id="ctExtraRmb" type="number" value="0"></div><div class="result" id="ctSummary"></div></div>
 <div class="card w12"><h3>本次明细</h3><div class="scrollX"><table class="table"><thead><tr><th>物品</th><th>单价(万)</th><th>次数</th><th>小计(万)</th><th>约合RMB</th><th>操作</th></tr></thead><tbody id="ctDetail"></tbody></table></div></div>
 <div class="card w12"><h3>历史成本记录</h3><div class="scrollX"><table class="table"><thead><tr><th>时间</th><th>类型</th><th>游戏币成本</th><th>RMB成本</th><th>次数</th><th>备注</th><th>操作</th></tr></thead><tbody id="ctHistory"></tbody></table></div></div>
 </div></section>
@@ -8442,24 +8464,24 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
           <option value="gem">普通宝石（2合1）</option>
         </select>
       </div>
-      <div class="field"><label>当前锻数</label><input id="gcFrom" type="number" value="0" min="0" max="20"></div>
-      <div class="field"><label>目标锻数</label><input id="gcTo" type="number" value="6" min="1" max="20"></div>
+      <div class="field" id="gcGemNameField"><label>普通宝石类型</label><select id="gcGemName"><option>太阳石</option><option>月亮石</option><option>舍利子</option><option>黑宝石</option><option>光芒石</option><option>红玛瑙</option><option>翡翠石</option><option>神秘石</option></select></div>
+      <div class="field"><label>当前 / 目标锻数</label><div class="row"><input id="gcFrom" type="number" value="0" min="0" max="20"><input id="gcTo" type="number" value="6" min="1" max="20"></div></div>
     </div>
     <div class="row3">
-      <div class="field"><label>1级单价（MHB）</label><input id="gcMhb1" type="number" value="0" min="0"></div>
-      <div class="field"><label>3000万MHB = RMB</label><input id="gcGoldRate" type="number" value="220" min="0" step="1"></div>
-      <div class="field"><label>计算方式</label><select id="gcPriceMode"><option value="mhb">按1级MHB理论合成</option><option value="market">优先用已录入市场价</option></select></div>
+      <div class="field"><label>1级单价（MHB · 全局物价库）</label><input id="gcMhb1" type="number" value="0" min="0" readonly></div>
+      <div class="field"><label>3000万MHB = RMB</label><input id="gcGoldRate" type="number" value="220" min="0" step="1" readonly></div>
+      <div class="field"><label>价格来源</label><input id="gcPriceMode" value="全局物价库（自动联动）" readonly></div>
     </div>
   </div>
 
   <div class="card w6">
-    <h3>RMB市场参考价</h3>
-    <div class="note">你给的星辉石参考：5级 ¥89、6级 ¥300。价格都可以自己改。</div>
+    <h3>RMB换算参考</h3>
+    <div class="note">各等级价格由全局物价库换算；人民币金额使用“金价与物价”里的当前金价。</div>
     <div id="gcRmbPrices"></div>
   </div>
   <div class="card w6">
-    <h3>MHB市场价</h3>
-    <div class="note">可填各等级成品单价。留0则按低级材料理论合成价估算。</div>
+    <h3>MHB等级价</h3>
+    <div class="note">只读展示全局物价库的等级联动价格。要改价，请去「全局物价库」。</div>
     <div id="gcMhbPrices"></div>
   </div>
 
@@ -8785,8 +8807,8 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
     <div class="secret-result-grid">
       <div class="secret-result primary"><span>本次现金成本</span><strong id="stCashCost">0万</strong><small>香火现金部分 + 环装</small></div>
       <div class="secret-result"><span>折合修炼果</span><strong id="stFruitEq">1个</strong><small>按150修炼经验/果</small></div>
-      <div class="secret-result"><span>修炼果等价值</span><strong id="stFruitValue">96万</strong><small>折合修炼果 × 当前果价</small></div>
-      <div class="secret-result"><span>省 / 亏</span><strong id="stSaving">+96万</strong><small>正数=秘传更省</small></div>
+      <div class="secret-result"><span>修炼果等价值</span><strong id="stFruitValue">—</strong><small>折合修炼果 × 当前果价</small></div>
+      <div class="secret-result"><span>省 / 亏</span><strong id="stSaving">—</strong><small>正数=秘传更省</small></div>
       <div class="secret-result"><span>单位修炼经验成本</span><strong id="stUnitCost">0</strong><small>梦幻币 / 1点修炼经验</small></div>
       <div class="secret-result verdict"><span>结论</span><strong id="stVerdict">值得做</strong><small id="stVerdictSub"></small></div>
     </div>
@@ -9074,7 +9096,7 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
   <button type="button" onclick="localStorage.removeItem('mhxy_feature_order_v18');location.reload()">恢复默认排序</button>
 </div>
 <div class="grid"><div class="card w6"><h3>金价设置</h3><div class="row"><div class="field"><label>人民币（元）</label><input id="setRmb" type="number" value="220"></div><div class="field"><label>对应游戏币（万）</label><input id="setGold" type="number" value="3000"></div></div></div><div class="card w6"><h3>武器换算参数</h3><div class="row"><div class="field"><label>多少伤害 = 1法伤</label><input id="setDamageRatio" type="number" value="4" step="0.1"></div><div class="field"><label>1魔力 = 法伤</label><input id="setMagicCoef" type="number" value="0.7" step="0.01"></div></div><div class="row"><div class="field"><label>1力量 = 法伤</label><input id="setStrCoef" type="number" value="0.4" step="0.01"></div><div class="field"><label>1体质 = 法伤</label><input id="setConCoef" type="number" value="0.3" step="0.01"></div></div><div class="row"><div class="field"><label>1耐力 = 法伤</label><input id="setEndCoef" type="number" value="0.2" step="0.01"></div><div class="field"><label>1敏捷 = 法伤</label><input id="setAgiCoef" type="number" value="0" step="0.01"></div></div></div><div class="card w12"><button class="primary" id="saveSettings">保存设置</button> <span class="note" id="saveMsg"></span></div></div></section>
-</div><div class="footer">梦幻西游五开工具箱 v8.20.84 · 非官方工具 · Supabase负责数据云备份，GitHub只维护 index.html</div></main></div>
+</div><div class="footer">梦幻西游五开工具箱 v8.20.86 · 非官方工具 · Supabase负责数据云备份，GitHub只维护 index.html</div></main></div>
 <script>
 const expByLevel=[0,150,210,290,390,510,650,810,990,1190,1410,1650,1910,2190,2490,2810,3150,3510,3890,4290,4710,5150,5610,6090,6590,7110];
 const defaults={rmb:220,gold:3000,damageRatio:4,magicCoef:.7,strCoef:.4,conCoef:.3,endCoef:.2,agiCoef:0};
@@ -9094,48 +9116,46 @@ const $=id=>document.getElementById(id); const fmt=n=>Number(n).toLocaleString('
 function toRmb(goldWan){return goldWan*settings.rmb/settings.gold} function toGold(rmb){return rmb*settings.gold/settings.rmb}
 function moneyDual(goldWan){return `<b class="money">${fmt(goldWan)} 万</b> 游戏币 ≈ <b class="money">¥${fmt(toRmb(goldWan))}</b>`}
 function needExp(start,end){let s=0; for(let lv=start+1;lv<=end;lv++)s+=expByLevel[lv]||0; return s}
+function repairRemainingExp(start,end,currentProgress){
+  start=Math.max(0,Math.min(25,Math.floor(+start||0)));end=Math.max(start,Math.min(25,Math.floor(+end||0)));
+  if(end<=start)return 0;
+  let firstNeed=expByLevel[start+1]||0,progress=Math.max(0,Math.min(firstNeed,+currentProgress||0));
+  return Math.max(0,firstNeed-progress)+needExp(start+1,end);
+}
+function repairNextInfo(level,currentProgress){
+  level=Math.max(0,Math.min(25,Math.floor(+level||0)));let need=expByLevel[level+1]||0;
+  let cur=Math.max(0,Math.min(need,+currentProgress||0));return {need,cur,left:Math.max(0,need-cur),next:Math.min(25,level+1)};
+}
+function potentialCapByLevel(level){level=Math.floor(+level||0);if(level<60)return 0;if(level<90)return 50;if(level<155)return 100;if(level<170)return 150;return 200}
+function potentialOneExpWanCalc(n){n=Math.max(1,Math.floor(+n||1));return n<=100?1000+(n-1)*15:2580+(n-101)*95}
+function potentialExpWanCalc(from,to){from=Math.max(0,Math.floor(+from||0));to=Math.max(from,Math.min(200,Math.floor(+to||0)));let s=0;for(let n=from+1;n<=to;n++)s+=potentialOneExpWanCalc(n);return s}
+function potentialAffordable(from,cap,expWan){let n=Math.max(0,Math.floor(+from||0)),max=Math.max(n,Math.min(200,Math.floor(+cap||0))),remain=Math.max(0,+expWan||0),added=0;while(n<max){let cost=potentialOneExpWanCalc(n+1);if(remain+1e-9<cost)break;remain-=cost;n++;added++}return {added,to:n,remain}}
 function fillSelect(id,max,selected){let el=$(id);el.innerHTML='';for(let i=0;i<=max;i++){let o=document.createElement('option');o.value=i;o.textContent=i+'级';if(i===selected)o.selected=true;el.appendChild(o)}}
 ['humanStart','humanEnd','petStart','petEnd'].forEach((id,i)=>fillSelect(id,25,i%2?17:0)); ['gemStart','gemTarget','bellStart','bellTarget'].forEach((id,i)=>{fillSelect(id,12,i%2?8:1)});
 function updateHeader(){ $('ratePill').textContent=`金价 ${settings.rmb}元 / ${settings.gold}万`; $('homeRate').textContent=`${settings.rmb} 元 = ${settings.gold} 万` }
 function updateRate(){ $('goldToRmbOut').textContent=`≈ ¥${fmt(toRmb(+$('goldToRmb').value||0))}`; $('rmbToGoldOut').textContent=`≈ ${fmt(toGold(+$('rmbToGold').value||0))} 万游戏币`; updateHeader() }
 function updateHuman(){
   let s=+$('humanStart').value,e=+$('humanEnd').value;if(e<s){[s,e]=[e,s]}
-  let exp=needExp(s,e);
+  let progress=+$('humanCurrentExp')?.value||0,next=repairNextInfo(s,progress);if($('humanCurrentExp')){$('humanCurrentExp').max=next.need;if(progress>next.need){progress=next.need;$('humanCurrentExp').value=progress;next=repairNextInfo(s,progress)}}let exp=repairRemainingExp(s,e,progress);
   let type=$('humanType').value||'attack';
   let mode=$('humanMode')?.value||'normal';
   let currentBg=+$('humanCurrentBg')?.value||0;
-
-  // Historical contribution gate: target cultivation level × 150; it is not consumed in normal mode.
-  let bgNeed=e*150;
-  let bgShort=Math.max(0,bgNeed-currentBg);
-  let clicks=Math.ceil(exp/10);
-
+  let bgNeed=e*150,bgShort=Math.max(0,bgNeed-currentBg),clicks=Math.ceil(exp/10);
   let gold=0,actualBg=0,threeRealm=0,materials=0;
-  if(mode==='normal'){
-    let costPerExp=type==='attack'?3000:2000; // 3w/2w per 10 exp
-    gold=exp*costPerExp/10000;
-    materials=clicks*5;
-  }else{
-    let costPerExp=type==='attack'?3300:2200; // 3.3w/2.2w per 10 exp
-    gold=exp*costPerExp/10000;
-    actualBg=clicks*(type==='attack'?6:5);
-    threeRealm=clicks;
-  }
-
-  let modeHtml=mode==='normal'
-    ?`实际消耗帮贡：<b class="sc-bg">0</b>（普通资材点修不扣帮贡）<br>预计消耗帮派资材：<b>${fmt(materials)}</b>`
-    :`实际消耗帮贡：<b class="sc-bg">${fmt(actualBg)}</b><br>三界功绩：<b>${fmt(threeRealm)}</b>`;
-
-  $('humanResult').innerHTML=
-    `需要修炼经验：<b class="sc-exp">${fmt(exp)}</b><br>`+
-    `${moneyDual(gold)}<br>`+
-    `目标${e}修历史帮贡门槛：<b class="sc-needbg">${fmt(bgNeed)}</b><br>`+
-    (currentBg>0?`当前历史帮贡：<b>${fmt(currentBg)}</b>　${bgShort>0?`还差：<b class="negative">${fmt(bgShort)}</b>`:`<b class="positive">已满足 ✓</b>`}<br>`:'')+
-    modeHtml+
-    `<div class="sub">按每次获得10点修炼经验换算；历史帮贡门槛按目标修炼等级×150。</div>`;
+  if(mode==='normal'){let costPerExp=type==='attack'?3000:2000;gold=exp*costPerExp/10000;materials=clicks*5;}
+  else{let costPerExp=type==='attack'?3300:2200;gold=exp*costPerExp/10000;actualBg=clicks*(type==='attack'?6:5);threeRealm=clicks;}
+  let modeHtml=mode==='normal'?`实际消耗帮贡：<b class="sc-bg">0</b>（普通资材点修不扣帮贡）<br>预计消耗帮派资材：<b>${fmt(materials)}</b>`:`实际消耗帮贡：<b class="sc-bg">${fmt(actualBg)}</b><br>三界功绩：<b>${fmt(threeRealm)}</b>`;
+  $('humanResult').innerHTML=(s<25?`本级进度：<b>${fmt(next.cur)} / ${fmt(next.need)}</b>　距${next.next}级：<b class="repair-next-hint">${fmt(next.left)}</b><br>`:'')+`到${e}级还需要修炼经验：<b class="sc-exp">${fmt(exp)}</b><br>`+`${moneyDual(gold)}<br>`+`目标${e}修历史帮贡门槛：<b class="sc-needbg">${fmt(bgNeed)}</b><br>`+(currentBg>0?`当前历史帮贡：<b>${fmt(currentBg)}</b>　${bgShort>0?`还差：<b class="negative">${fmt(bgShort)}</b>`:`<b class="positive">已满足 ✓</b>`}<br>`:'')+modeHtml+`<div class="sub">已扣除当前等级内已有修炼经验；按每次获得10点修炼经验换算。</div>`;
 }
-function updatePet(){let s=+$('petStart').value,e=+$('petEnd').value;if(e<s){[s,e]=[e,s]};let exp=needExp(s,e),fruits=Math.ceil(exp/150),price=+$('fruitPrice').value||0,gold=fruits*price; $('petResult').innerHTML=`需要经验：<b>${fmt(exp)}</b><br>修炼果：<b>${fmt(fruits)} 个</b><br>${moneyDual(gold)}`}
-function updatePill(){let q=+$('pillQuality').value||0,p=+$('pillPrice').value||0,need=+$('pillExpNeed').value||0,each=q*.5,count=each>0?Math.ceil(need/each):0,gold=count*p; $('pillResult').innerHTML=`每颗提供 <b>${fmt(each)}</b> 修炼经验，需要 <b>${count}</b> 颗。<br>${moneyDual(gold)}`}
+function updatePet(){let s=+$('petStart').value,e=+$('petEnd').value;if(e<s){[s,e]=[e,s]};let progress=+$('petCurrentExp')?.value||0,next=repairNextInfo(s,progress);if($('petCurrentExp')){$('petCurrentExp').max=next.need;if(progress>next.need){progress=next.need;$('petCurrentExp').value=progress;next=repairNextInfo(s,progress)}}let exp=repairRemainingExp(s,e,progress),fruits=Math.ceil(exp/150),price=globalPriceWan('修炼果'),gold=fruits*price;const pe=$('fruitPrice');if(pe)pe.value=price>0?price:'';let head=s<25?`本级进度：<b>${fmt(next.cur)} / ${fmt(next.need)}</b>　距${next.next}级：<b class="repair-next-hint">${fmt(next.left)}</b><br>`:'';$('petResult').innerHTML=price>0?head+`到${e}级还需要经验：<b>${fmt(exp)}</b><br>修炼果：<b>${fmt(fruits)} 个</b><br>${moneyDual(gold)}<div class="sub">已扣除当前本级修炼经验；修炼果单价来自全局物价库：${fmt(price)}万/个</div>`:head+`到${e}级还需要经验：<b>${fmt(exp)}</b><br>修炼果：<b>${fmt(fruits)} 个</b><br><b class="warn">全局物价库未设置“修炼果”价格，暂不计算游戏币成本。</b>`}
+function updatePotential(){
+  const lv=+$('potentialLevel')?.value||109,cap=potentialCapByLevel(lv),cur=Math.max(0,Math.min(200,+$('potentialCurrent')?.value||0));
+  let target=Math.max(cur,+$('potentialTarget')?.value||cap);target=Math.min(cap||target,target);let expWan=Math.max(0,+$('potentialCurrentExp')?.value||0);
+  if($('potentialCap'))$('potentialCap').value=cap;const targetEl=$('potentialTarget');if(targetEl){targetEl.max=cap||200;if((+targetEl.value||0)>cap&&cap>0)targetEl.value=cap;}
+  let fullNeed=cap>cur?potentialExpWanCalc(cur,cap):0,targetNeed=target>cur?potentialExpWanCalc(cur,target):0,afford=potentialAffordable(cur,cap,expWan),shortToTarget=Math.max(0,targetNeed-expWan),shortToCap=Math.max(0,fullNeed-expWan);
+  $('potentialResult').innerHTML=`<div class="potential-planner-grid"><div><span>当前等级上限</span><b>${fmt(cap)}个</b></div><div><span>当前→计划目标</span><b>${fmt(cur)} → ${fmt(target)}</b></div><div><span>到目标总需经验</span><b>${fmt(targetNeed)}万</b></div><div><span>满潜能总需经验</span><b>${fmt(fullNeed)}万</b></div></div>`+`<div style="margin-top:10px">按当前 <b>${fmt(expWan)}万</b> 经验，如果全部兑换潜能果：可再换 <b class="money">${fmt(afford.added)}个</b>，到 <b>${fmt(afford.to)}个</b>，剩余约 <b>${fmt(afford.remain)}万</b>经验。<br>距离计划目标还差经验：<b class="${shortToTarget>0?'negative':'positive'}">${fmt(shortToTarget)}万</b>；距离当前等级满潜能还差：<b>${fmt(shortToCap)}万</b>。</div>`;
+}
+function updatePill(){let q=+$('pillQuality').value||0,pp=globalPillPerPoint(),p=q>0&&pp>0?q*pp/10000:0,need=+$('pillExpNeed').value||0,each=q*.5,count=each>0?Math.ceil(need/each):0,gold=count*p;const pe=$('pillPrice');if(pe)pe.value=p>0?Math.round(p*10000)/10000:'';$('pillResult').innerHTML=pp>0?`每颗提供 <b>${fmt(each)}</b> 修炼经验，需要 <b>${count}</b> 颗。<br>${moneyDual(gold)}<div class="sub">物价库：${fmt(pp)}两/品；当前${fmt(q)}品质≈${fmt(p)}万/颗</div>`:`每颗提供 <b>${fmt(each)}</b> 修炼经验，需要 <b>${count}</b> 颗。<br><b class="warn">全局物价库未设置“九转金丹”的每品价格，暂不计算游戏币成本。</b>`}
 function updateWeapon(){
 let d=+$('weaponDamage').value||0,hit=+$('weaponHit').value||0,m=+$('weaponMagic').value||0,s=+$('weaponStr').value||0,c=+$('weaponCon').value||0,e=+$('weaponEnd').value||0,a=+$('weaponAgi').value||0;
 let fd=d/settings.damageRatio,fm=m*settings.magicCoef,fs=s*settings.strCoef,fc=c*settings.conCoef,fe=e*settings.endCoef,fa=a*settings.agiCoef,total=fd+fm+fs+fc+fe+fa;
@@ -9246,14 +9266,14 @@ function updatePhysicalWeapon(){
     `五属性折算参考：约 <b>${fmt(spirit)}灵力</b>、<b>${fmt(speed)}速度</b>。`;
 }
 
-function updateGem(){let s=+$('gemStart').value,t=+$('gemTarget').value;if(t<s){[s,t]=[t,s]};let qty=Math.max(1,+$('gemQty').value||1),pieces=Math.pow(2,t-s)*qty,base=+$('gemBasePrice').value||0,gold=pieces*base,fin=+$('gemFinishedPrice').value||0,finTotal=fin*qty;$('gemResult').innerHTML=`需要 ${s}级宝石：<b>${fmt(pieces)} 颗</b><br>理论合成次数：<b>${fmt(pieces-qty)}</b><br>${moneyDual(gold)}`; if(fin>0){let diff=finTotal-gold;$('gemCompare').innerHTML=`直接买成品：${moneyDual(finTotal)}<br>自己合：${moneyDual(gold)}<br><b class="${diff>=0?'money':'warn'}">${diff>=0?'自己合便宜':'直接买便宜'} ${fmt(Math.abs(diff))} 万（≈¥${fmt(toRmb(Math.abs(diff)))})</b>`} else $('gemCompare').innerHTML='填入成品价后自动比较。'}
+function updateGem(){let s=+$('gemStart').value,t=+$('gemTarget').value;if(t<s){[s,t]=[t,s]};const name=$('gemType')?.value||'太阳石';let qty=Math.max(1,+$('gemQty').value||1),pieces=Math.pow(2,t-s)*qty,base=globalLevelPriceWan(name,s),fin=globalLevelPriceWan(name,t),gold=pieces*base,finTotal=fin*qty;if($('gemBasePrice'))$('gemBasePrice').value=base>0?Math.round(base*100)/100:'';if($('gemFinishedPrice'))$('gemFinishedPrice').value=fin>0?Math.round(fin*100)/100:'';$('gemResult').innerHTML=base>0?`需要 ${s}级${name}：<b>${fmt(pieces)} 颗</b><br>理论合成次数：<b>${fmt(pieces-qty)}</b><br>${moneyDual(gold)}<div class="sub">起始价来自全局物价库</div>`:`需要 ${s}级${name}：<b>${fmt(pieces)} 颗</b><br><b class="warn">全局物价库未设置“${name}”价格。</b>`; if(base>0&&fin>0){let diff=finTotal-gold;$('gemCompare').innerHTML=`直接买成品：${moneyDual(finTotal)}<br>自己合：${moneyDual(gold)}<br><b class="${diff>=0?'money':'warn'}">${diff>=0?'自己合便宜':'直接买便宜'} ${fmt(Math.abs(diff))} 万（≈¥${fmt(toRmb(Math.abs(diff)))})</b>`} else $('gemCompare').innerHTML='在全局物价库设置该宝石任一等级价格后，会按等级规则自动联动。'}
 function updateBell(){
 let s=+$('bellStart').value,t=+$('bellTarget').value;if(t<s){[s,t]=[t,s]}t=Math.min(t,8);
-let qty=Math.max(1,+$('bellQty').value||1),base=+$('bellBasePrice').value||0;
+let qty=Math.max(1,+$('bellQty').value||1),base=globalPriceWan('钟灵石');if($('bellBasePrice'))$('bellBasePrice').value=base>0?Math.round(base*100)/100:'';
 const rules={1:3,2:3,3:4,4:3,5:4,6:4,7:5};let need=qty,parts=[];
 for(let lv=t-1;lv>=s;lv--){let r=rules[lv];if(!r)continue;need*=r;parts.unshift(`${lv}→${lv+1}：${r}合1`)}
 let gold=need*base;
-$('bellResult').innerHTML=`需要 ${s}级钟灵石：<b>${fmt(need)} 个</b><br>${moneyDual(gold)}<div class="sub">${parts.join('　')}<br>100%成功，无失败损耗。</div>`;
+$('bellResult').innerHTML=base>0?`需要 ${s}级钟灵石：<b>${fmt(need)} 个</b><br>${moneyDual(gold)}<div class="sub">${parts.join('　')}<br>100%成功，无失败损耗。价格来自全局物价库。</div>`:`需要 ${s}级钟灵石：<b>${fmt(need)} 个</b><br><b class="warn">全局物价库未设置“钟灵石”价格。</b><div class="sub">${parts.join('　')}<br>100%成功，无失败损耗。</div>`;
 }
 function renderAccounts(){let tbody=$('accountRows');tbody.innerHTML='';let total=0;accounts.forEach((a,i)=>{let eq=Number(a.rmb)+toRmb(Number(a.gold));total+=eq;let tr=document.createElement('tr');tr.innerHTML=`<td>${a.name||'-'}</td><td>${a.school||'-'}</td><td>¥${fmt(a.rmb)}</td><td>${fmt(a.gold)}万</td><td>¥${fmt(eq)}</td><td><button onclick="delAcc(${i})" style="background:none;border:0;color:#ff7d89;cursor:pointer">删除</button></td>`;tbody.appendChild(tr)});$('accountsTotal').textContent='¥'+fmt(total)}
 window.delAcc=i=>{accounts.splice(i,1);localStorage.setItem('mh_accounts',JSON.stringify(accounts));renderAccounts()};
@@ -9335,6 +9355,7 @@ const DEFAULT_PRICE_LIBRARY=[
  {id:'g_star',category:'星辉石',name:'星辉石',price:0,quick:false},
  {id:'g_dust',category:'五色灵尘',name:'五色灵尘',price:0,quick:false},
  {id:'o3',category:'材料',name:'强化石',price:1.5,quick:false},
+ {id:'o19',category:'材料',name:'钟灵石',price:20,quick:false},
  {id:'o4',category:'养成',name:'修炼果',price:90,quick:true},
  {id:'o5',category:'炼妖',name:'金柳露',price:2,quick:false},
  {id:'o6',category:'炼妖',name:'超级金柳露',price:20,quick:false},
@@ -9352,6 +9373,34 @@ const DEFAULT_PRICE_LIBRARY=[
  {id:'o18',category:'高级内丹',name:'高级召唤兽内丹',price:0,quick:false}
 ];
 let priceLibrary=[];
+function globalPriceRow(name){
+  const n=String(name||'').trim();
+  if(!n)return null;
+  if(Array.isArray(priceLibrary)&&priceLibrary.length){
+    const x=priceLibrary.find(v=>v&&String(v.name||'').trim()===n);
+    if(x)return x;
+  }
+  try{
+    const a=JSON.parse(localStorage.getItem(PRICE_LIB_KEY)||'[]');
+    if(Array.isArray(a))return a.find(v=>v&&String(v.name||'').trim()===n)||null;
+  }catch(e){}
+  return null;
+}
+function globalPriceWan(name){
+  const x=globalPriceRow(name);return x&&Number.isFinite(+x.price)?Math.max(0,+x.price):0;
+}
+function globalPillPerPoint(){
+  const x=globalPriceRow('九转金丹');if(!x)return 0;
+  const pp=Math.max(0,+x.pillPerPoint||0);if(pp>0)return pp;
+  const q=Math.max(1,+x.pillQuality||100),p=Math.max(0,+x.price||0);
+  return p>0?p*10000/q:0;
+}
+function globalLevelPriceWan(name,lv){
+  try{if(window.MHXY_LEVEL_PRICE&&typeof window.MHXY_LEVEL_PRICE.priceByName==='function'){const p=Math.max(0,+window.MHXY_LEVEL_PRICE.priceByName(name,lv)||0);if(p>0)return p}}catch(e){}
+  const x=globalPriceRow(name);if(!x)return 0;
+  try{if(window.MHXY_LEVEL_PRICE&&window.MHXY_LEVEL_PRICE.isLevelItem(x))return Math.max(0,+window.MHXY_LEVEL_PRICE.priceForRow(x,lv)||0)}catch(e){}
+  return Math.max(0,+x.price||0);
+}
 
 function savePriceLibrary(){localStorage.setItem(PRICE_LIB_KEY,JSON.stringify(priceLibrary));if(window.MH_GHOST_CLICK_RENDER)window.MH_GHOST_CLICK_RENDER();try{window.dispatchEvent(new CustomEvent('mhxy-price-library-updated'))}catch(e){}}
 function migrateBuiltInPriceCategories(){
@@ -9482,7 +9531,7 @@ function syncGemPriceCards(){
 window.MHXY_LEVEL_PRICE={
   isLevelItem:isGemPriceItem,kind:levelPriceKind,maxLevel:levelMaxFor,unitCount:levelUnitCount,baseWan:levelBaseWan,
   priceForRow:function(x,lv){return gemLinkedWan(x,lv)},
-  priceByName:function(name,lv){const x=priceLibrary.find(v=>v&&String(v.name||'')===String(name||''));return x?gemLinkedWan(x,lv):0}
+  priceByName:function(name,lv){const n=String(name||''),x=priceLibrary.find(v=>v&&String(v.name||'')===n);let p=x?gemLinkedWan(x,lv):0;if(!(p>0)&&['太阳石','月亮石','舍利子','黑宝石','光芒石','红玛瑙','翡翠石','神秘石'].includes(n)){const g=priceLibrary.find(v=>v&&String(v.name||'')==='宝石');p=g?gemLinkedWan(g,lv):0}return p}
 };
 window.addEventListener('mhxy-gemcost-updated',()=>{syncGemPriceCards();try{renderPriceLibrary()}catch(e){}});
 function priceCats(){return [...new Set(priceLibrary.map(x=>x.category).filter(Boolean))].sort()}
@@ -9650,7 +9699,8 @@ function renderIncome(){let today=localToday(),month=today.slice(0,7),tn=0,mn=0,
 window.delIncome=id=>{incomes=incomes.filter(x=>x.id!==id);localStorage.setItem('mh_incomes',JSON.stringify(incomes));renderIncome()};
 function addIncome(){let r={id:String(Date.now())+Math.random().toString(16).slice(2),date:$('incomeDate').value||localToday(),task:$('incomeTask').value,hours:+$('incomeHours').value||0,cash:+$('incomeCash').value||0,items:+$('incomeItems').value||0,itemDetails:JSON.parse(JSON.stringify(incomeDraftItems)),cost:+$('incomeCost').value||0,note:$('incomeNote').value.trim()};incomes.push(r);localStorage.setItem('mh_incomes',JSON.stringify(incomes));$('incomeCash').value=0;$('incomeItems').value=0;$('incomeCost').value=0;$('incomeNote').value='';incomeDraftItems=[];renderIncomeDraftItems();renderIncome()}
 function exportIncome(){let head=['日期','任务','耗时小时','现金万','物品估值万','物品明细','成本万','净收益万','备注'],lines=[head.join(',')];incomes.forEach(r=>{let net=(+r.cash||0)+(+r.items||0)-(+r.cost||0);let detail=(r.itemDetails||[]).map(x=>`${x.category}:${x.name||'-'}x${x.qty}@${x.price}万`).join(';');lines.push([r.date,r.task,r.hours,r.cash,r.items,`"${detail.replace(/"/g,'""')}"`,r.cost,net,`"${String(r.note||'').replace(/"/g,'""')}"`].join(','))});let blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='梦幻收益记录_'+localToday()+'.csv';a.click();URL.revokeObjectURL(u)}
-function updateAll(){updateRate();updateHuman();updatePet();updatePill();updateWeapon();updateGem();updateBell();updateGhost();updateMentor();updateEscort();renderTaskRank();renderIncome();renderAccounts();updatePhysicalWeapon();}
+function updateAll(){updateRate();updateHuman();updatePet();updatePotential();updatePill();updateWeapon();updateGem();updateBell();updateGhost();updateMentor();updateEscort();renderTaskRank();renderIncome();renderAccounts();updatePhysicalWeapon();}
+window.addEventListener('mhxy-price-library-updated',()=>{try{updatePet();updatePill();updateGem();updateBell()}catch(e){}});
 document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',updateAll));
 $('incomeDate').value=localToday();$('addIncome').onclick=addIncome;$('addIncomeItem').onclick=addIncomeDraftItem;$('incomeItemQty').oninput=incomeItemCalc;$('incomeItemPrice').oninput=incomeItemCalc;loadPriceLibrary();renderPriceLibrary();renderIncomePresets();renderIncomeDraftItems();$('plAdd').onclick=addPriceLibraryItem;$('plSearch').oninput=renderPriceLibrary;$('plFilter').onchange=renderPriceLibrary;$('plResetDefaults').onclick=restorePriceDefaults;$('exportIncome').onclick=exportIncome;$('clearIncome').onclick=()=>{if(confirm('确定清空全部收益记录？')){incomes=[];localStorage.setItem('mh_incomes','[]');renderIncome()}};$('resetTaskRank').onclick=()=>{delete taskOverrides[String($('rankLevel').value)];localStorage.setItem('mh_task_overrides',JSON.stringify(taskOverrides));renderTaskRank()};
 document.querySelectorAll('.nav button[data-tab]').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tabs>section').forEach(s=>s.classList.remove('active'));$(btn.dataset.tab).classList.add('active');$('pageTitle').textContent=btn.textContent});
@@ -11079,18 +11129,20 @@ let s={mode:'ring',items:{},goldPrice:220,extraGame:0,extraRmb:0},hist=[];
 function f(v){return (+v||0).toFixed(2).replace(/\.?0+$/,'')}
 function lib(){try{return JSON.parse(localStorage.getItem(PK)||'[]')||[]}catch(e){return[]}}
 function lp(n){const x=lib().find(v=>v.name===n);return x?+x.price||0:0}
-function en(n){if(!s.items[n])s.items[n]={name:n,price:lp(n),count:0};return s.items[n]}
+function en(n){if(!s.items[n])s.items[n]={name:n,price:lp(n),count:0,manual:false};let x=s.items[n],gp=lp(n);if(x.manual===undefined)x.manual=(gp>0&&Math.abs((+x.price||0)-gp)>0.0001);if(!x.manual&&gp>=0)x.price=gp;return x}
 function seed(){(DEF[s.mode]||[]).forEach(en)}
 function save(){localStorage.setItem(SK,JSON.stringify(s))}
 function vis(){const names=new Set(DEF[s.mode]||[]);Object.values(s.items).forEach(x=>{if(x.mode===s.mode||names.has(x.name))names.add(x.name)});return[...names].map(en)}
-function rmb(w){return (+w||0)/3000*(+s.goldPrice||0)}
+function eco(){try{return window.MHXY_ECONOMY.get()}catch(e){return {rmb:220,gold:3000}}}
+function gold3000(){const x=eco();return 3000*(+x.rmb||220)/(+x.gold||3000)}
+function rmb(w){const x=eco();return (+w||0)*(+x.rmb||220)/(+x.gold||3000)}
 function totals(){let item=vis().reduce((a,x)=>a+x.price*x.count,0),game=item+(+s.extraGame||0);return{item,game,rmb:rmb(game)+(+s.extraRmb||0),count:vis().reduce((a,x)=>a+x.count,0)}}
 function items(){ctItems.innerHTML=vis().map(x=>`<div class="ct-item" data-add="${x.name}"><div class="ct-name">${x.name}</div><div class="ct-price">单价：${f(x.price)}万</div><div class="ct-count">次数：${x.count}</div></div>`).join('');ctItems.querySelectorAll('[data-add]').forEach(e=>e.onclick=()=>{en(e.dataset.add).count++;save();render()})}
-function detail(){ctDetail.innerHTML=vis().map(x=>`<tr><td>${x.name}</td><td><input style="width:90px" type="number" step=".1" value="${x.price}" data-p="${x.name}"></td><td><b>${x.count}</b></td><td>${f(x.price*x.count)}</td><td>¥${f(rmb(x.price*x.count))}</td><td><button data-m="${x.name}">−1</button></td></tr>`).join('');ctDetail.querySelectorAll('[data-p]').forEach(e=>e.onchange=()=>{en(e.dataset.p).price=+e.value||0;save();render()});ctDetail.querySelectorAll('[data-m]').forEach(e=>e.onclick=()=>{let x=en(e.dataset.m);x.count=Math.max(0,x.count-1);save();render()})}
+function detail(){ctDetail.innerHTML=vis().map(x=>`<tr><td>${x.name}</td><td><input style="width:90px" type="number" step=".1" value="${x.price}" data-p="${x.name}"></td><td><b>${x.count}</b></td><td>${f(x.price*x.count)}</td><td>¥${f(rmb(x.price*x.count))}</td><td><button data-m="${x.name}">−1</button></td></tr>`).join('');ctDetail.querySelectorAll('[data-p]').forEach(e=>e.onchange=()=>{let x=en(e.dataset.p);x.price=+e.value||0;x.manual=true;save();render()});ctDetail.querySelectorAll('[data-m]').forEach(e=>e.onclick=()=>{let x=en(e.dataset.m);x.count=Math.max(0,x.count-1);save();render()})}
 function summary(){let z=totals();ctSummary.innerHTML=`物品累计成本：<b>${f(z.item)}万</b><br>游戏币总成本：<b style="color:#fb7185">${f(z.game)}万</b><br>约合人民币：<b style="color:#4ade80">¥${f(z.rmb)}</b><br>累计次数：<b>${z.count}</b>`}
 function history(){ctHistory.innerHTML=hist.slice().reverse().map((x,r)=>{let i=hist.length-1-r;return`<tr><td>${x.time}</td><td>${x.mode}</td><td>${f(x.game)}万</td><td>¥${f(x.rmb)}</td><td>${x.count}</td><td>${x.note}</td><td><button class="dangerBtn" data-h="${i}">删除</button></td></tr>`}).join('');ctHistory.querySelectorAll('[data-h]').forEach(e=>e.onclick=()=>{hist.splice(+e.dataset.h,1);localStorage.setItem(HK,JSON.stringify(hist));history()})}
-function render(){ctMode.value=s.mode;ctGoldPrice.value=s.goldPrice;ctExtraGame.value=s.extraGame;ctExtraRmb.value=s.extraRmb;items();detail();summary();history()}
-function boot(){try{let x=JSON.parse(localStorage.getItem(SK)||'null');if(x)s=x}catch(e){}try{hist=JSON.parse(localStorage.getItem(HK)||'[]')||[]}catch(e){}seed();ctMode.onchange=e=>{s.mode=e.target.value;seed();save();render()};ctGoldPrice.oninput=e=>{s.goldPrice=+e.target.value||0;save();render()};ctExtraGame.oninput=e=>{s.extraGame=+e.target.value||0;save();summary()};ctExtraRmb.oninput=e=>{s.extraRmb=+e.target.value||0;save();summary()};ctReset.onclick=()=>{vis().forEach(x=>x.count=0);s.extraGame=s.extraRmb=0;save();render()};ctAddItem.onclick=()=>{let n=prompt('物品名称');if(!n)return;let p=+prompt('单价（万）',lp(n)||0)||0;s.items[n]={name:n,price:p,count:0,mode:s.mode};save();render()};ctSave.onclick=()=>{let z=totals(),note=prompt('备注','')||'',mode=s.mode==='ring'?'跑环':s.mode==='jade'?'上古玉魄':'自定义';hist.push({time:new Date().toLocaleString(),mode,game:z.game,rmb:z.rmb,count:z.count,note});localStorage.setItem(HK,JSON.stringify(hist));history()};render()}
+function render(){ctMode.value=s.mode;ctGoldPrice.value=Math.round(gold3000()*100)/100;ctExtraGame.value=s.extraGame;ctExtraRmb.value=s.extraRmb;items();detail();summary();history()}
+function boot(){try{let x=JSON.parse(localStorage.getItem(SK)||'null');if(x)s=x}catch(e){}try{hist=JSON.parse(localStorage.getItem(HK)||'[]')||[]}catch(e){}seed();ctMode.onchange=e=>{s.mode=e.target.value;seed();save();render()};ctExtraGame.oninput=e=>{s.extraGame=+e.target.value||0;save();summary()};ctExtraRmb.oninput=e=>{s.extraRmb=+e.target.value||0;save();summary()};ctReset.onclick=()=>{vis().forEach(x=>x.count=0);s.extraGame=s.extraRmb=0;save();render()};ctAddItem.onclick=()=>{let n=prompt('物品名称');if(!n)return;let p=+prompt('单价（万）',lp(n)||0)||0;s.items[n]={name:n,price:p,count:0,mode:s.mode,manual:true};save();render()};ctSave.onclick=()=>{let z=totals(),note=prompt('备注','')||'',mode=s.mode==='ring'?'跑环':s.mode==='jade'?'上古玉魄':'自定义';hist.push({time:new Date().toLocaleString(),mode,game:z.game,rmb:z.rmb,count:z.count,note});localStorage.setItem(HK,JSON.stringify(hist));history()};window.addEventListener('mhxy-price-library-updated',()=>{vis().forEach(en);save();render()});window.addEventListener('mhxy-economy-updated',render);render()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();return{render}})();
 </script>
 <script>
@@ -11828,118 +11880,75 @@ window.PSC=(function(){
 <script>
 window.GC=(function(){
  const MAX=20;
- const STORE='mhxy_gemcost_v8130';
- const prices={star:{rmb:{5:89,6:300},mhb:{}},gem:{rmb:{},mhb:{}}};
- function loadSaved(){
-   try{
-     const x=JSON.parse(localStorage.getItem(STORE)||'null');
-     if(!x)return;
-     ['star','gem'].forEach(t=>{
-       if(x.prices&&x.prices[t]){
-         if(x.prices[t].rmb)Object.assign(prices[t].rmb,x.prices[t].rmb);
-         if(x.prices[t].mhb)Object.assign(prices[t].mhb,x.prices[t].mhb);
-       }
-     });
-     if(x.mhb1!==undefined&&document.getElementById('gcMhb1'))document.getElementById('gcMhb1').value=x.mhb1;
-     if(x.goldRate!==undefined&&document.getElementById('gcGoldRate'))document.getElementById('gcGoldRate').value=x.goldRate;
-   }catch(e){}
- }
- function saveSaved(){
-   try{
-     localStorage.setItem(STORE,JSON.stringify({
-       prices,
-       mhb1:+document.getElementById('gcMhb1').value||0,
-       goldRate:+document.getElementById('gcGoldRate').value||220
-     }));
-     window.dispatchEvent(new CustomEvent('mhxy-gemcost-updated'));
-   }catch(e){}
- }
+ const GEM_NAMES=['太阳石','月亮石','舍利子','黑宝石','光芒石','红玛瑙','翡翠石','神秘石'];
  function fmt(v,d=2){v=+v||0;return v.toLocaleString(undefined,{maximumFractionDigits:d})}
  function mult(){return document.getElementById('gcType').value==='star'?3:2}
  function type(){return document.getElementById('gcType').value}
+ function gemName(){return document.getElementById('gcGemName')?.value||'太阳石'}
+ function itemName(ty){return ty==='star'?'星辉石':gemName()}
  function eq1(lv){return Math.pow(mult(),lv-1)}
- function theoreticalMhb(lv){return (+document.getElementById('gcMhb1').value||0)*eq1(lv)}
- function theoreticalRmb(lv){return theoreticalMhb(lv)/30000000*(+document.getElementById('gcGoldRate').value||0)}
- function marketMhb(lv){
-   const p=prices[type()].mhb[lv]||0;
-   return p>0?p:theoreticalMhb(lv);
+ function unitWan(ty,lv,name){
+   lv=Math.max(1,Math.floor(+lv||1));ty=ty==='star'?'star':'gem';
+   const n=ty==='star'?'星辉石':(name||gemName());
+   try{return Math.max(0,+window.MHXY_LEVEL_PRICE?.priceByName(n,lv)||0)}catch(e){return 0}
  }
- function marketRmb(lv){
-   const p=prices[type()].rmb[lv]||0;
-   if(p>0)return p;
-   const mhb=prices[type()].mhb[lv]||0;
-   if(mhb>0)return mhb/30000000*(+document.getElementById('gcGoldRate').value||0);
-   return theoreticalRmb(lv);
+ function unitMhb(ty,lv,name){return unitWan(ty,lv,name)*10000}
+ function toRmbWan(w){try{const r=window.MHXY_ECONOMY.get();return (+w||0)*r.rmb/r.gold}catch(e){return 0}}
+ function syncLinked(){
+   const ty=type(),name=itemName(ty),field=document.getElementById('gcGemNameField');if(field)field.style.display=ty==='gem'?'block':'none';
+   const base=unitMhb(ty,1,name),m=document.getElementById('gcMhb1');if(m)m.value=base>0?Math.round(base):'';
+   const g=document.getElementById('gcGoldRate');if(g){try{const r=window.MHXY_ECONOMY.get();g.value=3000*r.rmb/r.gold}catch(e){}}
  }
  function renderPrices(){
-   const ty=type(),r=document.getElementById('gcRmbPrices'),m=document.getElementById('gcMhbPrices');
-   let max=ty==='star'?11:15;
-   r.innerHTML='';m.innerHTML='';
+   const ty=type(),name=itemName(ty),r=document.getElementById('gcRmbPrices'),m=document.getElementById('gcMhbPrices');
+   let max=ty==='star'?11:15;r.innerHTML='';m.innerHTML='';
    for(let lv=1;lv<=max;lv++){
-     let rr=document.createElement('div');rr.className='gc-price-row';
-     rr.innerHTML=`<label>${lv}级</label><input type="number" min="0" step="1" data-gcr="${lv}" value="${prices[ty].rmb[lv]||0}">`;r.appendChild(rr);
-     let mm=document.createElement('div');mm.className='gc-price-row';
-     mm.innerHTML=`<label>${lv}级</label><input type="number" min="0" step="10000" data-gcm="${lv}" value="${prices[ty].mhb[lv]||0}">`;m.appendChild(mm);
+     const w=unitWan(ty,lv,name),mhb=w*10000,rmb=toRmbWan(w);
+     let rr=document.createElement('div');rr.className='gc-price-row';rr.innerHTML=`<label>${lv}级</label><input readonly value="${w>0?'¥'+fmt(rmb):'未设置'}">`;r.appendChild(rr);
+     let mm=document.createElement('div');mm.className='gc-price-row';mm.innerHTML=`<label>${lv}级</label><input readonly value="${w>0?fmt(mhb,0):'未设置'}">`;m.appendChild(mm);
    }
-   r.querySelectorAll('[data-gcr]').forEach(e=>e.oninput=()=>{prices[ty].rmb[+e.dataset.gcr]=+e.value||0;saveSaved();calc()});
-   m.querySelectorAll('[data-gcm]').forEach(e=>e.oninput=()=>{prices[ty].mhb[+e.dataset.gcm]=+e.value||0;saveSaved();calc()});
  }
  function calc(){
+   syncLinked();
    let from=Math.max(0,Math.floor(+document.getElementById('gcFrom').value||0));
-   let to=Math.max(1,Math.floor(+document.getElementById('gcTo').value||1));
-   if(to<from){let x=to;to=from;from=x}
-   const mode=document.getElementById('gcPriceMode').value;
-   let cumM=0,cumR=0,rangeM=0,rangeR=0,rows='';
+   let to=Math.max(1,Math.floor(+document.getElementById('gcTo').value||1));if(to<from){let x=to;to=from;from=x}
+   const ty=type(),name=itemName(ty);let cumM=0,cumR=0,rangeM=0,rangeR=0,rows='',missing=false;
    for(let lv=1;lv<=to;lv++){
-     const m=mode==='market'?marketMhb(lv):theoreticalMhb(lv);
-     const r=mode==='market'?marketRmb(lv):theoreticalRmb(lv);
-     cumM+=m;cumR+=r;
-     if(lv>from){rangeM+=m;rangeR+=r}
-     rows+=`<tr><td>${lv}级</td><td>${fmt(eq1(lv),0)}</td><td>${fmt(m,0)}</td><td>${fmt(cumM,0)}</td><td>¥${fmt(r)}</td><td>¥${fmt(cumR)}</td></tr>`;
+     const w=unitWan(ty,lv,name),mhb=w*10000,rmb=toRmbWan(w);if(!(w>0))missing=true;
+     cumM+=mhb;cumR+=rmb;if(lv>from){rangeM+=mhb;rangeR+=rmb}
+     rows+=`<tr><td>${lv}级</td><td>${fmt(Math.pow(ty==='star'?3:2,lv-1),0)}</td><td>${w>0?fmt(mhb,0):'未设置'}</td><td>${w>0?fmt(cumM,0):'—'}</td><td>${w>0?'¥'+fmt(rmb):'—'}</td><td>${w>0?'¥'+fmt(cumR):'—'}</td></tr>`;
    }
    document.getElementById('gcRows').innerHTML=rows;
-   const count1=Array.from({length:to-from},(_,i)=>eq1(from+1+i)).reduce((a,b)=>a+b,0);
-   const ty=type()==='star'?'星辉石':'普通宝石';
-   document.getElementById('gcSummary').innerHTML=
-    `<div class="gc-total">${from} → ${to}段：${ty}</div>`+
-    `等价需要 <b>${fmt(count1,0)}</b> 颗1级材料<br>`+
-    `MHB成本：<b>${fmt(rangeM,0)}</b><br>`+
-    `RMB参考：<b>¥${fmt(rangeR)}</b>`+
-    (type()==='star'&&to>=6?`<br><span class="muted">星辉石市场参考：5级¥${fmt(prices.star.rmb[5])}；6级¥${fmt(prices.star.rmb[6])}</span>`:'');
+   const count1=Array.from({length:Math.max(0,to-from)},(_,i)=>Math.pow(ty==='star'?3:2,from+i)).reduce((a,b)=>a+b,0);
+   document.getElementById('gcSummary').innerHTML=missing
+    ?`<div class="gc-total">${from} → ${to}段：${name}</div>等价需要 <b>${fmt(count1,0)}</b> 颗1级材料<br><b class="warn">全局物价库未设置“${name}”价格，暂不计算成本。</b>`
+    :`<div class="gc-total">${from} → ${to}段：${name}</div>等价需要 <b>${fmt(count1,0)}</b> 颗1级材料<br>MHB成本：<b>${fmt(rangeM,0)}</b><br>RMB参考：<b>¥${fmt(rangeR)}</b><br><span class="muted">价格来源：全局物价库；人民币按当前金价换算。</span>`;
  }
- function unitMhb(ty,lv){
-   lv=Math.max(1,Math.floor(+lv||1));
-   ty=ty==='star'?'star':'gem';
-   const explicit=+prices[ty].mhb[lv]||0;
-   if(explicit>0)return explicit;
-   const base=+document.getElementById('gcMhb1').value||0;
-   return base*Math.pow(ty==='star'?3:2,lv-1);
- }
- function unitWan(ty,lv){return unitMhb(ty,lv)/10000}
  function boot(){
-   loadSaved();
-   ['gcFrom','gcTo','gcPriceMode'].forEach(id=>{let e=document.getElementById(id);e.oninput=calc;e.onchange=calc});
-   ['gcMhb1','gcGoldRate'].forEach(id=>{let e=document.getElementById(id);e.oninput=()=>{saveSaved();calc()};e.onchange=()=>{saveSaved();calc()}});
-   document.getElementById('gcType').onchange=()=>{renderPrices();calc()};
-   renderPrices();calc();
-   try{window.dispatchEvent(new CustomEvent('mhxy-gemcost-updated'))}catch(e){}
+   const ty=document.getElementById('gcType'),gn=document.getElementById('gcGemName');
+   ['gcFrom','gcTo'].forEach(id=>{let e=document.getElementById(id);if(e){e.oninput=calc;e.onchange=calc}});
+   const refresh=()=>{syncLinked();renderPrices();calc();try{window.dispatchEvent(new CustomEvent('mhxy-gemcost-updated'))}catch(e){}};
+   if(ty)ty.onchange=refresh;if(gn)gn.onchange=refresh;
+   window.addEventListener('mhxy-price-library-updated',refresh);
+   window.addEventListener('mhxy-economy-updated',refresh);
+   refresh();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
- return{calc,prices,unitMhb,unitWan,save:saveSaved};
+ return{calc,unitMhb,unitWan};
 })();
 </script>
 
 <script>
 window.FIVEPROFILE=(function(){
-const cols=[['accountId','游戏ID','text'],['charName','名字','text'],['school','门派','text'],['human','功/法修','num'],['pdef','物抗','num'],['mdef','法抗','num'],['bbatk','BB攻','num'],['bbpdef','BB物抗','num'],['bbmagic','BB法','num'],['bbmdef','BB法抗','num'],['potential','潜能果','num'],['chance','机缘','num'],['schoolSkill','师门等级','text'],['qianyuan','乾元丹','num'],['exp','经验','text'],['strong','强身','num'],['meditation','冥想','num'],['robust','强壮','num'],['speed','神速','num'],['medicine','三药','num'],['hidden','暗器','num'],['cooking','烹饪','num']];
+const cols=[['accountId','游戏ID','text'],['charName','名字','text'],['school','门派','text'],['level','等级','num'],['human','功/法修','num'],['pdef','物抗','num'],['mdef','法抗','num'],['bbatk','BB攻','num'],['bbpdef','BB物抗','num'],['bbmagic','BB法','num'],['bbmdef','BB法抗','num'],['potential','潜能果','num'],['chance','机缘','num'],['schoolSkill','师门等级','text'],['qianyuan','乾元丹','num'],['exp','经验','text'],['strong','强身','num'],['meditation','冥想','num'],['robust','强壮','num'],['speed','神速','num'],['medicine','三药','num'],['hidden','暗器','num'],['cooking','烹饪','num']];
 
 // 按你确认的五开顺序预置：一大唐、二女儿、三花果、四神木、五化生
 const defaults=[
-{accountId:'一剑落惊鸿',charName:'',school:'大唐',human:17,pdef:17,mdef:17,bbatk:17,bbpdef:15,bbmagic:17,bbmdef:13,potential:100,chance:3,schoolSkill:'7个119',qianyuan:3,exp:'57777W',strong:129,meditation:140,robust:36,speed:30,medicine:140,hidden:0,cooking:0},
-{accountId:'二月醉桃花',charName:'',school:'女儿',human:13,pdef:11,mdef:8,bbatk:6,bbpdef:0,bbmagic:7,bbmdef:0,potential:28,chance:0,schoolSkill:'2个119',qianyuan:1,exp:'1770W',strong:101,meditation:32,robust:3,speed:0,medicine:0,hidden:140,cooking:0},
-{accountId:'三界自逍遥',charName:'',school:'花果山',human:17,pdef:17,mdef:17,bbatk:14,bbpdef:0,bbmagic:10,bbmdef:0,potential:56,chance:0,schoolSkill:'7个119',qianyuan:3,exp:'494W',strong:129,meditation:127,robust:20,speed:10,medicine:100,hidden:0,cooking:100},
-{accountId:'四季且听风',charName:'',school:'神木',human:17,pdef:17,mdef:17,bbatk:10,bbpdef:1,bbmagic:10,bbmdef:1,potential:57,chance:0,schoolSkill:'5个119',qianyuan:3,exp:'1837W',strong:114,meditation:63,robust:3,speed:7,medicine:0,hidden:0,cooking:0},
-{accountId:'五蕴本皆空',charName:'',school:'化生',human:11,pdef:12,mdef:12,bbatk:5,bbpdef:3,bbmagic:4,bbmdef:3,potential:43,chance:0,schoolSkill:'5个119',qianyuan:3,exp:'888W',strong:118,meditation:36,robust:8,speed:2,medicine:0,hidden:0,cooking:0}
+{accountId:'一剑落惊鸿',charName:'',school:'大唐',level:109,human:17,pdef:17,mdef:17,bbatk:17,bbpdef:15,bbmagic:17,bbmdef:13,potential:100,chance:3,schoolSkill:'7个119',qianyuan:3,exp:'57777W',strong:129,meditation:140,robust:36,speed:30,medicine:140,hidden:0,cooking:0},
+{accountId:'二月醉桃花',charName:'',school:'女儿',level:109,human:13,pdef:11,mdef:8,bbatk:6,bbpdef:0,bbmagic:7,bbmdef:0,potential:28,chance:0,schoolSkill:'2个119',qianyuan:1,exp:'1770W',strong:101,meditation:32,robust:3,speed:0,medicine:0,hidden:140,cooking:0},
+{accountId:'三界自逍遥',charName:'',school:'花果山',level:109,human:17,pdef:17,mdef:17,bbatk:14,bbpdef:0,bbmagic:10,bbmdef:0,potential:56,chance:0,schoolSkill:'7个119',qianyuan:3,exp:'494W',strong:129,meditation:127,robust:20,speed:10,medicine:100,hidden:0,cooking:100},
+{accountId:'四季且听风',charName:'',school:'神木',level:109,human:17,pdef:17,mdef:17,bbatk:10,bbpdef:1,bbmagic:10,bbmdef:1,potential:57,chance:0,schoolSkill:'5个119',qianyuan:3,exp:'1837W',strong:114,meditation:63,robust:3,speed:7,medicine:0,hidden:0,cooking:0},
+{accountId:'五蕴本皆空',charName:'',school:'化生',level:109,human:11,pdef:12,mdef:12,bbatk:5,bbpdef:3,bbmagic:4,bbmdef:3,potential:43,chance:0,schoolSkill:'5个119',qianyuan:3,exp:'888W',strong:118,meditation:36,robust:8,speed:2,medicine:0,hidden:0,cooking:0}
 ];
 const DEFAULT_TARGETS={human:17,pdef:17,mdef:17,bbatk:17,bbpdef:17,bbmagic:17,bbmdef:17,potential:100,chance:3,qianyuan:3,strong:140,meditation:160,robust:60,speed:60,hidden:160,medicine:160,cooking:160};
 const STORE='mhxy_fiveprofile_v81';
@@ -13733,7 +13742,7 @@ function write(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function fmt(n){return Number(n||0).toLocaleString('zh-CN',{maximumFractionDigits:2})}
 function key(r,i){return String((r&&r.accountId)||'').trim()||String((r&&r.charName)||'').trim()||('角色'+(i+1))}
 function displayName(r,i){return String((r&&r.charName)||'').trim()||String((r&&r.accountId)||'').trim()||((i+1)+'号')}
-function globalItemPrice(name,fallback){
+function globalItemPrice(name,fallback=0){
   try{
     let a=JSON.parse(localStorage.getItem('mhxy_global_price_library_v48')||'[]');
     if(Array.isArray(a)){
@@ -13741,7 +13750,7 @@ function globalItemPrice(name,fallback){
       if(x&&Number.isFinite(+x.price))return Math.max(0,+x.price);
     }
   }catch(e){}
-  return fallback;
+  return Number.isFinite(+fallback)?Math.max(0,+fallback):0;
 }
 function parseWan(v){let s=String(v||'').trim().toUpperCase().replace(/,/g,'');let n=parseFloat(s)||0;if(s.includes('亿'))return n*10000;if(s.includes('W')||s.includes('万'))return n;return n}
 
@@ -13761,6 +13770,11 @@ function potentialExpWan(from,to){
   return s;
 }
 function rExp(f,t){let x=0;for(let lv=Math.max(0,+f||0)+1;lv<=Math.min(25,+t||0);lv++)x+=REPAIR[lv]||0;return x}
+function repairProgressValue(r,i,field){let z=resources[key(r,i)]||{},p=z.repairProgress||{};return Math.max(0,+p[field]||0)}
+function rExpRemaining(f,t,progress){f=Math.max(0,Math.min(25,Math.floor(+f||0)));t=Math.max(f,Math.min(25,Math.floor(+t||0)));if(t<=f)return 0;let req=REPAIR[f+1]||0,cur=Math.max(0,Math.min(req,+progress||0));return Math.max(0,req-cur)+rExp(f+1,t)}
+function repairNextDetail(level,progress){level=Math.max(0,Math.min(25,Math.floor(+level||0)));let req=REPAIR[level+1]||0,cur=Math.max(0,Math.min(req,+progress||0));return {req,cur,left:Math.max(0,req-cur),next:Math.min(25,level+1)}}
+function potentialCapForRole(level){level=Math.floor(+level||0);if(level<60)return 0;if(level<90)return 50;if(level<155)return 100;if(level<170)return 150;return 200}
+function potentialAffordableRole(from,cap,expWan){let n=Math.max(0,Math.floor(+from||0)),max=Math.max(n,Math.min(200,Math.floor(+cap||0))),remain=Math.max(0,+expWan||0),added=0;while(n<max){let cost=potentialOneExpWan(n+1);if(remain+1e-9<cost)break;remain-=cost;n++;added++}return {added,to:n,remain}}
 function sum(a,f,t){let x=0;for(let lv=Math.max(0,+f||0)+1;lv<=Math.min(a.length,+t||0);lv++)x+=a[lv-1]||0;return x}
 function hExp(lv){return MEXP[lv-1]||0} function hMoney(lv){return Math.floor((MMONEY[lv-1]||0)/2)}
 
@@ -13825,19 +13839,22 @@ function reload(){
    if(targets[k].hatk===undefined)targets[k].hatk=17;
    if(targets[k].hmagic===undefined)targets[k].hmagic=17;
    if(!budget[k])budget[k]={historyBg:0,currentBg:0,repairTarget:null,includeRepair:true,includePetRepair:true,skills:[]};
-   if(!resources[k])resources[k]={expWan:parseWan(r.exp),reserveWan:0,fruitPrice:96,currentBg:+(budget[k].currentBg||0),historyBg:+(budget[k].historyBg||0)};
+   if(!r.level)r.level=109;
+   if(!resources[k])resources[k]={expWan:parseWan(r.exp),reserveWan:0,currentBg:+(budget[k].currentBg||0),historyBg:+(budget[k].historyBg||0)};
+   if(!resources[k].repairProgress||typeof resources[k].repairProgress!=='object')resources[k].repairProgress={};
+   ['hatk','hmagic','pdef','mdef','bbatk','bbmagic','bbpdef','bbmdef'].forEach(function(f){if(resources[k].repairProgress[f]===undefined)resources[k].repairProgress[f]=0});
    if(!shorts[k])shorts[k]={type:'hatk',target:null};
    if(shorts[k].type==='human')shorts[k].type='hatk';
    if(!Array.isArray(shortMulti[k])){
      let oldShort=shorts[k]||{type:'hatk',target:null};
      shortMulti[k]=[{id:'s'+Date.now()+'_'+i,type:oldShort.type||'hatk',target:oldShort.target}];
    }
-   if(resources[k].fruitPrice===undefined)resources[k].fruitPrice=96;
+   if(resources[k]&&Object.prototype.hasOwnProperty.call(resources[k],'fruitPrice'))delete resources[k].fruitPrice;
    if(resources[k].currentBg===undefined)resources[k].currentBg=+(budget[k].currentBg||0);
    if(resources[k].historyBg===undefined)resources[k].historyBg=+(budget[k].historyBg||0);
    ensureMaster(r,i);
  });
- write(RK,resources);write(BK,budget);write(MK,masters);write(SK,shorts);write(TK,targets);write(DK,dailyDeltas);write(CAK,customAux);write(AHK,hiddenAux);write(LGFK,longGoalFold);write(SMK,shortMulti);
+ write(PK,profiles);write(RK,resources);write(BK,budget);write(MK,masters);write(SK,shorts);write(TK,targets);write(DK,dailyDeltas);write(CAK,customAux);write(AHK,hiddenAux);write(LGFK,longGoalFold);write(SMK,shortMulti);
 }
 
 function localDay(){
@@ -13930,16 +13947,16 @@ function roleCalc(r,i){
  let k=key(r,i),res=resources[k]||{},t=targets[k]||DEF;
 
  // 人物修炼：只按长期目标
- let ha=rExp(r.hatk,t.hatk),hm=rExp(r.hmagic,t.hmagic),pd=rExp(r.pdef,t.pdef),md=rExp(r.mdef,t.mdef);
+ let ha=rExpRemaining(r.hatk,t.hatk,repairProgressValue(r,i,'hatk')),hm=rExpRemaining(r.hmagic,t.hmagic,repairProgressValue(r,i,'hmagic')),pd=rExpRemaining(r.pdef,t.pdef,repairProgressValue(r,i,'pdef')),md=rExpRemaining(r.mdef,t.mdef,repairProgressValue(r,i,'mdef'));
  let humanRepair=ha+hm+pd+md,humanReserve=(ha+hm)*3000+(pd+md)*2000;
 
  // 宝宝修炼：只按长期目标
- let pa=rExp(r.bbatk,t.bbatk),pp=rExp(r.bbpdef,t.bbpdef),pm=rExp(r.bbmagic,t.bbmagic),pf=rExp(r.bbmdef,t.bbmdef);
+ let pa=rExpRemaining(r.bbatk,t.bbatk,repairProgressValue(r,i,'bbatk')),pp=rExpRemaining(r.bbpdef,t.bbpdef,repairProgressValue(r,i,'bbpdef')),pm=rExpRemaining(r.bbmagic,t.bbmagic,repairProgressValue(r,i,'bbmagic')),pf=rExpRemaining(r.bbmdef,t.bbmdef,repairProgressValue(r,i,'bbmdef'));
  let petRepair=pa+pp+pm+pf;
  let fruitAtk=Math.ceil(pa/150),fruitPdef=Math.ceil(pp/150),fruitMagic=Math.ceil(pm/150),fruitMdef=Math.ceil(pf/150);
  let fruits=fruitAtk+fruitPdef+fruitMagic+fruitMdef;
  let fruitFormula=fruitAtk+' + '+fruitMagic+' + '+fruitPdef+' + '+fruitMdef+' = '+fruits;
- let fruitPrice=globalItemPrice('修炼果',96),fruitCost=fruits*fruitPrice;
+ let fruitPrice=globalItemPrice('修炼果'),fruitCost=fruits*fruitPrice;
 
  // 师门技能：只按长期目标
  let mc=masterCalc(r,i),charExp=mc.exp,masterMoney=mc.money,auxMoney=0,skillMoney=mc.money,bg=0,skillNeedBg=0,rows=[];
@@ -13972,10 +13989,13 @@ function roleCalc(r,i){
 
  let currentBg=+res.currentBg||0,historyBg=+res.historyBg||0;
 
- // 潜能果：只按长期目标
- let potentialCurrent=+r.potential||0,potentialTarget=+t.potential||0;
+ // 潜能果：只按长期目标；目标不能超过当前人物等级可兑换上限
+ let potentialCurrent=+r.potential||0,potentialCap=potentialCapForRole(+r.level||109),potentialTargetRaw=+t.potential||0;
+ let potentialTarget=potentialTargetRaw>0?Math.min(potentialTargetRaw,potentialCap||potentialTargetRaw):0;
  let potentialShort=potentialTarget>0?Math.max(0,potentialTarget-potentialCurrent):0;
  let potentialExpWanNeed=potentialTarget>0?potentialExpWan(potentialCurrent,potentialTarget):0,potentialExp=potentialExpWanNeed*10000;
+ let potentialFullNeedWan=potentialCap>potentialCurrent?potentialExpWan(potentialCurrent,potentialCap):0;
+ let potentialByCurrentExp=potentialAffordableRole(potentialCurrent,potentialCap,+res.expWan||0);
 
  // 历史帮贡缺口：只看长期人物修炼目标
  let pendingRepairTargets=[];
@@ -14016,7 +14036,7 @@ function roleCalc(r,i){
  return {
    ha,hm,pd,md,humanRepair,humanReserve,pa,pp,pm,pf,petRepair,fruitAtk,fruitPdef,fruitMagic,fruitMdef,fruitFormula,fruits,fruitPrice,fruitCost,
    charExp,masterMoney,auxMoney,skillMoney,bg,auxBgNeed:bg,skillNeedBg,rows:auxRows,customRows,master:mc,currentBg,historyBg,
-   potentialCurrent,potentialTarget,potentialShort,potentialExpWanNeed,potentialExp,
+   potentialCurrent,potentialTarget,potentialShort,potentialExpWanNeed,potentialExp,potentialCap,potentialFullNeedWan,potentialByCurrentExp,
    totalCharExp:charExp+potentialExp,
    masterExp:mc.exp||0,
    auxExp:Math.max(0,charExp-(mc.exp||0)),
@@ -14127,35 +14147,22 @@ function reserveBreakdown(x,currentReserveWan){
 }
 function pct(v,t){if(!t)return 100;return Math.max(0,Math.min(100,(+v||0)/(+t||1)*100))}
 
-function repairTargetRow(i,field,label,current,target,pet){
+function repairTargetRow(i,field,label,current,target,pet,progress){
   let cur=+current||0,tar=+target||0;
   let has=tar>0,bad=has&&cur<tar,tv=has?tar:'';
-  let needExp=has?Math.max(0,rExp(cur,tar)):0;
+  let next=repairNextDetail(cur,progress),needExp=has?Math.max(0,rExpRemaining(cur,tar,progress)):0;
   let goldWan=0,extra='';
-
   if(has){
-    if(pet){
-      let fruitPrice=globalItemPrice('修炼果',96);
-      let fruitCount=needExp>0?Math.ceil(needExp/150):0;
-      goldWan=fruitCount*fruitPrice;
-      extra=' · 约 '+fmt(goldWan)+'万游戏币'
-        +(fruitCount>0?'（'+fmt(fruitCount)+'个修炼果）':'');
-    }else{
-      let perExp=(field==='hatk'||field==='hmagic')?3000:2000;
-      goldWan=needExp*perExp/10000;
-      extra=' · 约 '+fmt(goldWan)+'万游戏币';
-    }
+    if(pet){let fruitPrice=globalItemPrice('修炼果');let fruitCount=needExp>0?Math.ceil(needExp/150):0;goldWan=fruitCount*fruitPrice;extra=fruitPrice>0?(' · 约 '+fmt(goldWan)+'万游戏币'+(fruitCount>0?'（'+fmt(fruitCount)+'个修炼果）':'')):' · 修炼果价格未设置';}
+    else{let perExp=(field==='hatk'||field==='hmagic')?3000:2000;goldWan=needExp*perExp/10000;extra=' · 约 '+fmt(goldWan)+'万游戏币';}
   }
-
-  let costText=!has
-    ? '设置目标后自动计算修炼经验和游戏币'
-    : '缺修炼经验 '+fmt(needExp)+extra;
-
+  let costText=!has?'设置目标后自动计算修炼经验和游戏币':(cur<25?'本级 '+fmt(next.cur)+'/'+fmt(next.req)+'，距'+next.next+'级 '+fmt(next.left)+' · ':'')+'长期缺修炼经验 '+fmt(needExp)+extra;
   return '<div class="repair-target-row '+(!has?'unset':(bad?'need':'done'))+'">'
     +'<div class="repair-target-label">'+label+'</div>'
-    +'<label><span>当前</span><input data-repair-current="'+field+'" data-i="'+i+'" type="number" min="0" max="25" value="'+cur+'"></label>'
+    +'<label><span>当前等级</span><input data-repair-current="'+field+'" data-i="'+i+'" type="number" min="0" max="25" value="'+cur+'"></label>'
+    +'<label><span>本级经验</span><input data-repair-progress="'+field+'" data-i="'+i+'" type="number" min="0" max="'+(next.req||0)+'" value="'+Math.max(0,+progress||0)+'"></label>'
     +'<div class="repair-arrow">→</div>'
-    +'<label><span>目标</span><input data-repair-target="'+field+'" data-i="'+i+'" type="number" min="0" max="25" placeholder="未设" value="'+tv+'"></label>'
+    +'<label><span>目标等级</span><input data-repair-target="'+field+'" data-i="'+i+'" type="number" min="0" max="25" placeholder="未设" value="'+tv+'"></label>'
     +'<div class="repair-target-state">'+(!has?'未设目标':(bad?'未达标':'已达标'))+'</div>'
     +'<div class="repair-target-cost '+(!has?'unset':(needExp>0?'need':'done'))+'">'+costText+'</div>'
   +'</div>';
@@ -14270,13 +14277,13 @@ function shortCalc(r,i){
   let k=key(r,i),s=shorts[k]||{type:'hatk',target:null},m=shortMeta(r,i,s.type);
   let target=s.target===null||s.target===undefined?shortDefaultTarget(r,i,s.type):Math.max(0,+s.target||0);
   target=Math.max(m.current,target);
-  let exp=m.kind==='potential'?potentialExpWan(m.current,target)*10000:(m.kind==='master'?sum(MEXP,m.current,target):rExp(m.current,target)),reserve=0,fruits=0,cost=0,historyNeed=0,historyShort=0;
+  let exp=m.kind==='potential'?potentialExpWan(m.current,target)*10000:(m.kind==='master'?sum(MEXP,m.current,target):rExpRemaining(m.current,target,repairProgressValue(r,i,m.field))),reserve=0,fruits=0,cost=0,historyNeed=0,historyShort=0;
   if(m.kind==='human')reserve=exp*3000;
   else if(m.kind==='humanDef')reserve=exp*2000;
   else if(m.kind==='master')reserve=sum(MMONEY,m.current,target);
   else if(m.kind==='pet'){
     fruits=Math.ceil(exp/150);
-    cost=fruits*globalItemPrice('修炼果',96);
+    cost=fruits*globalItemPrice('修炼果');
   }
   if(m.kind==='human'||m.kind==='humanDef'){
     historyNeed=target>m.current?target*150:0;
@@ -14506,10 +14513,10 @@ function shortProjectCalc(r,i,item){
     let temp=Object.assign({},m.auxRow,{current:m.current,target:target}),c=customAuxCost(temp);
     out.charExp=c.exp||0;out.reserve=c.money||0;out.bg=c.bg||0;out.exact=c.exact!==false;
   }else{
-    out.repairExp=rExp(m.current,target);
+    out.repairExp=rExpRemaining(m.current,target,repairProgressValue(r,i,m.field));
     if(m.kind==='human')out.reserve=out.repairExp*3000;
     if(m.kind==='humanDef')out.reserve=out.repairExp*2000;
-    if(m.kind==='pet'){out.fruits=Math.ceil(out.repairExp/150);out.cost=out.fruits*globalItemPrice('修炼果',96)}
+    if(m.kind==='pet'){out.fruits=Math.ceil(out.repairExp/150);out.cost=out.fruits*globalItemPrice('修炼果')}
     if(m.kind==='human'||m.kind==='humanDef'){
       out.historyNeed=target>m.current?target*150:0;
       let hist=+((resources[key(r,i)]||{}).historyBg)||0;
@@ -14535,7 +14542,7 @@ function shortCostCards(c){
   if((c.repairExp||0)>0)a.push('<div class="short-cost repair"><span>修炼经验</span><b>'+fmt(c.repairExp)+'</b></div>');
   if((c.reserve||0)>0)a.push('<div class="short-cost reserve"><span>储备 / 金钱</span><b>'+fmt(c.reserve/10000)+'万</b></div>');
   if((c.fruits||0)>0)a.push('<div class="short-cost fruit"><span>修炼果</span><b>'+fmt(c.fruits)+'个</b></div>');
-  if((c.cost||0)>0)a.push('<div class="short-cost money"><span>预计游戏币</span><b>'+fmt(c.cost)+'万</b></div>');
+  if((c.fruits||0)>0){let fp=globalItemPrice('修炼果');a.push('<div class="short-cost money"><span>预计游戏币</span><b>'+(fp>0?fmt(c.cost)+'万':'未设置果价')+'</b></div>');}
   if((c.bg||0)>0)a.push('<div class="short-cost bg"><span>帮贡</span><b>'+fmt(c.bg)+'</b></div>');
   if((c.historyShort||0)>0)a.push('<div class="short-cost history"><span>历史帮贡缺口</span><b>'+fmt(c.historyShort)+'</b></div>');
   return a.length?a.join(''):'<div class="short-cost done"><span>状态</span><b>已达标 / 无消耗</b></div>';
@@ -14694,7 +14701,8 @@ function renderRole(i){
  document.getElementById('fprdBasic'+i).innerHTML=
    '<div class="fprd-basic-top"><div><span>游戏ID</span><input data-current-profile="accountId" data-i="'+i+'" type="text" value="'+String(r.accountId||'').replace(/"/g,'&quot;')+'"></div>'
    +'<div><span>名字</span><input data-current-profile="charName" data-i="'+i+'" type="text" value="'+String(r.charName||'').replace(/"/g,'&quot;')+'"></div>'
-   +'<div><span>门派</span><input data-current-profile="school" data-i="'+i+'" type="text" value="'+String(r.school||'').replace(/"/g,'&quot;')+'"></div></div>';
+   +'<div><span>门派</span><input data-current-profile="school" data-i="'+i+'" type="text" value="'+String(r.school||'').replace(/"/g,'&quot;')+'"></div>'
+   +'<div><span>人物等级</span><input data-current-profile="level" data-i="'+i+'" type="number" min="1" max="200" value="'+(+r.level||109)+'"></div></div>';
  let dc=dailyChange(k,res);
  document.getElementById('fprdResources'+i).innerHTML=
    '<div class="fprd-current-entry-panel">'
@@ -14782,7 +14790,7 @@ function renderRole(i){
  ].map((q,pos)=>({q,pos,need:(+q[3]||0)>0&&(+q[2]||0)<(+q[3]||0)})).sort((a,b)=>(b.need?1:0)-(a.need?1:0)||a.pos-b.pos);
  document.getElementById('fprdHuman'+i).innerHTML=
    '<div class="repair-target-list">'
-   +humanRepairRows.map(x=>repairTargetRow(i,x.q[0],x.q[1],x.q[2],x.q[3],false)).join('')
+   +humanRepairRows.map(x=>repairTargetRow(i,x.q[0],x.q[1],x.q[2],x.q[3],false,repairProgressValue(r,i,x.q[0]))).join('')
    +'</div>'
    +'<div class="repair-cost-grid">'
      +'<div class="'+(x.humanRepair>0?'need':'done')+'"><span>还需修炼经验</span><b>'+fmt(x.humanRepair)+'</b></div>'
@@ -14796,13 +14804,13 @@ function renderRole(i){
  ].map((q,pos)=>({q,pos,need:(+q[3]||0)>0&&(+q[2]||0)<(+q[3]||0)})).sort((a,b)=>(b.need?1:0)-(a.need?1:0)||a.pos-b.pos);
  document.getElementById('fprdPet'+i).innerHTML=
    '<div class="repair-target-list pet">'
-   +petRepairRows.map(x=>repairTargetRow(i,x.q[0],x.q[1],x.q[2],x.q[3],true)).join('')
+   +petRepairRows.map(x=>repairTargetRow(i,x.q[0],x.q[1],x.q[2],x.q[3],true,repairProgressValue(r,i,x.q[0]))).join('')
    +'</div>'
    +'<div class="repair-cost-grid pet-cost">'
      +'<div class="'+(x.petRepair>0?'need':'done')+'"><span>还需宝宝修炼经验</span><b>'+fmt(x.petRepair)+'</b></div>'
      +'<div class="'+(x.fruits>0?'need':'done')+'"><span>折合修炼果</span><b>'+fmt(x.fruits)+'个</b><small>攻 '+fmt(x.fruitAtk)+' + 法 '+fmt(x.fruitMagic)+' + 物抗 '+fmt(x.fruitPdef)+' + 法抗 '+fmt(x.fruitMdef)+' = '+fmt(x.fruits)+'个</small></div>'
-     +'<div><span>修炼果单价</span><b>'+fmt(x.fruitPrice)+'万/个</b><small>全局物价库</small></div>'
-     +'<div class="'+(x.fruitCost>0?'need':'done')+'"><span>预计游戏币</span><b>'+fmt(x.fruitCost)+'万</b></div>'
+     +'<div><span>修炼果单价</span><b>'+(x.fruitPrice>0?fmt(x.fruitPrice)+'万/个':'未设置')+'</b><small>全局物价库</small></div>'
+     +'<div class="'+(x.fruitPrice>0&&x.fruitCost>0?'need':'done')+'"><span>预计游戏币</span><b>'+(x.fruitPrice>0?fmt(x.fruitCost)+'万':'未计算')+'</b></div>'
    +'</div><div class="repair-footnote"><button type="button" class="miniBtn" data-open-pricelib>修改修炼果物价</button><span class="sub">每项下方按150修炼经验/果分别向上取整，再按全局物价库中的修炼果单价折算游戏币；宝宝修成本不计入储备金缺口。</span></div>';
 
  let sc=shortCalc(r,i);
@@ -14832,7 +14840,8 @@ function renderRole(i){
 +'</div></div>').join('')+'</div>';
 
  document.getElementById('fprdPotential'+i).innerHTML=
-   '<div class="fprd-potential-status"><div><span>当前</span><input class="potential-current-input" data-potential-current data-i="'+i+'" type="number" min="0" max="200" value="'+(+x.potentialCurrent||0)+'"></div><div><span>长期目标</span><input class="potential-target-input" data-potential-target data-i="'+i+'" type="number" min="0" max="200" placeholder="未设" value="'+(x.potentialTarget>0?x.potentialTarget:'')+'"></div><div class="'+(x.potentialTarget<=0?'unset':(x.potentialShort>0?'need':'done'))+'"><span>缺口</span><b>'+(x.potentialTarget<=0?'未设':fmt(x.potentialShort)+'个')+'</b></div><div class="'+(x.potentialTarget<=0?'unset':(x.potentialExpWanNeed>0?'need':'done'))+'"><span>还需人物经验</span><b>'+(x.potentialTarget<=0?'—':fmt(x.potentialExpWanNeed)+'万')+'</b></div></div>';
+   '<div class="fprd-potential-status"><div><span>当前</span><input class="potential-current-input" data-potential-current data-i="'+i+'" type="number" min="0" max="'+x.potentialCap+'" value="'+(+x.potentialCurrent||0)+'"></div><div><span>长期目标</span><input class="potential-target-input" data-potential-target data-i="'+i+'" type="number" min="0" max="'+x.potentialCap+'" placeholder="未设" value="'+(x.potentialTarget>0?x.potentialTarget:'')+'"></div><div class="'+(x.potentialTarget<=0?'unset':(x.potentialShort>0?'need':'done'))+'"><span>缺口</span><b>'+(x.potentialTarget<=0?'未设':fmt(x.potentialShort)+'个')+'</b></div><div class="'+(x.potentialTarget<=0?'unset':(x.potentialExpWanNeed>0?'need':'done'))+'"><span>还需人物经验</span><b>'+(x.potentialTarget<=0?'—':fmt(x.potentialExpWanNeed)+'万')+'</b></div></div>'
+   +'<div class="potential-profile-hint"><b>'+fmt(+r.level||109)+'级满潜能上限：'+fmt(x.potentialCap)+'个</b><br>从当前 '+fmt(x.potentialCurrent)+' 个到满潜能还需 <strong>'+fmt(x.potentialFullNeedWan)+'万</strong> 人物经验。<br>你当前档案有 <strong>'+fmt(+res.expWan||0)+'万</strong> 经验；若全部拿来换潜能果，可再换 <strong>'+fmt(x.potentialByCurrentExp.added)+'个</strong>，到 <strong>'+fmt(x.potentialByCurrentExp.to)+'个</strong>，兑换后剩余约 '+fmt(x.potentialByCurrentExp.remain)+'万经验。</div>';
 
  document.getElementById('fprdAux'+i).innerHTML=
    '<div class="fprd-master-summary aux-summary-grid">'
@@ -14962,6 +14971,7 @@ function bindRole(i){
    const saveRepairCurrent=function(doRender){
      let field=this.dataset.repairCurrent;
      profiles[i][field]=Math.max(0,Math.min(25,+this.value||0));
+     let kk=key(profiles[i],i);if(resources[kk]&&resources[kk].repairProgress){let req=REPAIR[(+profiles[i][field]||0)+1]||0;resources[kk].repairProgress[field]=Math.max(0,Math.min(req,+resources[kk].repairProgress[field]||0));write(RK,resources)}
      write(PK,profiles);
      if(doRender){
        try{window.dispatchEvent(new CustomEvent('mhxy-fiveprofile-updated'))}catch(err){}
@@ -14970,6 +14980,15 @@ function bindRole(i){
    };
    e.oninput=function(){saveRepairCurrent.call(this,false)};
    e.onchange=function(){saveRepairCurrent.call(this,true)};
+ });
+ document.querySelectorAll('[data-repair-progress][data-i="'+i+'"]').forEach(e=>{
+   const saveRepairProgress=function(doRender){
+     let kk=key(profiles[i],i),field=this.dataset.repairProgress;if(!resources[kk])resources[kk]={};if(!resources[kk].repairProgress)resources[kk].repairProgress={};
+     let req=REPAIR[(+profiles[i][field]||0)+1]||0;resources[kk].repairProgress[field]=Math.max(0,Math.min(req,+this.value||0));write(RK,resources);
+     if(doRender)renderAll();
+   };
+   e.oninput=function(){saveRepairProgress.call(this,false)};
+   e.onchange=function(){saveRepairProgress.call(this,true)};
  });
  document.querySelectorAll('[data-repair-target][data-i="'+i+'"]').forEach(e=>{
    e.oninput=function(){
@@ -15006,7 +15025,7 @@ function bindRole(i){
    const savePotential=function(doRender){
      let kk=key(profiles[i],i);
      if(!targets[kk])targets[kk]=Object.assign({},DEF);
-     targets[kk].potential=Math.max(0,Math.min(200,+this.value||0));
+     let cap=potentialCapForRole(+profiles[i].level||109);targets[kk].potential=Math.max(0,Math.min(cap||200,+this.value||0));
      write(TK,targets);
      if(doRender){
        try{window.dispatchEvent(new CustomEvent('mhxy-fiveprofile-targets-updated'))}catch(err){}
@@ -15303,7 +15322,7 @@ function goalCostInfo(r,i,label,current,target,field,kind,index){
   }
 
   if(['hatk','hmagic','pdef','mdef'].includes(field)){
-    let rexp=rExp(f,t),money=(field==='hatk'||field==='hmagic')?rexp*3000:rexp*2000;
+    let rexp=rExpRemaining(f,t,repairProgressValue(r,i,field)),money=(field==='hatk'||field==='hmagic')?rexp*3000:rexp*2000;
     let hist=t*150;
     return {
       lines:[
@@ -15317,12 +15336,12 @@ function goalCostInfo(r,i,label,current,target,field,kind,index){
   }
 
   if(['bbatk','bbmagic','bbpdef','bbmdef'].includes(field)){
-    let rexp=rExp(f,t),fruits=Math.ceil(rexp/150),fruitPrice=globalItemPrice('修炼果',96),cost=fruits*fruitPrice;
+    let rexp=rExpRemaining(f,t,repairProgressValue(r,i,field)),fruits=Math.ceil(rexp/150),fruitPrice=globalItemPrice('修炼果'),cost=fruits*fruitPrice;
     return {
       lines:[
         ['修炼经验',fmt(rexp),'repair'],
         ['修炼果',fmt(fruits)+'个','fruit'],
-        ['预计游戏币',fmt(cost)+'万','money']
+        ['预计游戏币',fruitPrice>0?fmt(cost)+'万':'未设置果价','money']
       ],
       score:cost,
       note:'宝宝修炼'
@@ -15382,15 +15401,15 @@ function categorySubtotal(r,i,t,mc,type){
   if(type==='human'){
     [['hatk',r.hatk,t.hatk],['hmagic',r.hmagic,t.hmagic],['pdef',r.pdef,t.pdef],['mdef',r.mdef,t.mdef]].forEach(x=>{
       if((+x[2]||0)<=0||(+x[2]||0)<= (+x[1]||0))return;
-      let re=rExp(x[1],x[2]);repair+=re;
+      let re=rExpRemaining(x[1],x[2],repairProgressValue(r,i,x[0]));repair+=re;
       reserve+=(x[0]==='hatk'||x[0]==='hmagic')?re*3000:re*2000;
     });
   }else if(type==='pet'){
     [['bbatk',r.bbatk,t.bbatk],['bbmagic',r.bbmagic,t.bbmagic],['bbpdef',r.bbpdef,t.bbpdef],['bbmdef',r.bbmdef,t.bbmdef]].forEach(x=>{
       if((+x[2]||0)<=0||(+x[2]||0)<= (+x[1]||0))return;
-      let re=rExp(x[1],x[2]);repair+=re;fruits+=Math.ceil(re/150);
+      let re=rExpRemaining(x[1],x[2],repairProgressValue(r,i,x[0]));repair+=re;fruits+=Math.ceil(re/150);
     });
-    money=fruits*globalItemPrice('修炼果',96);
+    money=fruits*globalItemPrice('修炼果');
   }else if(type==='master'){
     exp=mc.exp||0;reserve=mc.money||0;
   }else if(type==='aux'){
@@ -15412,7 +15431,7 @@ function subtotalHtml(x,type){
   if(x.reserve>0)a.push('储备/金钱 '+fmt(x.reserve/10000)+'万');
   if(x.bg>0)a.push('帮贡 '+fmt(x.bg));
   if(x.fruits>0)a.push('修炼果 '+fmt(x.fruits)+'个（四项分别取整）');
-  if(x.money>0)a.push('预计游戏币 '+fmt(x.money)+'万');
+  if(x.fruits>0)a.push('预计游戏币 '+(globalItemPrice('修炼果')>0?fmt(x.money)+'万':'未设置果价'));
   return '<div class="goal-category-total"><span>本类合计</span><b>'+(a.length?a.join(' · '):'无未完成消耗')+'</b></div>';
 }
 
@@ -15779,10 +15798,10 @@ return {
    if(c==='星辉石'&&n>11){n=11;lv.value=11}
    const base=c==='星辉石'?'星辉石':c.replace(/^宝石·/,'');
    if(name)name.value=n+'级'+base;
-   if(window.GC&&typeof window.GC.unitWan==='function'){
-     const p=window.GC.unitWan(c==='星辉石'?'star':'gem',n);
-     if(p>0)price.value=Math.round(p*100)/100;
-   }
+   let p=0;
+   try{p=window.MHXY_LEVEL_PRICE?.priceByName(base,n)||0}catch(e){}
+   if(!(p>0)&&window.GC&&typeof window.GC.unitWan==='function')p=window.GC.unitWan(c==='星辉石'?'star':'gem',n,base);
+   if(p>0)price.value=Math.round(p*100)/100;
    try{price.dispatchEvent(new Event('input',{bubbles:true}))}catch(e){}
  }
  function boot(){
@@ -15790,6 +15809,7 @@ return {
    if(cat)cat.addEventListener('change',sync);
    if(lv)lv.addEventListener('change',sync);
    window.addEventListener('mhxy-gemcost-updated',sync);
+   window.addEventListener('mhxy-price-library-updated',sync);
    sync();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
@@ -17030,8 +17050,9 @@ window.MHXY_SECRET_TRAINING=(function(){
     window.addEventListener('focus',calc);
     document.addEventListener('visibilitychange',()=>{if(!document.hidden)calc()});
     window.addEventListener('storage',e=>{
-      if(!e || e.key==='mhxy_global_price_library_v48')calc();
+      if(!e || e.key==='mhxy_global_price_library_v48'){renderRings();calc();}
     });
+    window.addEventListener('mhxy-price-library-updated',()=>{renderRings();calc();});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
   return {render:boot};
@@ -19558,7 +19579,7 @@ body.theme-light #pricelib .pl-reset-btn{background:#fff!important;border-color:
 <script>
 (function(){
 'use strict';
-window.MHXY_APP_VERSION='8.20.84';
+window.MHXY_APP_VERSION='8.20.85';
 const RAW_INDEX='https://raw.githubusercontent.com/Bojack666/MHXY/main/index.html';
 const REPO_URL='https://github.com/Bojack666/MHXY';
 const KEY='mhxy_github_updater_v2';
