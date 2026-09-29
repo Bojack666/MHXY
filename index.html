@@ -9,9 +9,9 @@ input[readonly][id="fruitPrice"],input[readonly][id="pillPrice"],input[readonly]
 <style>@layer profile-clarity;</style>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>梦幻西游五开工具箱 v8.20.92 · 修改 2026-09-20 03:04:04</title>
-<meta name="mhxy-app-version" content="8.20.92" />
-<meta name="mhxy-app-updated-at" content="2026-09-20 03:04:04" />
+<title>梦幻西游五开工具箱 v8.20.96 · 修改 2026-09-29</title>
+<meta name="mhxy-app-version" content="8.20.96" />
+<meta name="mhxy-app-updated-at" content="2026-09-29" />
 <link rel="manifest" href="manifest.webmanifest" />
 <meta name="theme-color" content="#0b1020" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -6396,7 +6396,7 @@ body.theme-light #petwildcheck .pwc-tip,body.theme-light #petwildcheck .pwc-form
 </style>
 
 <style>
-/* v8.20.92 五开档案：修炼本级经验输入框显示修复 */
+/* v8.20.93 五开档案：修炼本级经验输入框显示修复 */
 /*
    旧版后置样式把 6 个字段错误压成了 5 列，导致“本级经验”刚好落进 26px 的箭头列，
    输入 3~4 位修炼经验时数字看不全。恢复为 6 列，并单独给本级经验更宽的空间。
@@ -6435,10 +6435,55 @@ section[id^="fiveprofile_role_"] .repair-target-row input[data-repair-target]{
 }
 </style>
 
+<style id="ascension129Style">#ascension129{font-size:16px}#ascension129 .ar-hero{border-top:4px solid #39b997}#ascension129 h2{font-size:25px;margin-bottom:10px}#ascension129 .ar-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0}#ascension129 .ar-metric{padding:18px;border:1px solid var(--line,#ccd5df);border-radius:12px;background:rgba(128,148,164,.06)}#ascension129 .ar-metric span{display:block;font-size:14px;color:var(--muted,#758294)}#ascension129 .ar-metric strong{display:block;font-size:25px;margin-top:10px;overflow-wrap:anywhere}#ascension129 .ar-exp{color:#19956a}#ascension129 .ar-reserve{color:#bd861c}#ascension129 .ar-cash{color:#608cdc}#ascension129 .ar-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0}#ascension129 .ar-toolbar .active{outline:2px solid #39b997}#ascension129 .ar-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0}#ascension129 label{display:flex;flex-direction:column;gap:8px;font-size:15px}#ascension129 input,#ascension129 select{width:100%;min-width:0;font-size:16px;padding:10px;border:1px solid var(--border,#ccd5df);border-radius:8px;background:var(--panel,#fff);color:var(--text,#16304a)}#ascension129 .ar-skill-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;margin:16px 0}#ascension129 .ar-repair-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:16px 0}#ascension129 .ar-skill-grid label,#ascension129 .ar-repair-grid label{padding:12px;border:1px solid var(--line,#ccd5df);border-radius:10px}#ascension129 small{display:block;font-size:13px;color:var(--muted,#758294);line-height:1.6}#ascension129 .ar-scroll{overflow-x:auto}#ascension129 table{width:100%;font-size:14px}#ascension129 th,#ascension129 td{padding:12px 10px;white-space:nowrap}#ascension129 .ar-warning{padding:12px;border:1px solid #d49b40;border-radius:10px;background:rgba(240,172,64,.1);color:#bb7b14}#ascension129 summary{cursor:pointer;font-weight:700;padding:8px 0}#ascension129 .note{line-height:1.75;margin:12px 0}#ascension129 h4{margin-top:24px}@media(max-width:1100px){#ascension129 .ar-summary{grid-template-columns:repeat(2,minmax(0,1fr))}#ascension129 .ar-skill-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:650px){#ascension129 .ar-fields{grid-template-columns:1fr}#ascension129 .ar-skill-grid,#ascension129 .ar-repair-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#ascension129 .ar-metric{padding:12px}#ascension129 .ar-metric strong{font-size:21px}}
+#ascension129 .ar-human-tip{margin:12px 0 14px;padding:12px 14px;border:1px solid rgba(57,185,151,.42);border-left:4px solid #39b997;border-radius:10px;background:rgba(57,185,151,.08);line-height:1.75}#ascension129 .ar-human-tip b{color:#34d399}#ascension129 .ar-human-table{min-width:900px}#ascension129 .ar-human-table th{text-align:center}#ascension129 .ar-human-table td{text-align:center;vertical-align:middle}#ascension129 .ar-human-table td:first-child{text-align:left}#ascension129 .ar-human-table input{min-width:86px;text-align:center}#ascension129 .ar-human-table small{margin-top:4px;white-space:normal}#ascension129 .ar-cap25{display:inline-block;min-width:38px;padding:3px 8px;border-radius:999px;background:rgba(52,211,153,.13);color:#34d399!important;font-size:17px}
+#ascension129 .ar-metric strong{font-size:24px!important;line-height:1.35!important}#ascension129 .ar-exp,#ascension129 .ar-exp strong{color:#16845c!important}#ascension129 .ar-reserve,#ascension129 .ar-reserve strong{color:#a87512!important}#ascension129 .ar-cash strong{color:#4274ba!important}@media(max-width:650px){#ascension129 .ar-metric strong{font-size:20px!important}}
+/* v8.20.96 飞升129：五开档案当前数据双向同步 + 五号详情切换 */
+#ascension129 .ar-view-split{width:1px;height:24px;background:rgba(255,255,255,.12);margin:0 2px}
+#ascension129 .ar-view-btn.active{background:#245fae!important;border-color:#93c5fd!important;color:#fff!important;font-weight:900!important}
+#ascension129 .ar-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+#ascension129 .ar-section-head h3{margin-bottom:4px!important}
+#ascension129 .ar-all-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+#ascension129 .ar-all-role{min-width:0;background:#0d1728;border:1px solid #30425f;border-radius:11px;padding:13px}
+#ascension129 .ar-all-role.has-issue{border-color:rgba(212,155,64,.7);background:rgba(212,155,64,.055)}
+#ascension129 .ar-all-role-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.07)}
+#ascension129 .ar-all-role-name{font-weight:900;color:#eaf3ff;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ascension129 .ar-all-role-meta{font-size:10px;color:#8194b2;margin-top:3px}
+#ascension129 .ar-all-status{font-size:10px;font-weight:900;white-space:nowrap;color:#53bf90}
+#ascension129 .ar-all-role.has-issue .ar-all-status{color:#d49b40}
+#ascension129 .ar-all-kpis{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+#ascension129 .ar-all-kpi{background:#0a1322;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:8px}
+#ascension129 .ar-all-kpi span{display:block;color:#8093b1;font-size:9px;line-height:1.25}
+#ascension129 .ar-all-kpi b{display:block;margin-top:3px;color:#b9d9ff;font-size:13px;line-height:1.25}
+#ascension129 .ar-all-lines{font-size:10px;color:#93a6c2;line-height:1.7}
+#ascension129 .ar-all-lines div{display:flex;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dashed rgba(255,255,255,.05)}
+#ascension129 .ar-all-lines div:last-child{border-bottom:0}
+#ascension129 .ar-all-lines b{color:#dbe9fb;text-align:right}
+#ascension129 .ar-all-actions{margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.07)}
+#ascension129 .ar-all-actions .miniBtn{width:100%;text-align:center}
+@media(max-width:1350px){#ascension129 .ar-all-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){#ascension129 .ar-all-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){#ascension129 .ar-all-grid{grid-template-columns:1fr}#ascension129 .ar-view-split{display:none}}
+#ascension129 .ar-sync-box{margin:14px 0 18px;padding:14px;border:1px solid rgba(96,165,250,.32);border-radius:11px;background:rgba(37,99,235,.055)}
+#ascension129 .ar-sync-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+#ascension129 .ar-sync-head h4{margin:0!important;color:#dcecff}
+#ascension129 .ar-sync-badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;background:rgba(34,197,94,.13);border:1px solid rgba(74,222,128,.34);color:#86efac;font-size:10px;font-weight:900;white-space:nowrap}
+#ascension129 .ar-current-grid{display:grid;grid-template-columns:repeat(6,minmax(95px,1fr));gap:8px}
+#ascension129 .ar-current-grid label,#ascension129 .ar-current-repair label,#ascension129 .ar-current-master label{display:block;font-size:10px;color:#8ea3c5}
+#ascension129 .ar-current-grid input,#ascension129 .ar-current-repair input,#ascension129 .ar-current-master input{display:block;width:100%;margin-top:4px;background:#0a1322;color:#fff;border:1px solid #3a4c6b;border-radius:7px;padding:7px}
+#ascension129 .ar-current-subtitle{font-size:11px;font-weight:900;color:#b9cbea;margin:13px 0 7px}
+#ascension129 .ar-current-repair{display:grid;grid-template-columns:repeat(4,minmax(145px,1fr));gap:8px}
+#ascension129 .ar-current-repair-card{padding:8px;border:1px solid rgba(255,255,255,.07);border-radius:9px;background:#0d1627}
+#ascension129 .ar-current-repair-card b{display:block;color:#dbeafe;font-size:11px;margin-bottom:6px}
+#ascension129 .ar-current-repair-pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#ascension129 .ar-current-master{display:grid;grid-template-columns:repeat(7,minmax(80px,1fr));gap:7px}
+@media(max-width:1100px){#ascension129 .ar-current-grid{grid-template-columns:repeat(3,1fr)}#ascension129 .ar-current-master{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){#ascension129 .ar-current-grid,#ascension129 .ar-current-repair{grid-template-columns:repeat(2,1fr)}#ascension129 .ar-current-master{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body class="organized-app">
 <div class="app">
-<aside class="side"><div class="brand">梦幻五开工具箱<small><span style="display:block;font-weight:700">v8.20.92 · 修改 2026-09-20 03:04:04</span><span style="display:block">离线使用 · 数据保存在本机</span></small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
+<aside class="side"><div class="brand">梦幻五开工具箱<small><span style="display:block;font-weight:700">v8.20.96 · 修改 2026-09-29</span><span style="display:block">离线使用 · 数据保存在本机</span></small></div><div class="nav"><div class="nav-group" data-group="checkin"><button type="button" class="nav-group-head" data-group-toggle="checkin"><span>五开打卡</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="checkin"><button data-tab="dailycheck">今日 / 周期打卡</button></div></div><div class="nav-group" data-group="income"><button type="button" class="nav-group-head" data-group-toggle="income"><span>收益工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="income"><button data-tab="taskincome2">任务收益</button><button data-tab="costtracker">跑环 / 玉魄成本记录</button><button data-tab="pricelib">💰 全局物价库</button><button data-tab="escort">押镖收益</button></div></div><div class="nav-group" data-group="profiles"><button type="button" class="nav-group-head" data-group-toggle="profiles"><span>五开档案</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="profiles"><button data-tab="fiveprofile" id="fpNavTotal">五开档案总表</button><button type="button" data-tab="fiveprofile_role_0" data-fp-role-index="0">1号</button><button type="button" data-tab="fiveprofile_role_1" data-fp-role-index="1">2号</button><button type="button" data-tab="fiveprofile_role_2" data-fp-role-index="2">3号</button><button type="button" data-tab="fiveprofile_role_3" data-fp-role-index="3">4号</button><button type="button" data-tab="fiveprofile_role_4" data-fp-role-index="4">5号</button><button type="button" data-tab="shortgoals">🎯 短期目标</button><button type="button" data-tab="longgoals">🏁 长期目标总表</button></div></div><div class="nav-group" data-group="main"><button type="button" class="nav-group-head" data-group-toggle="main"><span>常用</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="main"><button class="active" data-tab="home">首页</button><button data-tab="rate">金价与物价</button><button data-tab="income">每日任务收益总结</button></div></div><div class="nav-group" data-group="guide"><button type="button" class="nav-group-head" data-group-toggle="guide"><span>攻略</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="guide"><button data-tab="pocketguide">口袋版攻略</button><button data-tab="artifactguide">神器任务攻略</button><button data-tab="pastureguide">牧场攻略</button><button data-tab="mentor">师徒任务</button></div></div><div class="nav-group" data-group="analysis"><button type="button" class="nav-group-head" data-group-toggle="analysis"><span>属性 / 输出分析</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="analysis"><button data-tab="physicalspiritcompare">物理伤害 / 物暴分析</button><button data-tab="spellcritalloc">法伤 / 法爆分析</button><button data-tab="critdamagealloc">伤害 / 物暴分配</button><button data-tab="critconvert">暴击等级换算</button><button data-tab="critvsdirect">暴击 vs 直伤</button><button data-tab="fullgearcompare">整件灵饰 / 玉魄对比</button><button data-tab="jadecompare">上古玉魄对比</button><button data-tab="spiritdamage">灵饰伤害转法伤</button></div></div><div class="nav-group" data-group="cost"><button type="button" class="nav-group-head" data-group-toggle="cost"><span>成本工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="cost"><button data-tab="cultivation">修炼计算</button><button data-tab="gemcost">宝石 / 星辉石</button><button data-tab="bell">钟灵石 / 通用合成</button></div></div><div class="nav-group" data-group="weapon"><button type="button" class="nav-group-head" data-group-toggle="weapon"><span>武器工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="weapon"><button data-tab="weaponbase">武器初伤 / 初命中</button><button data-tab="weapon">武器转法伤</button><button data-tab="physicalweapon">物理武器总伤</button></div></div><div class="nav-group" data-group="growth"><button type="button" class="nav-group-head" data-group-toggle="growth"><span>养号工具</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="growth"><button data-tab="speedstandard">任务速度达标</button><button type="button" class="nav-item" data-tab="secrettraining">🧧 秘传修炼计算器</button>
 <button type="button" class="nav-item" data-tab="petwildcheck">🐾 假宝宝筛选</button>
 <button type="button" class="nav-item" data-tab="magicpetspeed">⚡ 法宠配速计算器</button>
 <button data-tab="petspeed">🐾 攻宠攻速查询</button><button data-tab="skillcost">技能消耗</button><button data-tab="attrcalc">属性换算</button><button data-tab="accounts">角色花费档案</button></div></div><div class="nav-group" data-group="system"><button type="button" class="nav-group-head" data-group-toggle="system"><span>设置</span><span class="nav-group-arrow">▾</span></button><div class="nav-group-items" data-group-items="system"><button data-tab="datamgr">数据管理</button><button data-tab="settings">设置</button></div></div><div class="menu-order-tip">↕ 大类和小类都可拖动排序 · 点击标题折叠</div>
@@ -9125,6 +9170,16 @@ section[id^="fiveprofile_role_"] .repair-target-row input[data-repair-target]{
   </div>
 </div></section>
 
+<section id="ascension129"><div class="grid">
+<div class="card w12 ar-hero"><h2>109→飞升129总资源</h2><p>与五开档案双向共享当前进度，按每个号的飞升方案计算还需准备的资源。</p><div class="ar-toolbar"><button type="button" class="miniBtn" id="arRefresh">刷新档案</button><button type="button" class="miniBtn" data-open-page="fiveprofile">五开档案</button><button type="button" class="miniBtn" data-open-page="pricelib">修炼果物价</button><span class="ar-view-split"></span><button type="button" class="miniBtn ar-view-btn" id="arViewCompact">简洁模式</button><button type="button" class="miniBtn ar-view-btn" id="arViewAll">展开五号详情</button></div><div id="arStatus" class="note" role="status"></div><div id="arSummary" class="ar-summary"></div><p class="note">“储备可抵部分”可以用储备或现金补足；“另需现金”主要是宝宝修炼果和手填剧情费。两者相加才是全部用现金补足的预算，不扣未记录的现金余额。</p></div>
+<div class="card w12"><h3>五号缺口总览</h3><div id="arOverview"></div></div>
+<div class="card w12" id="arAllDetailCard" hidden><div class="ar-section-head"><div><h3>五号关键缺口 · 全部展开</h3><div class="note">只展开关键资源与养成缺口；需要调整目标时，点对应角色的“查看 / 编辑本号”。</div></div></div><div id="arAllDetail" class="ar-all-grid"></div></div>
+<div class="card w12" id="arSingleDetailCard"><div id="arRoles" class="ar-toolbar"></div><div id="arDetail"></div></div>
+<div class="card w12"><details><summary>计算口径与乾元丹费用校正</summary><p>适用电脑版普通服。默认路线当前等级→144→飞升129；飞升门槛为等级≥135、至少6项师门技能≥130。技能150不是飞升硬门槛，可以按号调整。未飞升方案按飞升前点技能和常规四丹计算，超过当前等级的学习需先升级。</p><p>师门技能与修炼消耗沿用本版工具箱逐级表。修炼本级经验只抵扣对应一项一次；人物修炼经验不混入人物经验。储备逐号扣一次，再求五号缺口合计。</p><p>升级采用历史逐级参考表；乾元丹采用公开攻略近似费用，默认未计随机第五丹。下表可以按游戏内炼化界面的费用修正，修改后所有号同步重算。飞升扣经验与剧情物品费因人而异，在单号方案填预留。</p>
+<div class="ar-scroll"><table><thead><tr><th>乾元丹</th><th>单颗经验（万）</th><th>单颗金钱（万）</th></tr></thead><tbody id="arDanRows"></tbody></table></div>
+<p>参考资料：<a href="https://games.sina.com.cn/o/z/xyq/2009-11-27/1534356981.shtml" target="_blank" rel="noopener">飞升与降修规则（新浪官方合作专区）</a> · <a href="https://xyq.yzz.cn/pa/htmldata/25/5235/5241/2007_08/107096_1.shtml" target="_blank" rel="noopener">人物逐级经验表（叶子猪）</a> · <a href="https://www.game773.com/info/52139.html" target="_blank" rel="noopener">乾元丹参考费用</a>。数据仅作预算，以游戏内显示为准。</p><p>当前数据与“五开档案”共用同一套存储，可在两边双向修改；飞升目标方案仍单独保存，随“完整备份”一起导出，不覆盖五开档案长期目标。</p></details></div>
+</div></section>
+
 <section id="spiritcraft"></section>
 
 <section id="officialquiz">
@@ -9184,7 +9239,7 @@ section[id^="fiveprofile_role_"] .repair-target-row input[data-repair-target]{
   <button type="button" onclick="localStorage.removeItem('mhxy_feature_order_v18');location.reload()">恢复默认排序</button>
 </div>
 <div class="grid"><div class="card w6"><h3>金价设置</h3><div class="row"><div class="field"><label>人民币（元）</label><input id="setRmb" type="number" value="220"></div><div class="field"><label>对应游戏币（万）</label><input id="setGold" type="number" value="3000"></div></div></div><div class="card w6"><h3>武器换算参数</h3><div class="row"><div class="field"><label>多少伤害 = 1法伤</label><input id="setDamageRatio" type="number" value="4" step="0.1"></div><div class="field"><label>1魔力 = 法伤</label><input id="setMagicCoef" type="number" value="0.7" step="0.01"></div></div><div class="row"><div class="field"><label>1力量 = 法伤</label><input id="setStrCoef" type="number" value="0.4" step="0.01"></div><div class="field"><label>1体质 = 法伤</label><input id="setConCoef" type="number" value="0.3" step="0.01"></div></div><div class="row"><div class="field"><label>1耐力 = 法伤</label><input id="setEndCoef" type="number" value="0.2" step="0.01"></div><div class="field"><label>1敏捷 = 法伤</label><input id="setAgiCoef" type="number" value="0" step="0.01"></div></div></div><div class="card w12"><button class="primary" id="saveSettings">保存设置</button> <span class="note" id="saveMsg"></span></div></div></section>
-</div><div class="footer">梦幻西游五开工具箱 v8.20.92 · 修改时间 2026-09-20 03:04:04 · 非官方工具 · Supabase负责数据云备份，GitHub只维护 index.html</div></main></div>
+</div><div class="footer">梦幻西游五开工具箱 v8.20.96 · 修改时间 2026-09-29 · 非官方工具 · Supabase负责数据云备份，GitHub只维护 index.html</div></main></div>
 <script>
 const expByLevel=[0,150,210,290,390,510,650,810,990,1190,1410,1650,1910,2190,2490,2810,3150,3510,3890,4290,4710,5150,5610,6090,6590,7110];
 const defaults={rmb:220,gold:3000,damageRatio:4,magicCoef:.7,strCoef:.4,conCoef:.3,endCoef:.2,agiCoef:0};
@@ -15914,7 +15969,7 @@ document.addEventListener('click',function(e){
   if(ov && e.target===ov)closeAuxPicker();
 });
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAuxPicker()});
-function renderAll(){reload();renderOverview();renderHomeGap();for(let i=0;i<5;i++)renderRole(i);bindRoleFolds();highlightGapElements();renderPocketDaily();renderShortGoals();renderLongGoals()}
+function renderAll(){reload();renderOverview();renderHomeGap();for(let i=0;i<5;i++)renderRole(i);bindRoleFolds();highlightGapElements();renderPocketDaily();renderShortGoals();renderLongGoals();window.MHXY_ASCENSION?.render()}
 function boot(){renderAll();window.addEventListener('mhxy-fiveprofile-updated',renderAll);window.addEventListener('mhxy-fiveprofile-targets-updated',renderAll);window.addEventListener('mhxy-price-library-updated',renderAll)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 return {
@@ -18127,7 +18182,7 @@ window.MHXY_APPEARANCE=(function(){
   {group:'日常工作',label:'今日打卡',icon:'✓',pages:[['dailycheck','每日与周期任务']]},
   {group:'日常工作',label:'任务收支',icon:'↗',pages:[['taskincome2','记录收益'],['taskhistory','历史与排行'],['income','每日汇总'],['costtracker','跑环 / 玉魄成本']]},
   {group:'日常工作',label:'五开档案',icon:'▦',pages:[['fiveprofile','五开总览'],...Array.from({length:5},(_,i)=>['fiveprofile_role_'+i,(i+1)+'号']),['accounts','角色花费']]},
-  {group:'日常工作',label:'养成目标',icon:'◎',pages:[['shortgoals','短期目标'],['longgoals','长期目标']]},
+  {group:'日常工作',label:'养成目标',icon:'◎',pages:[['shortgoals','短期目标'],['longgoals','长期目标'],['ascension129','109→飞升129总资源']]},
   {group:'计算工具',label:'金价与物价',icon:'¥',pages:[['rate','金价 / 点卡 / 游戏币 / 精力'],['pricelib','物价库']]},
   {group:'计算工具',label:'修炼与技能',icon:'◇',pages:[['cultivation','人物与宠修'],['secrettraining','秘传修炼'],['skillcost','技能消耗']]},
   {group:'计算工具',label:'灵石技巧',icon:'◈',pages:[['spiritcraft','炼化 / 分解 / 合成']]},
@@ -19730,8 +19785,8 @@ body.theme-light #pricelib .pl-reset-btn{background:#fff!important;border-color:
 <script>
 (function(){
 'use strict';
-window.MHXY_APP_VERSION='8.20.92';
-window.MHXY_APP_UPDATED_AT='2026-09-20 03:04:04';
+window.MHXY_APP_VERSION='8.20.96';
+window.MHXY_APP_UPDATED_AT='2026-09-29';
 const RAW_INDEX='https://raw.githubusercontent.com/Bojack666/MHXY/main/index.html';
 const REPO_URL='https://github.com/Bojack666/MHXY';
 const KEY='mhxy_github_updater_v2';
@@ -20652,4 +20707,203 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
+<script id="ascension129Script">
+(function(){
+'use strict';
+const KEY='mhxy_ascension_budget_v1',VIEW_KEY='mhxy_ascension_view_v1',PROFILE_KEY='mhxy_fiveprofile_v81',RESOURCE_KEY='mhxy_role_detail_v879',MASTER_KEY='mhxy_master_skills_v884',DAILY_KEY='mhxy_role_daily_delta_v8133';
+const REPAIR=[0, 150, 210, 290, 390, 510, 650, 810, 990, 1190, 1410, 1650, 1910, 2190, 2490, 2810, 3150, 3510, 3890, 4290, 4710, 5150, 5610, 6090, 6590, 7110],MEXP=[16, 32, 52, 75, 103, 136, 179, 231, 295, 372, 466, 578, 711, 867, 1049, 1260, 1503, 1780, 2096, 2452, 2854, 3304, 3807, 4364, 4983, 5664, 6415, 7238, 8138, 9120, 10188, 11347, 12602, 13959, 15423, 16998, 18692, 20508, 22452, 24532, 26753, 29121, 31642, 34323, 37169, 40188, 43388, 46773, 50352, 54132, 58120, 62324, 66750, 71407, 76303, 81444, 86840, 92500, 98430, 104640, 111136, 117931, 125031, 132444, 140183, 148253, 156666, 165430, 174556, 184052, 193930, 204198, 214868, 225948, 237449, 249383, 261760, 274589, 287884, 301652, 315908, 330662, 345924, 361708, 378023, 394882, 412297, 430280, 448844, 468000, 487760, 508137, 529145, 550796, 573103, 596078, 619735, 644088, 669149, 694932, 721452, 748722, 776755, 805566, 835169, 865579, 896809, 928876, 961792, 995572, 1030234, 1065190, 1102256, 1139649, 1177983, 1217273, 1256104, 1298787, 1341043, 1384320, 1428632, 1473999, 1520435, 1567957, 1616583, 1666328, 1717211, 1769248, 1822456, 1876852, 1932456, 1989284, 2047353, 2106682, 2167289, 2229192, 2292410, 2356960, 2422861, 2490132, 2558792, 2628860, 2700356, 2773296, 2847703, 2923593, 3000989, 3079908, 3160372, 3242400, 6652022, 6822452, 6996132, 7173104, 7353406, 11305620, 11586254, 11872072, 12163140, 12459518, 15033471, 15315219, 15600468, 15889236, 16181550, 16477425, 16776885, 17079954, 17386650, 17697000, 24014692, 24438308, 24866880, 25300432, 25739000, 32728255, 33289095, 33856310, 34492930, 40842000],MMONEY=[6, 12, 19, 28, 38, 51, 67, 86, 110, 139, 174, 216, 266, 325, 393, 472, 563, 667, 786, 919, 1070, 1238, 1426, 1636, 1868, 2124, 2404, 2714, 3050, 3420, 3820, 4255, 4725, 5234, 5783, 6374, 7009, 7690, 8419, 9199, 10032, 10920, 11865, 12871, 13938, 15070, 16270, 17540, 18882, 20299, 21795, 23371, 25031, 26777, 28613, 30541, 32565, 34687, 36911, 39240, 41676, 44224, 46886, 49666, 52568, 55595, 58749, 62036, 65458, 69019, 72723, 76574, 80575, 84730, 89043, 93518, 98160, 102971, 107956, 113119, 118465, 123998, 129721, 135640, 141758, 148080, 154611, 161355, 168316, 175500, 182910, 190551, 198429, 206548, 214913, 223529, 232400, 241533, 250931, 260599, 270544, 280770, 291283, 302087, 313188, 324592, 336303, 348328, 360672, 373339, 386337, 399671, 413346, 427368, 441743, 456477, 471576, 487045, 502891, 519120, 535737, 552749, 570163, 587984, 606218, 624873, 643954, 663468, 683421, 703819, 724671, 745981, 767757, 790005, 812733, 835947, 859653, 883860, 908573, 933799, 959547, 985822, 1012633, 1039986, 1067888, 1096347, 1125371, 1154965, 1185139, 1215900, 2494508, 2558419, 2623549, 2689914, 2757527, 4239607, 4344845, 4452027, 4561177, 4672319, 4500041, 4594563, 4680138, 4766769, 4854465, 4943226, 5033064, 5123985, 5215995, 5309100, 7204407, 7331490, 7460064, 7590129, 7721700, 9818475, 9986727, 10156893, 10328979, 12252600];
+
+// Historical PC ordinary-server level table: index 0 is 109 -> 110. See sources in UI.
+const LEVEL=[7032035,7291172,7557407,7830869,8111686,8399990,8695912,8999586,9311145,9630726,9958463,10294496,10638964,10992005,11353761,11724374,12103988,12492748,12890799,13298287,13715362,14142172,14578867,15025600,15482522,15949788,16427552,16915970,17415202,17925402,18446732,18979354,19523428,20079116,20646584];
+const HUMAN=[['hatk','攻击修炼',.3],['hmagic','法术修炼',.3],['pdef','防御修炼',.2],['mdef','抗法修炼',.2]];
+const PET=[['bbatk','宝宝攻修'],['bbmagic','宝宝法修'],['bbpdef','宝宝防修'],['bbmdef','宝宝抗法']];
+const DEFAULT_DAN=[[2234,447],[2785,557],[3453,691],[4252,850]];
+const $=id=>document.getElementById(id),read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||'null')??d}catch(e){return d}};
+const num=v=>Number.isFinite(+v)?Math.max(0,+v):0;
+const fmt=n=>num(n).toLocaleString('zh-CN',{maximumFractionDigits:2});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const key=(r,i)=>String(r.accountId||'').trim()||String(r.charName||'').trim()||'角色'+(i+1);
+const wan=v=>{const s=String(v||'').replace(/,/g,'');return num(parseFloat(s))*(s.includes('亿')?10000:1)};
+const clamp=(v,max)=>Math.min(max,Math.floor(num(v)));
+const sum=(a,f,t)=>a.slice(clamp(f,a.length),clamp(t,a.length)).reduce((s,n)=>s+n,0);
+function repair(f,t,p){f=clamp(f,25);t=clamp(t,25);return t>f?Math.max(0,sum(REPAIR,f+1,t+1)-Math.min(num(p),REPAIR[f+1]||0)):0}
+function upgrade(lv){return Number.isInteger(lv)&&lv>=109&&lv<=144?sum(LEVEL,lv-109,35):null}
+function snapshot(){
+ const ps=read(PROFILE_KEY,[]),rs=read(RESOURCE_KEY,{}),ms=read(MASTER_KEY,{}),ts=read('mhxy_fiveprofile_targets_v877',{});
+ const pl=read('mhxy_global_price_library_v48',[]),fruit=Array.isArray(pl)?pl.find(x=>x.name==='修炼果'):null;
+ return {roles:(Array.isArray(ps)?ps:[]).slice(0,5).map((r,i)=>{const k=key(r,i);return {r,i,k,res:rs[k]||{},master:ms[k],targets:ts[k]||{}}}),fruitPrice:fruit&&num(fruit.price)>0?num(fruit.price):null};
+}
+function config(){const c=read(KEY,{});return {roles:c.roles&&typeof c.roles==='object'?c.roles:{},dan:Array.isArray(c.dan)&&c.dan.length===4?c.dan:DEFAULT_DAN}}
+function settings(a,c){
+ const x=c.roles[a.k]||{},repairTargets={},mode=x.mode==='drop20'?'drop20':'direct';
+ HUMAN.forEach(([f])=>{let v=x.rep?.[f]??Math.min(25,num(a.targets[f]??a.r[f]));v=Math.min(25,num(v));repairTargets[f]=mode==='drop20'&&v>0?Math.max(15,v):v});
+ PET.forEach(([f])=>repairTargets[f]=x.rep?.[f]??Math.min(20,num(a.targets[f]??a.r[f])));
+ return {...x,rep:repairTargets,skills:Array.from({length:7},(_,i)=>clamp(x.skills?.[i]??150,150)),dan:clamp(x.dan??4,4),mode,extra:num(x.extra),loss:num(x.loss)};
+}
+function calc(a,c,fruitPrice){
+ const q=settings(a,c),r=a.r,res=a.res,issues=[],notes=[];
+ const lv=Number(r.level);
+ const levelExp=upgrade(lv);
+ if(levelExp===null)issues.push('请在档案填写109～144级，本模块适用于尚未飞升的角色');
+ const hasExp=res.expWan!==undefined||String(r.exp??'').trim()!=='';
+ if(!hasExp)issues.push('未填写当前可用经验');
+ if(res.reserveWan===undefined)issues.push('未填写当前储备金');
+ const expWan=res.expWan!==undefined?num(res.expWan):wan(r.exp),reserve=num(res.reserveWan);
+ const masters=Array.isArray(a.master)&&a.master.length===7?a.master:null;
+ if(!masters)issues.push('缺少七项师门技能，请先完善档案');
+ let skillExp=0,skillMoney=0;
+ const skillRows=Array.from({length:7},(_,i)=>{const cur=clamp(masters?.[i]?.current,180),target=q.skills[i];let e=sum(MEXP,cur,target),m=sum(MMONEY,cur,target);skillExp+=e;skillMoney+=m;return {cur,target,exp:e,money:m}});
+ if(skillRows.filter(x=>Math.max(x.cur,x.target)>=130).length<6)issues.push('方案尚未满足至少6项师门技能130级的飞升门槛');
+ if(skillRows.some(x=>x.cur>154))notes.push('当前技能高于未飞升常规上限，请核对是否已飞升');
+ let humanExp=0,humanMoney=0,petExp=0,fruits=0,historyNeed=0;
+ const humanRows=HUMAN.map(([f,label,price])=>{
+ const cur=clamp(r[f],25),target=clamp(q.rep[f],25),p=num(res.repairProgress?.[f]);
+ const useDrop=q.mode==='drop20'&&target>0;
+ const preTarget=useDrop?20:target;
+ const afterDrop=useDrop?15:null;
+ const capAfter=useDrop?25:null;
+ const finalTarget=useDrop?Math.max(15,target):target;
+ let before=0,post=0;
+ if(useDrop){
+   if(cur>20)issues.push(label+'当前超过20，请核对是否已经飞升');
+   before=repair(cur,20,p);
+   post=repair(15,finalTarget,0);
+ }else{
+   before=repair(cur,target,p);
+   if(target>20)issues.push(label+'最终目标'+target+'需要先提升修炼上限；请选择“20→15（上限25）”飞升降修路线');
+ }
+ const exp=before+post;humanExp+=exp;humanMoney+=exp*price;
+ if(exp>0)historyNeed=Math.max(historyNeed,(useDrop?Math.max(20,finalTarget):target)*150);
+ return {f,label,cur,target,preTarget,afterDrop,capAfter,finalTarget,useDrop,before,post,exp,money:exp*price,path:useDrop?`${cur}→20（飞升前）→15（飞升降修）→${finalTarget}`:`${cur}→${Math.max(cur,target)}`};
+ });
+ const petRows=PET.map(([f,label])=>{const cur=clamp(r[f],25),target=clamp(q.rep[f],20),exp=repair(cur,target,res.repairProgress?.[f]),count=Math.ceil(exp/150);petExp+=exp;fruits+=count;return {f,label,cur,target,exp,count}});
+ const danCur=clamp(r.qianyuan,9);if(r.qianyuan===undefined)issues.push('未填写当前乾元丹');
+ let danExp=0,danMoney=0;for(let n=danCur;n<q.dan;n++){danExp+=num(c.dan[n]?.[0])*10000;danMoney+=num(c.dan[n]?.[1])}
+ if(fruits&&fruitPrice===null)issues.push('物价库未填写有效修炼果单价，宝宝修现金尚未计价');
+ const petMoney=fruits*(fruitPrice||0),totalExp=(levelExp||0)+skillExp+danExp+q.loss*10000;
+ const reserveTotal=skillMoney/10000+danMoney+humanMoney,reserveUsed=Math.min(reserve,reserveTotal),reserveGap=reserveTotal-reserveUsed;
+ return {a,q,lv,issues,notes,levelExp,skillExp,skillMoney,skillRows,humanRows,petRows,humanExp,petExp,fruits,danCur,danExp,danMoney,humanMoney,petMoney,totalExp,expWan,reserve,reserveTotal,reserveUsed,reserveGap,expGap:Math.max(0,totalExp/10000-expWan),cashOnly:petMoney+q.extra,cashBudget:reserveGap+petMoney+q.extra,historyNeed,historyGap:Math.max(0,historyNeed-num(res.historyBg))};
+}
+function input(i,f,value,min=0,max=1e9,step=1){return `<input type="number" min="${min}" max="${max}" step="${step}" value="${value}" data-ar-role="${i}" data-ar-field="${f}" aria-label="${esc(f.startsWith('s:')?'师门技能'+(+f.slice(2)+1)+'目标':f.startsWith('r:')?([...HUMAN,...PET].find(x=>x[0]===f.slice(2))?.[1]+'目标') : ({dan:'乾元丹目标',extra:'剧情等额外现金预算（万）',loss:'飞升扣经验预留（万）'}[f]||f))}">`}
+function select(i,f,value,opts){return `<select data-ar-role="${i}" data-ar-field="${f}" aria-label="${f==='mode'?'人物修炼路线':'飞升状态'}">${opts.map(([v,t])=>`<option value="${v}" ${v===value?'selected':''}>${t}</option>`).join('')}</select>`}
+function currentInput(i,f,value,min=0,max=1e9,step=1){return `<input type="number" min="${min}" max="${max}" step="${step}" value="${num(value)}" data-ar-role="${i}" data-ar-current="${f}">`}
+function localDay(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function ensureDailyBase(k,res){const all=read(DAILY_KEY,{}),day=localDay(),x=all[k];if(!x||x.day!==day){all[k]={day,base:{expWan:num(res.expWan),reserveWan:num(res.reserveWan),currentBg:num(res.currentBg),historyBg:num(res.historyBg)}};localStorage.setItem(DAILY_KEY,JSON.stringify(all))}}
+function saveSharedCurrent(el){
+ const i=+el.dataset.arRole,tag=String(el.dataset.arCurrent||''),parts=tag.split(':'),kind=parts[0],field=parts[1],v=num(el.value);
+ const ps=read(PROFILE_KEY,[]);if(!Array.isArray(ps)||!ps[i])return false;const r=ps[i],k=key(r,i),rs=read(RESOURCE_KEY,{}),ms=read(MASTER_KEY,{});if(!rs[k])rs[k]={};
+ if(kind==='profile'){
+   if(field==='level')r.level=Math.max(0,Math.min(175,Math.floor(v)));
+   else if(field==='qianyuan')r.qianyuan=Math.max(0,Math.min(9,Math.floor(v)));
+   else r[field]=v;
+   localStorage.setItem(PROFILE_KEY,JSON.stringify(ps));
+ }else if(kind==='resource'){
+   ensureDailyBase(k,rs[k]);rs[k][field]=v;
+   if(field==='expWan')r.exp=String(v)+'W';
+   localStorage.setItem(RESOURCE_KEY,JSON.stringify(rs));localStorage.setItem(PROFILE_KEY,JSON.stringify(ps));
+ }else if(kind==='repair'){
+   r[field]=Math.max(0,Math.min(25,Math.floor(v)));
+   if(!rs[k].repairProgress||typeof rs[k].repairProgress!=='object')rs[k].repairProgress={};
+   const req=REPAIR[(+r[field]||0)+1]||0;rs[k].repairProgress[field]=Math.max(0,Math.min(req,num(rs[k].repairProgress[field])));
+   localStorage.setItem(PROFILE_KEY,JSON.stringify(ps));localStorage.setItem(RESOURCE_KEY,JSON.stringify(rs));
+ }else if(kind==='repairProgress'){
+   if(!rs[k].repairProgress||typeof rs[k].repairProgress!=='object')rs[k].repairProgress={};
+   const req=REPAIR[(+r[field]||0)+1]||0;rs[k].repairProgress[field]=Math.max(0,Math.min(req,v));localStorage.setItem(RESOURCE_KEY,JSON.stringify(rs));
+ }else if(kind==='master'){
+   const idx=Math.max(0,Math.min(6,Math.floor(+field||0))),base=Array.isArray(ms[k])?ms[k].slice(0,7):[];while(base.length<7)base.push({current:0,target:119});
+   base[idx]={...(base[idx]||{}),current:Math.max(0,Math.min(180,Math.floor(v))),target:(base[idx]&&base[idx].target!==undefined)?num(base[idx].target):119};ms[k]=base;localStorage.setItem(MASTER_KEY,JSON.stringify(ms));
+ }else return false;
+ try{window.dispatchEvent(new CustomEvent('mhxy-fiveprofile-updated'))}catch(e){}try{window.dispatchEvent(new CustomEvent('mhxy-business-data-changed'))}catch(e){}return true;
+}
+const metric=(label,value,cls='')=>`<div class="ar-metric ${cls}"><span>${label}</span><strong>${value}</strong></div>`;
+let active=0,last=[],viewMode=localStorage.getItem(VIEW_KEY)==='all'?'all':'compact';
+function shortRepair(rows){
+ const need=rows.filter(t=>t.exp>0);
+ if(!need.length)return '已达当前目标';
+ return need.map(t=>`${t.label.replace('宝宝','').replace('修炼','修')} ${t.cur}→${t.target}`).join(' · ');
+}
+function renderAllDetails(data){
+ const box=$('arAllDetail');if(!box)return;
+ box.innerHTML=last.map((x,i)=>`<div class="ar-all-role ${x.issues.length?'has-issue':''}">
+  <div class="ar-all-role-head"><div style="min-width:0"><div class="ar-all-role-name">${esc(x.a.r.charName||((i+1)+'号'))}</div><div class="ar-all-role-meta">${esc(x.a.r.school)} · ${x.lv||'待填'}级 · 乾元丹 ${x.danCur}→${x.q.dan}</div></div><span class="ar-all-status">${x.issues.length?'⚠ 待核对':'✓ 已计算'}</span></div>
+  <div class="ar-all-kpis"><div class="ar-all-kpi"><span>还缺人物经验</span><b class="ar-exp">≈ ${fmt(x.expGap)}万</b></div><div class="ar-all-kpi"><span>储备可抵缺口</span><b class="ar-reserve">≈ ${fmt(x.reserveGap)}万</b></div><div class="ar-all-kpi"><span>另需现金</span><b>${fmt(x.cashOnly)}万</b></div><div class="ar-all-kpi"><span>全部现金补足约</span><b>${fmt(x.cashBudget)}万</b></div></div>
+  <div class="ar-all-lines">
+   <div><span>当前经验 / 储备</span><b>${fmt(x.expWan)} / ${fmt(x.reserve)}万</b></div>
+   <div><span>师门技能</span><b>需经验 ${fmt(x.skillExp/10000)}万 · 钱 ${fmt(x.skillMoney/10000)}万</b></div>
+   <div><span>人物修炼</span><b>${fmt(x.humanExp)}点 · ${fmt(x.humanMoney)}万</b></div>
+   <div><span>宝宝修炼</span><b>${fmt(x.petExp)}点 · ${x.fruits}果${data.fruitPrice===null&&x.fruits?' · 未定价':''}</b></div>
+   <div><span>人物修目标</span><b>${esc(shortRepair(x.humanRows))}</b></div>
+   <div><span>宝宝修目标</span><b>${esc(shortRepair(x.petRows))}</b></div>
+   <div><span>历史帮贡门槛缺口</span><b>${fmt(x.historyGap)}</b></div>
+  </div>
+  <div class="ar-all-actions"><button class="miniBtn" data-ar-edit-role="${i}">查看 / 编辑本号</button></div>
+ </div>`).join('');
+}
+function applyView(){
+ const all=$('arAllDetailCard'),single=$('arSingleDetailCard'),compact=$('arViewCompact'),allBtn=$('arViewAll');
+ if(all)all.hidden=viewMode!=='all';
+ if(single)single.hidden=viewMode==='all';
+ compact?.classList.toggle('active',viewMode!=='all');
+ allBtn?.classList.toggle('active',viewMode==='all');
+}
+function setView(mode){viewMode=mode==='all'?'all':'compact';try{localStorage.setItem(VIEW_KEY,viewMode)}catch(e){}applyView();}
+function render(){
+ if(!$('arSummary'))return;const data=snapshot(),c=config();last=data.roles.map(a=>calc(a,c,data.fruitPrice));
+ if(!last.length){$('arSummary').innerHTML='<p>暂无角色档案。请先到五开档案添加角色，或在“备份与恢复”导入完整备份。</p>';$('arOverview').innerHTML='';$('arRoles').innerHTML='';$('arDetail').innerHTML='';if($('arAllDetail'))$('arAllDetail').innerHTML='';applyView();return}
+ active=Math.min(active,last.length-1);const total=f=>last.reduce((s,x)=>s+x[f],0),invalid=last.some(x=>x.issues.length);
+ $('arSummary').innerHTML=metric('人物经验还缺（万）','≈ '+fmt(total('expGap')),'ar-exp')+metric('储备可抵部分还缺（万）','≈ '+fmt(total('reserveGap')),'ar-reserve')+metric('另需现金预算（万）',fmt(total('cashOnly')),'ar-cash')+metric('全部用现金补足约（万）','≈ '+fmt(total('cashBudget')),'ar-cash');
+ $('arStatus').textContent=`已读取 ${last.length}/5 个号 · ${invalid?'有待核对项，下列为已知部分预算':'预算已更新'} · 经验和储备逐号扣除后求和 · 乾元丹与升级表为参考预算`;
+ $('arOverview').innerHTML=`<div class="ar-scroll"><table><thead><tr><th>角色 / 等级</th><th>当前经验 / 储备（万）</th><th>还缺经验（万）</th><th>储备可抵缺口（万）</th><th>另需现金（万）</th><th>乾元丹</th><th>状态</th></tr></thead><tbody>${last.map((x,i)=>`<tr><td><button class="miniBtn" data-ar-pick="${i}">${esc(x.a.r.charName||((i+1)+'号'))}</button><small>${esc(x.a.r.school)} · ${x.lv||'待填'}级</small></td><td>${fmt(x.expWan)} / ${fmt(x.reserve)}</td><td class="ar-exp">≈ ${fmt(x.expGap)}</td><td class="ar-reserve">≈ ${fmt(x.reserveGap)}</td><td>${fmt(x.cashOnly)}</td><td>${x.danCur}→${x.q.dan}（差${Math.max(0,x.q.dan-x.danCur)}）</td><td>${x.issues.length?'⚠ 待核对':'已计算'}</td></tr>`).join('')}</tbody><tfoot><tr><th>${last.length}号合计</th><td>${fmt(total('expWan'))} / ${fmt(total('reserve'))}</td><th>≈ ${fmt(total('expGap'))}</th><th>≈ ${fmt(total('reserveGap'))}</th><th>${fmt(total('cashOnly'))}</th><td colspan="2">按号计算，不互相抵扣</td></tr></tfoot></table></div>`;
+ $('arRoles').innerHTML=last.map((x,i)=>`<button class="miniBtn ${i===active?'active':''}" data-ar-pick="${i}">${esc(x.a.r.charName||((i+1)+'号'))}</button>`).join('');
+ renderAllDetails(data);applyView();
+ const x=last[active],q=x.q,i=active;
+ $('arDetail').innerHTML=`<h3>${esc(x.a.r.charName||((i+1)+'号'))} · ${esc(x.a.r.school)} · 单号预算</h3>
+ <div class="ar-toolbar"><button class="miniBtn" data-open-page="fiveprofile_role_${i}">打开五开档案本号</button><span>下面“当前档案数据”与五开档案双向同步；飞升目标方案仍独立保存。</span></div>
+ ${x.issues.length?`<div class="ar-warning">${x.issues.map(esc).join('；')}</div>`:''}
+ <div class="ar-sync-box"><div class="ar-sync-head"><div><h4>当前档案数据</h4><div class="note">这里修改后会直接写回五开档案；在五开档案修改后，本页也会自动刷新。</div></div><span class="ar-sync-badge">↔ 双向同步</span></div>
+ <div class="ar-current-grid"><label>当前等级${currentInput(i,'profile:level',x.a.r.level,0,175)}</label><label>当前经验（万）${currentInput(i,'resource:expWan',x.expWan,0,1e10,.01)}</label><label>当前储备金（万）${currentInput(i,'resource:reserveWan',x.reserve,0,1e10,.01)}</label><label>当前乾元丹${currentInput(i,'profile:qianyuan',x.danCur,0,9)}</label><label>当前帮贡${currentInput(i,'resource:currentBg',x.a.res.currentBg,0,1e9)}</label><label>历史帮贡${currentInput(i,'resource:historyBg',x.a.res.historyBg,0,1e9)}</label></div>
+ <div class="ar-current-subtitle">人物修炼当前值 / 本级修炼经验</div><div class="ar-current-repair">${x.humanRows.map(t=>`<div class="ar-current-repair-card"><b>${t.label}</b><div class="ar-current-repair-pair"><label>当前等级${currentInput(i,'repair:'+t.f,t.cur,0,25)}</label><label>本级经验${currentInput(i,'repairProgress:'+t.f,x.a.res.repairProgress?.[t.f],0,100000)}</label></div></div>`).join('')}</div>
+ <div class="ar-current-subtitle">宝宝修炼当前值 / 本级修炼经验</div><div class="ar-current-repair">${x.petRows.map(t=>`<div class="ar-current-repair-card"><b>${t.label}</b><div class="ar-current-repair-pair"><label>当前等级${currentInput(i,'repair:'+t.f,t.cur,0,25)}</label><label>本级经验${currentInput(i,'repairProgress:'+t.f,x.a.res.repairProgress?.[t.f],0,100000)}</label></div></div>`).join('')}</div>
+ <div class="ar-current-subtitle">七项师门技能当前等级</div><div class="ar-current-master">${x.skillRows.map((s,n)=>`<label>技能${n+1}${currentInput(i,'master:'+n,s.cur,0,180)}</label>`).join('')}</div></div>
+ <div class="ar-fields"><label>人物修炼路线${select(i,'mode',q.mode,[['direct','不降修：从当前补至目标'],['drop20','飞升降修：先20→降15→上限25→最终目标']])}</label><label>乾元丹目标（常规最多4）${input(i,'dan',q.dan,0,4)}</label><label>剧情等额外现金（万）${input(i,'extra',q.extra,0,1e8,.01)}</label><label>飞升扣经验预留（万）${input(i,'loss',q.loss,0,1e10,.01)}</label></div>
+ <p class="note">默认七技能150、四丹；修炼目标先沿用你档案中的长期目标。目标0表示该项不追加预算。飞升扣经验预留默认0，历史总经验尚未记录，需按游戏提示补入；不含装备、宝宝购置、辅助技能、潜能果及随机第五丹。本模块用于尚未飞升角色的准备预算；技能按飞升前学习计算。</p>
+ <div class="ar-toolbar"><b>七项师门技能目标</b><button class="miniBtn" data-ar-preset="entry">六技能130门槛方案</button><button class="miniBtn" data-ar-preset="full">七技能150方案</button></div>
+ <div class="ar-skill-grid">${x.skillRows.map((s,n)=>`<label>技能${n+1}<small>当前 ${s.cur}</small>${input(i,'s:'+n,s.target,0,150)}<small>经验 ${fmt(s.exp/10000)}万<br>金钱 ${fmt(s.money/10000)}万</small></label>`).join('')}</div>
+ <h4>人物修炼规划（不消耗人物经验）</h4>
+ <div class="ar-human-tip"><b>要把修炼上限直接开到25：</b>飞升前把该项修到20 → 飞升时选择降低修炼 → 修炼降到15 → 上限提升到25。下面“最终目标”是你飞升后准备重新补到的等级。</div>
+ <div class="ar-scroll"><table class="ar-human-table"><thead><tr><th>项目</th><th>当前修炼</th><th>飞升前准备</th><th>飞升后降到</th><th>获得上限</th><th>最终目标</th><th>总消耗</th></tr></thead><tbody>${x.humanRows.map(t=>`<tr><td><b>${t.label}</b><small>本级已点 ${fmt(x.a.res.repairProgress?.[t.f])} 点</small></td><td>${t.cur}</td><td>${t.target===0?'不计算':t.preTarget}</td><td>${t.useDrop?t.afterDrop:'—'}</td><td>${t.useDrop?'<b class="ar-cap25">25</b>':'不提升'}</td><td>${input(i,'r:'+t.f,t.target,0,25)}</td><td><b>${fmt(t.exp)}点</b><small>${t.useDrop?'飞升前 '+fmt(t.before)+' + 飞升后 '+fmt(t.post):'直接补修 '+fmt(t.before)}<br>费用 ${fmt(t.money)}万</small></td></tr>`).join('')}</tbody></table></div>
+ <p class="note">当前路线：${q.mode==='drop20'?'<b>20→15，修炼上限25</b>。最终目标可填15～25；填0表示该项不纳入飞升预算。':'<b>不降修</b>，只按当前等级直接补到最终目标；如果最终目标超过20，本页会提示你先通过飞升降修提升上限。'} 历史帮贡门槛 ${fmt(x.historyNeed)}，还差 ${fmt(x.historyGap)}（门槛，不计入资源消耗）。</p>
+ <h4>宝宝修炼（修炼果参考预算）</h4><div class="ar-repair-grid">${x.petRows.map(t=>`<label>${t.label}<small>当前 ${t.cur} · 本级 ${fmt(x.a.res.repairProgress?.[t.f])}点</small>${input(i,'r:'+t.f,t.target,0,20)}<small>还需 ${fmt(t.exp)}点<br>${t.count}个修炼果</small></label>`).join('')}</div>
+ <p class="note">修炼果：${data.fruitPrice===null?'未定价':fmt(data.fruitPrice)+'万/个'}，读取全局物价库；每项分别向上取整为果数，不使用储备金。宝宝修尚需 ${fmt(x.petExp)}点，共 ${x.fruits}个果。</p>
+ <div class="ar-scroll"><table><thead><tr><th>项目</th><th>人物经验（万）</th><th>可用储备部分（万）</th><th>另需现金（万）</th></tr></thead><tbody>
+ <tr><td>${x.lv+'→144→飞升129'}</td><td>${x.levelExp===null?'待核对':fmt(x.levelExp/10000)}</td><td>0</td><td>0</td></tr>
+ <tr><td>七项师门技能</td><td>${fmt(x.skillExp/10000)}</td><td>${fmt(x.skillMoney/10000)}</td><td>0</td></tr>
+ <tr><td>人物修炼 · ${fmt(x.humanExp)}点</td><td>0</td><td>${fmt(x.humanMoney)}</td><td>0</td></tr>
+ <tr><td>乾元丹 ${x.danCur}→${q.dan}（参考）</td><td>≈ ${fmt(x.danExp/10000)}</td><td>≈ ${fmt(x.danMoney)}</td><td>0</td></tr>
+ <tr><td>宝宝修炼 · ${x.fruits}个果</td><td>0</td><td>0</td><td>${data.fruitPrice===null&&x.fruits?'待定价':fmt(x.petMoney)}</td></tr>
+ <tr><td>经验扣除预留 / 剧情等</td><td>${fmt(q.loss)}</td><td>0</td><td>${fmt(q.extra)}</td></tr>
+ <tr><th>总需求</th><th>≈ ${fmt(x.totalExp/10000)}</th><th>≈ ${fmt(x.reserveTotal)}</th><th>${fmt(x.cashOnly)}</th></tr>
+ <tr><td>本号当前资源</td><td>${fmt(x.expWan)}</td><td>${fmt(x.reserve)}</td><td>现金余额未纳入档案</td></tr>
+ <tr><th>还需准备</th><th class="ar-exp">≈ ${fmt(x.expGap)}</th><th class="ar-reserve">≈ ${fmt(x.reserveGap)}</th><th>${fmt(x.cashOnly)}</th></tr>
+ </tbody></table></div><p class="note">储备抵扣 ${fmt(x.reserveUsed)}万后，若剩余全部用现金支付，现金预算约 ${fmt(x.cashBudget)}万。经验、储备充足时缺口归零，盈余不会抵扣其他号。预算不代表已满足全部飞升条件。</p>`;
+ $('arDanRows').innerHTML=c.dan.map((row,n)=>`<tr><td>第${n+1}颗</td>${[0,1].map(t=>`<td><input aria-label="第${n+1}颗乾元丹${t?'金钱':'经验'}（万）" type="number" min="0" step="0.0001" max="100000000" data-ar-dan="${n}:${t}" value="${num(row[t])}"></td>`).join('')}</tr>`).join('');
+}
+function persist(c){try{localStorage.setItem(KEY,JSON.stringify(c));window.dispatchEvent(new CustomEvent('mhxy-business-data-changed'));return true}catch(e){alert('方案保存失败：本地存储空间不足，请先导出备份。');return false}}
+function boot(){
+ const root=$('ascension129');if(!root)return;
+ root.addEventListener('click',e=>{const edit=e.target.closest('[data-ar-edit-role]');if(edit){active=+edit.dataset.arEditRole;setView('compact');render();return}const pick=e.target.closest('[data-ar-pick]');if(pick){active=+pick.dataset.arPick;render();return}
+ if(e.target.closest('#arViewCompact')){setView('compact');return}if(e.target.closest('#arViewAll')){setView('all');render();return}
+ if(e.target.closest('#arRefresh')){render();return}const preset=e.target.closest('[data-ar-preset]');if(preset){const c=config(),a=snapshot().roles[active];if(!a)return;const q=settings(a,c);if(preset.dataset.arPreset==='full')q.skills=Array(7).fill(150);else {q.skills=Array(7).fill(0);Array.from({length:7},(_,i)=>i).sort((i,j)=>num(a.master?.[j]?.current)-num(a.master?.[i]?.current)).slice(0,6).forEach(i=>q.skills[i]=130)}c.roles[a.k]=q;if(persist(c))render()}});
+ root.addEventListener('change',e=>{const el=e.target;if(!el.matches('[data-ar-field],[data-ar-dan],[data-ar-current]'))return;
+ if(el.type==='number'&&(el.value.trim()===''||!el.checkValidity()||!Number.isFinite(+el.value))){el.reportValidity();render();return}
+ if(el.dataset.arCurrent){saveSharedCurrent(el);return}
+ const c=config();if(el.dataset.arDan){const [n,t]=el.dataset.arDan.split(':').map(Number);c.dan=c.dan.map(x=>x.slice());c.dan[n][t]=+el.value}else{const a=snapshot().roles[+el.dataset.arRole];if(!a)return;const q=settings(a,c),f=el.dataset.arField,v=el.type==='number'?+el.value:el.value;if(f.startsWith('s:'))q.skills[+f.slice(2)]=v;else if(f.startsWith('r:'))q.rep[f.slice(2)]=v;else q[f]=v;c.roles[a.k]=q}if(persist(c))render();
+ });
+ ['mhxy-fiveprofile-updated','mhxy-fiveprofile-targets-updated','mhxy-price-library-updated','focus','storage'].forEach(n=>window.addEventListener(n,render));render();
+}
+window.MHXY_ASCENSION={render,calc,snapshot,config,repair,upgrade,setView,renderAllDetails};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+
+</script>
 </body></html>
